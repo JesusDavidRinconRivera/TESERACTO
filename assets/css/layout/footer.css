@@ -1,0 +1,33 @@
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer {
+  padding: 36px 0;
+  border-top: 1px solid var(--hair-d);
+  background: var(--void);
+  color: var(--paper);
+}
+
+footer .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+footer .logo-word {
+  font-size: 14px;
+}
+
+footer .logo-mark svg {
+  width: 20px;
+  height: 20px;
+}
+
+footer .foot-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mist);
+}

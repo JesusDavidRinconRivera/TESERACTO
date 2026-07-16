@@ -1,0 +1,108 @@
+/* ============================================================
+   CARDS Y TARJETAS
+============================================================ */
+
+/* ---- Tarjetas de servicios (pilares) ---- */
+.pillars-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--hair-l);
+  border: 1px solid var(--hair-l);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.pillar-card {
+  background: var(--paper);
+  padding: 48px 44px;
+  border-radius: var(--radius-lg);
+}
+
+.pillar-card .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--maroon);
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+
+.pillar-card h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.pillar-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 8px;
+}
+
+.pillar-card li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14.6px;
+  color: var(--fog);
+  line-height: 1.55;
+}
+
+.pillar-card li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex: none;
+  background: var(--maroon);
+}
+
+/* ---- Tarjetas de confianza ---- */
+.trustpoints {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hair-d);
+  border: 1px solid var(--hair-d);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tp-card {
+  background: var(--void);
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+}
+
+.tp-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hair-d2);
+  border-radius: 50%;
+}
+
+.tp-icon svg {
+  width: 19px;
+  height: 19px;
+  stroke: var(--ember);
+}
+
+.tp-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: var(--display);
+  color: var(--paper);
+}
+
+.tp-card p {
+  font-size: 13.8px;
+  color: var(--mist);
+  line-height: 1.62;
+}

@@ -1,0 +1,148 @@
+/* ============================================================
+   FORMULARIOS Y CONTACTO
+============================================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--hair-d);
+  border: 1px solid var(--hair-d);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.contact-info {
+  background: var(--void);
+  padding: 50px 46px;
+  border-radius: var(--radius-lg);
+}
+
+.contact-info h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  font-family: var(--display);
+  color: var(--paper);
+}
+
+.contact-info p.sub {
+  color: var(--mist);
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 34px;
+  max-width: 42ch;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 0;
+  border-top: 1px solid var(--hair-d);
+}
+
+.contact-line:first-of-type {
+  border-top: none;
+}
+
+.contact-line .ic {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--hair-d2);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.contact-line .ic svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--ember);
+}
+
+.contact-line .label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--mist);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.contact-line .value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--paper);
+}
+
+.contact-line a.value:hover {
+  color: var(--ember);
+}
+
+/* ---- Formulario ---- */
+.contact-form {
+  background: var(--void-2);
+  padding: 50px 46px;
+  border-radius: var(--radius-lg);
+}
+
+.contact-form h3 {
+  font-size: 22px;
+  margin-bottom: 26px;
+  font-family: var(--display);
+  color: var(--paper);
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 9px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--hair-d2);
+  color: var(--paper);
+  padding: 13px 14px;
+  font-family: var(--body);
+  font-size: 14.5px;
+  resize: vertical;
+  border-radius: var(--radius-md);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(242, 244, 243, 0.35);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--ember);
+  box-shadow: 0 0 0 3px rgba(214, 51, 74, 0.18);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mist);
+  margin-top: 14px;
+  text-align: center;
+}

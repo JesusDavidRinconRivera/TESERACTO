@@ -1,0 +1,30 @@
+/* ============================================================
+   GRID Y LAYOUTS
+============================================================ */
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.grid-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(30deg, var(--g-line) 1px, transparent 1px),
+    linear-gradient(150deg, var(--g-line) 1px, transparent 1px);
+  background-size: 90px 156px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 78%);
+}
+
+.on-void .grid-field {
+  --g-line: rgba(242, 244, 243, 0.07);
+}
+
+.on-paper .grid-field {
+  --g-line: rgba(10, 9, 8, 0.06);
+}

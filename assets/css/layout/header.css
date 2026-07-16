@@ -1,0 +1,68 @@
+/* ============================================================
+   HEADER Y NAVEGACIÓN
+============================================================ */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 9, 8, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hair-d);
+  color: var(--paper);
+}
+
+nav.wrap {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.navlinks a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+  transition: color 0.2s;
+}
+
+.navlinks a:hover {
+  color: var(--paper);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ============================================================
+   RESPONSIVE — Header
+============================================================ */
+@media (max-width: 920px) {
+  .navlinks {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  nav.wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
