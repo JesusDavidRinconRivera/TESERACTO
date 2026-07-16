@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TESERACTO — Mantenimiento y Software para Empresas
 
 Sitio web moderno y responsivo para la empresa de mantenimiento e infraestructura TESERACTO.
@@ -132,3 +133,6 @@ Simplemente abre `index.html` en tu navegador.
 ---
 
 **Desarrollado para TESERACTO © 2026**
+=======
+# TESERACTO
+>>>>>>> 168784876814aa7712972c8b78a8c5c5b5fcaabf
