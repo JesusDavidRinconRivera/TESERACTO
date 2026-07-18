@@ -107,25 +107,3 @@
   margin-top: 4px;
   color: var(--ink);
 }
-
-/* ============================================================
-   RESPONSIVE — Hero
-============================================================ */
-@media (max-width: 560px) {
-  .hero {
-    padding: 48px 0 64px;
-  }
-
-  .hero-logo-reveal {
-    min-height: calc(var(--cube-size) + 70px);
-  }
-
-  .logo-row {
-    flex-direction: column-reverse;
-  }
-
-  .logo-row.is-assembled {
-    column-gap: 0;
-    row-gap: 18px;
-  }
-}

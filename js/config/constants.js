@@ -25,6 +25,8 @@ const CONSTANTS = {
   CROSS_LINE_LENGTH: 87,
 
   // Selectors
+  NAV_TOGGLE_ID: 'navToggle',
+  NAV_MOBILE_ID: 'navMobile',
   BRAND_COLOR_PICKER_ID: 'brandColorPicker',
   COLOR_RESET_BTN_ID: 'colorResetBtn',
   CUBE_CANVAS_MOUNT_ID: 'cubeCanvasMount',

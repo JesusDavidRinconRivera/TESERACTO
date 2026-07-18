@@ -36,4 +36,7 @@
 
   /* Tamaño del cubo */
   --cube-size: clamp(200px, 51vw, 690px);
+
+  /* Header */
+  --header-h: 76px;
 }

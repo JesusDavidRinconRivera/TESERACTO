@@ -10,6 +10,7 @@ import { initHeroBackground } from './hero/heroBackground.js';
 import { initContactForm } from './forms/contactForm.js';
 import { initRevealOnScroll } from './ui/revealOnScroll.js';
 import { initAnimations } from './ui/animations.js';
+import { initMobileNav } from './ui/mobileNav.js';
 import { onReady } from './utils/helpers.js';
 
 /**
@@ -66,6 +67,14 @@ function initApp() {
       console.log('[TESERACTO] ✓ Formulario de contacto inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar formulario:', err);
+    }
+
+    try {
+      // Inicializar navegación móvil
+      initMobileNav();
+      console.log('[TESERACTO] ✓ Navegación móvil inicializada');
+    } catch (err) {
+      console.warn('[TESERACTO] ✗ Error al inicializar navegación móvil:', err);
     }
 
     try {
