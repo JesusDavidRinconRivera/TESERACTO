@@ -106,7 +106,7 @@
 @media (max-width: 560px) {
   :root {
     --header-h: 52px;
-    --cube-size: clamp(240px, 87vw, 420px);
+    --cube-size: clamp(160px, 58vw, 280px);
   }
 
   header {
@@ -377,7 +377,7 @@
 /* ---- Pantallas muy pequeñas (≤400px) ---- */
 @media (max-width: 400px) {
   :root {
-    --cube-size: clamp(210px, 78vw, 330px);
+    --cube-size: clamp(140px, 52vw, 220px);
   }
 
   .wrap {

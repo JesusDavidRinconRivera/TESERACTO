@@ -35,7 +35,7 @@
   --radius-pill: 999px; /* botones — completamente redondeados */
 
   /* Tamaño del cubo */
-  --cube-size: clamp(300px, 76vw, 1035px);
+  --cube-size: clamp(200px, 51vw, 690px);
 
   /* Header */
   --header-h: 76px;

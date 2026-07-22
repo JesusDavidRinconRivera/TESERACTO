@@ -75,7 +75,7 @@ export function createRenderer(mount, width, height) {
  * @returns {THREE.OrthographicCamera}
  */
 export function createCamera(width, height) {
-  const viewSize = 900;
+  const viewSize = 600;
   const aspect = width / height;
 
   const camera = new THREE.OrthographicCamera(
