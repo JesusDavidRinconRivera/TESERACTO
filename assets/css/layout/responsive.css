@@ -6,7 +6,7 @@
 /* ---- Tablet (≤920px) ---- */
 @media (max-width: 920px) {
   :root {
-    --header-h: 68px;
+    --header-h: 56px;
   }
 
   .wrap {
@@ -15,6 +15,11 @@
   }
 
   /* Header */
+  header {
+    top: 10px;
+    padding: 0 10px;
+  }
+
   nav.wrap {
     height: var(--header-h);
   }
@@ -29,6 +34,7 @@
 
   .nav-mobile {
     display: flex;
+    top: calc(var(--header-h) + 22px);
   }
 
   .btn-cta-nav {
@@ -99,8 +105,13 @@
 /* ---- Mobile (≤560px) ---- */
 @media (max-width: 560px) {
   :root {
-    --header-h: 64px;
-    --cube-size: clamp(160px, 58vw, 280px);
+    --header-h: 52px;
+    --cube-size: clamp(240px, 87vw, 420px);
+  }
+
+  header {
+    top: 8px;
+    padding: 0 8px;
   }
 
   .wrap {
@@ -112,6 +123,7 @@
   nav.wrap {
     height: var(--header-h);
     gap: 8px;
+    padding: 0 14px;
   }
 
   .nav-left {
@@ -365,7 +377,7 @@
 /* ---- Pantallas muy pequeñas (≤400px) ---- */
 @media (max-width: 400px) {
   :root {
-    --cube-size: clamp(140px, 52vw, 220px);
+    --cube-size: clamp(210px, 78vw, 330px);
   }
 
   .wrap {

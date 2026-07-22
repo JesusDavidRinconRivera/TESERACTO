@@ -4,20 +4,25 @@
 
 header {
   position: sticky;
-  top: 0;
+  top: 12px;
   z-index: 50;
-  background: rgba(10, 9, 8, 0.82);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--hair-d);
+  padding: 0 12px;
   color: var(--paper);
 }
 
 nav.wrap {
-  height: 76px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  background: rgba(10, 9, 8, 0.88);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hair-d);
+  padding: 0 20px;
 }
 
 .nav-left {
@@ -99,7 +104,7 @@ nav.wrap {
 .nav-mobile {
   display: none;
   position: fixed;
-  top: var(--header-h, 76px);
+  top: calc(var(--header-h) + 22px);
   left: 0;
   right: 0;
   bottom: 0;

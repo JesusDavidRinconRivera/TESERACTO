@@ -2,7 +2,7 @@
    CUBE — RESIZE
 ============================================================ */
 
-const viewSize = 600;
+const viewSize = 900;
 
 /**
  * Obtiene el tamaño del contenedor
