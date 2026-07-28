@@ -5,6 +5,18 @@
  * Requiere variable de entorno RESEND_API_KEY en Cloudflare Pages
  */
 
+/**
+ * Escapa caracteres peligrosos para prevenir XSS al interpolar input
+ * del usuario en HTML (correo electrónico).
+ * Convierte: & < > " ' en sus entidades HTML seguras.
+ * @param {string} str - Texto a escapar
+ * @returns {string} Texto seguro para HTML
+ */
+function escapeHtml(str) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return str.replace(/[&<>"']/g, (char) => map[char]);
+}
+
 export async function onRequestPost(context) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -47,11 +59,11 @@ export async function onRequestPost(context) {
     const htmlBody = `
       <h2>Nueva solicitud de cotización</h2>
       <table style="border-collapse:collapse;width:100%;max-width:600px;">
-        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Nombre</td><td style="padding:8px;border:1px solid #ddd;">${nombre}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Empresa</td><td style="padding:8px;border:1px solid #ddd;">${empresa}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Teléfono</td><td style="padding:8px;border:1px solid #ddd;">${telefono}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Correo</td><td style="padding:8px;border:1px solid #ddd;">${correo}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Mensaje</td><td style="padding:8px;border:1px solid #ddd;">${mensaje}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Nombre</td><td style="padding:8px;border:1px solid #ddd;">${escapeHtml(nombre)}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Empresa</td><td style="padding:8px;border:1px solid #ddd;">${escapeHtml(empresa)}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Teléfono</td><td style="padding:8px;border:1px solid #ddd;">${escapeHtml(telefono)}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Correo</td><td style="padding:8px;border:1px solid #ddd;">${escapeHtml(correo)}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border:1px solid #ddd;">Mensaje</td><td style="padding:8px;border:1px solid #ddd;">${escapeHtml(mensaje)}</td></tr>
       </table>
       <p style="margin-top:16px;color:#888;font-size:12px;">Enviado desde el formulario de teseracto.tech</p>
     `;

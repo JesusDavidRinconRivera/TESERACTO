@@ -7,6 +7,20 @@ import { validateForm } from './validator.js';
 import { sendForm } from './sendForm.js';
 
 /**
+ * Muestra un mensaje de feedback en el formulario
+ * @param {HTMLElement} note - Elemento donde mostrar el mensaje
+ * @param {string} text - Texto del mensaje
+ * @param {'idle'|'success'|'error'|'loading'} state - Estado visual
+ */
+function setFormState(note, text, state = 'idle') {
+  note.textContent = text;
+  note.className = 'form-note';
+  if (state !== 'idle') {
+    note.classList.add(`form-note--${state}`);
+  }
+}
+
+/**
  * Inicializa el formulario de contacto
  */
 export function initContactForm() {
@@ -23,10 +37,15 @@ export function initContactForm() {
 
     btn.textContent = 'Enviando…';
     btn.disabled = true;
+    btn.classList.add('btn--loading');
+    setFormState(note, 'Enviando tu solicitud…', 'loading');
 
     try {
       if (!validateForm(form)) {
-        note.textContent = 'Por favor, completa todos los campos correctamente.';
+        setFormState(note, 'Por favor, completa todos los campos correctamente.', 'error');
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.classList.remove('btn--loading');
         return;
       }
 
@@ -34,15 +53,21 @@ export function initContactForm() {
 
       if (result.success) {
         form.reset();
-        note.textContent = '¡Gracias! Tu solicitud fue enviada, te contactaremos pronto.';
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.classList.remove('btn--loading');
+        setFormState(note, '¡Solicitud enviada! Te contactaremos pronto.', 'success');
       } else {
-        note.textContent = result.message;
+        setFormState(note, result.message || 'No se pudo enviar. Intenta de nuevo o llámanos.', 'error');
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.classList.remove('btn--loading');
       }
     } catch (err) {
-      note.textContent = 'No pudimos enviar tu solicitud. Intenta de nuevo o llámanos.';
-    } finally {
+      setFormState(note, 'No pudimos enviar tu solicitud. Intenta de nuevo o llámanos.', 'error');
       btn.textContent = originalText;
       btn.disabled = false;
+      btn.classList.remove('btn--loading');
     }
   });
 }

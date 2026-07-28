@@ -145,4 +145,42 @@
   color: var(--mist);
   margin-top: 14px;
   text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* ---- Estados de feedback del formulario ---- */
+.form-note--loading {
+  color: var(--mist);
+}
+
+.form-note--success {
+  color: #34d399;
+}
+
+.form-note--error {
+  color: var(--ember);
+}
+
+/* ---- Botón con estado de carga ---- */
+.btn--loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn--loading::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(242, 244, 243, 0.3);
+  border-top-color: var(--paper);
+  border-radius: 50%;
+  margin-left: 8px;
+  vertical-align: middle;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
 }
