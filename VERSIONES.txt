@@ -1,0 +1,52 @@
+================================================================
+ TESERACTO — HISTORIAL DE VERSIONES
+ Versionado: X.Y.Z
+   X = version principal (fija en 1)
+   Y = cantidad de cambios GRANDES
+   Z = cantidad de cambios PEQUENOS
+================================================================
+
+Version actual: 1.4.5
+(4 cambios grandes, 5 cambios pequenos)
+
+----------------------------------------------------------------
+Commit            Fecha       Version   Tipo     Descripcion
+----------------------------------------------------------------
+1687848           2026-07-16  v1.0.1    Pequeno  Initial commit (README basico)
+426334b           2026-07-16  v1.1.1    GRANDE   Initial commit: base TESERACTO project with cube animation fix
+c7b4996           2026-07-16  v1.1.2    Pequeno  TESERACTO (README actualizado)
+abe41ee           2026-07-18  v1.2.2    GRANDE   Responsive movil actualizado
+c770970           2026-07-22  v1.2.3    Pequeno  feat: header flotante pill-shaped, status line ajustado, cubo 50% mas grande
+0cf1982           2026-07-22  v1.2.4    Pequeno  feat: agregar enviar.php para formulario de contacto
+8c8f15d           2026-07-22  v1.3.4    GRANDE   feat: migrar formulario a Cloudflare Pages Functions + Resend API
+a8d0c3f           2026-07-22  v1.3.5    Pequeno  revert: restaurar tamano original del cubo
+0e8feac           2026-07-27  v1.4.5    GRANDE   feat: mejoras en seguridad, SEO, performance y UX
+
+----------------------------------------------------------------
+ RESUMEN
+----------------------------------------------------------------
+Cambios GRANDES (bump de Y):
+  1. v1.1.1 426334b — Creacion del proyecto base TESERACTO
+  2. v1.2.2 abe41ee — Responsive movil (navegacion y layout mobile)
+  3. v1.3.4 8c8f15d — Migracion del backend a Cloudflare Pages Functions + Resend
+  4. v1.4.5 0e8feac — Seguridad (XSS), SEO, performance y UX
+
+Cambios PEQUENOS (bump de Z):
+  1. v1.0.1 1687848 — Commit inicial (README)
+  2. v1.1.2 c7b4996 — Actualizacion README
+  3. v1.2.3 c770970 — Header flotante y cubo mas grande
+  4. v1.2.4 0cf1982 — Script enviar.php (luego reemplazado)
+  5. v1.3.5 a8d0c3f — Revert del tamano del cubo
+
+================================================================
+ COMO BUMPEAR LA VERSION
+================================================================
+Cuando agregues un cambio NUEVO:
+- Es GRANDE (nueva seccion, nuevo backend, rediseno) -> sube Y y haz commit
+- Es PEQUENO (ajustes, fix, texto) -> sube Z y haz commit
+Despues:
+  1. Actualiza el badge en index.html (footer)
+  2. Agrega la fila a este archivo
+  3. Commit con mensaje descriptivo
+
+================================================================
