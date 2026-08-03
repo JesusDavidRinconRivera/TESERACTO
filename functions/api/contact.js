@@ -88,9 +88,13 @@ export async function onRequestPost(context) {
 
     if (!emailResponse.ok) {
       const err = await emailResponse.text();
-      console.error('[TESERACTO] Resend error:', err);
+      console.error('[TESERACTO] Resend error:', emailResponse.status, err);
       return new Response(
-        JSON.stringify({ ok: false, error: 'No se pudo enviar el correo. Intenta de nuevo o llámanos.' }),
+        JSON.stringify({
+          ok: false,
+          error: 'No se pudo enviar el correo. Intenta de nuevo o llámanos.',
+          resendStatus: emailResponse.status,
+        }),
         { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
       );
     }
