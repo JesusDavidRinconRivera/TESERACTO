@@ -1,0 +1,176 @@
+================================================================
+ TESERACTO — GUIA DE INFRAESTRUCTURA Y REFERENCIA TECNICA
+ Fecha de creacion: 2026-08-03
+ Propósito: recordar en el futuro qué servicios, cuentas y
+            métodos se usan para este proyecto.
+================================================================
+
+----------------------------------------------------------------
+ 1. VISION GENERAL DEL PROYECTO
+----------------------------------------------------------------
+Sitio web de TESERACTO (empresa de mantenimiento y software).
+- Sitio estatico: HTML5 + CSS3 (ITCSS) + JavaScript vanilla (ES6 modules)
+- Animacion 3D: Three.js (CDN cdnjs, r128)
+- Fuentes: Google Fonts (Unbounded, Inter, JetBrains Mono)
+- Formulario de contacto que envia correos a contacto@teseracto.tech
+
+================================================================
+ 2. SERVICIOS Y APLICACIONES USADOS
+================================================================
+
+[A] GITHUB ................. Repositorio de codigo fuente
+    - URL: https://github.com/JesusDavidRinconRivera/TESERACTO
+    - Rama principal: main
+    - Origen remoto: https://github.com/JesusDavidRinconRivera/TESERACTO.git
+    - Uso: guardar el codigo; Cloudflare Pages hace deploy automatico
+            cada vez que se hace push a main.
+    - Comando de subida:  git add . && git commit -m "mensaje" && git push origin main
+
+[B] CLOUDFLARE ............. Hosting (Pages), DNS y dominio
+    - Dashboard: https://dash.cloudflare.com
+    - Proyecto Pages: "teseracto"
+    - URL de produccion: https://teseracto.pages.dev
+    - URL con hash (version exacta): https://<hash>.teseracto.pages.dev
+      (se ve en Workers & Pages > teseracto > Deployments)
+    - Los nameservers del dominio teseracto.tech apuntan a Cloudflare
+      (Spaceship ya NO administra el DNS, solo el registro del dominio)
+    - Variables de entorno del proyecto (Settings > Variables and Secrets):
+        RESEND_API_KEY = <re_xxxxxxxxxxxxxxxx>  (NO subir la key real a GitHub;
+        se obtiene en Resend > API Keys y se pega en Cloudflare. La key real
+        vive unicamente en Cloudflare y en Resend, no en el repositorio)
+    - IMPORTANTE: el proyecto debe ser tipo PAGES (no Worker).
+      Los Workers con "assets estaticos" NO compilan la carpeta functions/.
+      Si aparece "Variables cannot be added to a Worker that only has
+      static assets" significa que el proyecto quedo como Worker y hay que
+      recrearlo como Pages conectado a Git.
+    - Como redeployar tras cambios de variables: Deployments > Rerun deployment
+
+[C] RESEND ................. Servicio de envio de correo (API)
+    - Dashboard: https://resend.com
+    - Dominio verificado: teseracto.tech (status: verified)
+    - Region: sa-east-1 (Sao Paulo)
+    - Capacidades: sending enabled, receiving disabled
+    - Plan: gratuito (100 correos/dia)
+    - API base: https://api.resend.com/emails
+    - Como verificar envios: curl https://api.resend.com/emails?limit=5 \
+        -H "Authorization: Bearer <RESEND_API_KEY>"
+    - El registro DNS (DKIM/SPF/MX/DMARC) se creo con la opcion
+      "Auto Configure Cloudflare" y luego se verifico automaticamente.
+    - El "from" usado en los correos: TESERACTO <noreply@teseracto.tech>
+    - El destinatario: contacto@teseracto.tech
+
+[D] SPACESHIP .............. Registrar del dominio + correo (Spacemail)
+    - Dashboard: https://www.spaceship.com
+    - Dominio registrado: teseracto.tech
+    - NO administra DNS (los nameservers estan en Cloudflare)
+    - Productos: Spacemail Manager
+    - Plan: SPACEMAIL PRO (TRIAL) - 1 buzón
+    - Buzon: contacto@teseracto.tech (5 GB, 0 MB usados)
+    - Configuracion IMAP/SMTP del correo:
+        Servidor:  mail.spacemail.com
+        IMAP:      993 (SSL)
+        SMTP:      465 (SSL) o 587
+        POP3:      mail.spacemail.com
+        Usuario:   contacto@teseracto.tech
+        Password:  (la contrasena de la cuenta de correo en Spacemail)
+    - Aplicacion para editar registros DNS (si el dominio usara
+      nameservers de Spaceship): https://www.spaceship.com/application/advanced-dns-application/
+      NOTA: actualmente NO se usa porque el DNS vive en Cloudflare.
+
+[E] PROVEEDOR DE PAGO / REGISTRO ........... registrado via Spaceship
+    (sin hosting contratado en Spaceship)
+
+================================================================
+ 3. FLUJO DEL FORMULARIO DE CONTACTO
+================================================================
+Usuario llena formulario "Solicita tu cotizacion" en la web
+    -> js/forms/sendForm.js hace POST a /api/contact (fetch)
+    -> functions/api/contact.js (Cloudflare Pages Function)
+        -> valida campos y correo
+        -> lee context.env.RESEND_API_KEY
+        -> POST a https://api.resend.com/emails
+    -> Resend envia el correo
+        -> llega a contacto@teseracto.tech (buzon Spacemail)
+    Respuestas HTTP posibles del formulario:
+        200 ok   -> correo enviado
+        400      -> campos incompletos o correo invalido
+        500      -> fallo (incluye resendStatus con el codigo de Resend:
+                    401=key invalida, 422=from invalido, 403=sin permiso)
+
+================================================================
+ 4. ESTRUCTURA DEL PROYECTO
+================================================================
+TESERACTO/
+├── index.html                    # Pagina unica (con SEO + Schema.org + OG)
+├── assets/css/                   # Estilos por ITCSS
+│   ├── base/     (reset, variables, typography, global, animations)
+│   ├── layout/   (header, hero, sections, footer, responsive)
+│   ├── components/ (buttons, cards, badges, forms, grid, logo)
+│   └── themes/   (dark)
+├── js/                           # Modulos ES6
+│   ├── app.js                    # Orquestador principal
+│   ├── cube/     (cubo 3D Three.js)
+│   ├── brand/    (color picker, reset, logo reveal)
+│   ├── hero/     (fondo)
+│   ├── forms/    (contactForm, validator, sendForm)
+│   ├── ui/       (reveal on scroll, mobile nav, observer)
+│   ├── config/   (constants.js)
+│   └── utils/    (colors, math, dom, helpers)
+├── functions/api/contact.js      # Cloudflare Pages Function (backend)
+├── VERSIONES.txt                 # Historial de versiones y commits
+├── .env.example                  # Documenta RESEND_API_KEY (no subir key real)
+└── README.md, DEVELOPMENT.md, QUICKSTART.md
+
+================================================================
+ 5. VERSIONADO
+================================================================
+Formato de version: X.Y.Z
+    X = 1 (version principal, fija)
+    Y = cantidad de cambios GRANDES
+    Z = cantidad de cambios PEQUENOS
+Version actual: v1.4.5  (visible como badge en el footer)
+Regla: al hacer un cambio nuevo, subir Y o Z y actualizar:
+    1. index.html  -> badge del footer
+    2. VERSIONES.txt -> agregar fila con hash, fecha, tipo y version
+    3. commit con mensaje descriptivo
+
+================================================================
+ 6. COMANDOS UTILES
+================================================================
+Subir cambios a GitHub:
+    cd ~/Downloads/TESERACTO
+    git add .
+    git commit -m "mensaje descriptivo"
+    git push origin main
+
+Ver commits sin subir:
+    git log --oneline origin/main..HEAD
+
+Probar la Function en vivo (envio de correo):
+    curl -X POST https://teseracto.pages.dev/api/contact \
+      -d "nombre=T&empresa=T&telefono=3001234567&correo=a@b.com&mensaje=test"
+
+Ver estado del dominio en Resend:
+    curl https://api.resend.com/domains \
+      -H "Authorization: Bearer <RESEND_API_KEY>"
+
+================================================================
+ 7. RECORDATORIOS IMPORTANTES
+================================================================
+- El proyecto en Cloudflare DEBE ser Pages (compila functions/).
+  Los Workers con static assets NO compilan functions/.
+- Los cambios de variables de entorno en Cloudflare Pages requieren
+  un Rerun deployment para aplicarse.
+- La key de Resend se compartio en un chat: considerar regenerarla.
+- El dominio teseracto.tech todavia debe conectarse al proyecto Pages
+  en Settings > Custom domains (hasta que eso se haga, la web vive en
+  teseracto.pages.dev).
+- Spaceship maneja el correo (Spacemail) y el registro del dominio.
+  Cloudflare maneja el DNS y el hosting.
+- No borrar los registros MX de Spacemail (mx1/mx2.spacemail.com)
+  que aun existen junto a los de Resend.
+- Resend usa region sa-east-1 (Sao Paulo) para el envio.
+
+================================================================
+ FIN DEL DOCUMENTO
+================================================================
