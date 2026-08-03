@@ -58,7 +58,8 @@ export function initContactForm() {
         btn.classList.remove('btn--loading');
         setFormState(note, '¡Solicitud enviada! Te contactaremos pronto.', 'success');
       } else {
-        setFormState(note, result.message || 'No se pudo enviar. Intenta de nuevo o llámanos.', 'error');
+        const statusMsg = result.status ? ` — código HTTP ${result.status}` : '';
+        setFormState(note, (result.message || 'No se pudo enviar. Intenta de nuevo o llámanos.') + statusMsg, 'error');
         btn.textContent = originalText;
         btn.disabled = false;
         btn.classList.remove('btn--loading');

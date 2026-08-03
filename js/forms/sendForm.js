@@ -19,12 +19,14 @@ export async function sendForm(form) {
     const data = await res.json().catch(() => ({ ok: res.ok }));
     return {
       success: data.ok,
+      status: res.status,
       message: data.ok ? 'Solicitud enviada correctamente.' : (data.error || 'Error al enviar.'),
       error: !data.ok,
     };
   } catch (err) {
     return {
       success: false,
+      status: null,
       message: 'No pudimos conectar con el servidor. Intenta de nuevo o llámanos.',
       error: true,
     };
