@@ -1,0 +1,142 @@
+/* ============================================================
+   LOGO Y MARCA
+============================================================ */
+
+.logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-word {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nav-logo .logo-mark svg {
+  width: 26px;
+  height: 26px;
+}
+
+.cube-outer {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+
+.cube-inner {
+  fill: currentColor;
+}
+
+.cube-canvas-mark {
+  position: relative;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.cube-canvas-mark canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cube-glow {
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(73, 17, 28, 0.14) 0%, rgba(73, 17, 28, 0.06) 42%, transparent 72%);
+  filter: blur(10px);
+  animation: pulse-glow 4.5s ease-in-out infinite;
+}
+
+/* ---- Logo reveal animation ---- */
+.cube-slot {
+  flex: none;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.wm-full {
+  position: relative;
+  left: clamp(0px, 20vw, 150px);
+  top: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  font-size: clamp(28px, 6.6vw, 78px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: uppercase;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(16px);
+  transition: max-width 1100ms cubic-bezier(0.16, 0.8, 0.24, 1),
+              opacity 850ms ease 260ms,
+              transform 850ms cubic-bezier(0.16, 0.8, 0.24, 1) 260ms;
+}
+
+.logo-row.is-assembled .wm-full {
+  max-width: 640px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.color-tester {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color-tester input[type="color"] {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.color-tester input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.color-tester input[type="color"]::-webkit-color-swatch {
+  border: 2px solid var(--hair-d2);
+  border-radius: 50%;
+}
+
+.color-tester input[type="color"]::-moz-color-swatch {
+  border: 2px solid var(--hair-d2);
+  border-radius: 50%;
+}
+
+.color-tester-reset {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--mist);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.color-tester-reset:hover {
+  color: var(--paper);
+  transform: rotate(-45deg);
+}

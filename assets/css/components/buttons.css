@@ -1,0 +1,111 @@
+/* ============================================================
+   BOTONES
+============================================================ */
+
+.btn {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+  border-radius: var(--radius-pill);
+}
+
+.btn-solid {
+  background: var(--maroon);
+  color: var(--paper);
+  border: 1px solid var(--maroon);
+}
+
+.btn-solid:hover {
+  transform: translateY(-2px);
+  background: var(--maroon-2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--hair-l2);
+}
+
+.btn-outline:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.btn-phone {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--paper);
+  border: 1px solid var(--hair-d2);
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  border-radius: var(--radius-pill);
+}
+
+.btn-phone:hover {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+
+.btn-phone svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+}
+
+.btn-cta-nav {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  background: var(--maroon);
+  color: var(--paper);
+  border: 1px solid var(--maroon);
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+  border-radius: var(--radius-pill);
+}
+
+.btn-cta-nav:hover {
+  transform: translateY(-2px);
+  background: var(--maroon-2);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--maroon);
+  color: var(--paper);
+  border: 1px solid var(--maroon);
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: var(--radius-pill);
+}
+
+.submit-btn:hover {
+  background: var(--maroon-2);
+}
+
+.cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}

@@ -1,0 +1,42 @@
+/* ============================================================
+   VARIABLES — paleta: vacío / marfil / marca
+============================================================ */
+
+:root {
+  /* Colores principales */
+  --void: #0A0908;           /* negro cálido — fondo primario */
+  --void-2: #15120F;         /* superficie elevada sobre vacío */
+  --maroon: #49111C;         /* rojo marca — bloques y acentos */
+  --maroon-2: #601622;       /* hover / variante clara del rojo marca */
+  --ember: #D6334A;          /* rojo vivo — solo para el resplandor del signo y focos */
+  --paper: #F2F4F3;          /* blanco marfil — fondo secundario */
+  --paper-2: #E6E2DF;        /* superficie sobre marfil */
+  --ink: #0A0908;            /* texto sobre marfil */
+  --fog: #706A66;            /* texto secundario sobre marfil */
+  --mist: #A9A3A0;           /* texto secundario sobre vacío */
+
+  /* Transparencias */
+  --hair-d: rgba(242, 244, 243, 0.14);   /* línea fina clara */
+  --hair-d2: rgba(242, 244, 243, 0.30);  /* línea fina clara más visible */
+  --hair-l: rgba(10, 9, 8, 0.14);        /* línea fina oscura */
+  --hair-l2: rgba(10, 9, 8, 0.30);       /* línea fina oscura más visible */
+
+  /* Tipografías */
+  --display: 'Unbounded', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --maxw: 1180px;
+
+  /* Espacios y radios */
+  --radius-lg: 32px;    /* tarjetas grandes */
+  --radius-md: 18px;    /* campos de formulario */
+  --radius-pill: 999px; /* botones — completamente redondeados */
+
+  /* Tamaño del cubo */
+  --cube-size: clamp(200px, 51vw, 690px);
+
+  /* Header */
+  --header-h: 76px;
+}

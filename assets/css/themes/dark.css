@@ -1,0 +1,17 @@
+/* ============================================================
+   TEMA OSCURO
+============================================================ */
+
+/* Este archivo contiene estilos para variantes de tema oscuro si es necesario.
+   Por ahora, el sitio usa un esquema de colores consistente en dos contextos:
+   - .on-void: fondo oscuro con texto claro
+   - .on-paper: fondo claro con texto oscuro
+   - .on-brand: fondo de marca con texto claro
+
+   Aquí se pueden agregar overrides específicos para un tema adicional.
+*/
+
+/* Ejemplo de futuros overrides de tema oscuro */
+body.dark-mode {
+  /* Los colores ya están definidos en variables.css */
+}
