@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.5
-(4 cambios grandes, 5 cambios pequenos)
+Version actual: 1.4.6
+(4 cambios grandes, 6 cambios pequenos)
 
 ----------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -21,6 +21,7 @@ c770970           2026-07-22  v1.2.3    Pequeno  feat: header flotante pill-shap
 8c8f15d           2026-07-22  v1.3.4    GRANDE   feat: migrar formulario a Cloudflare Pages Functions + Resend API
 a8d0c3f           2026-07-22  v1.3.5    Pequeno  revert: restaurar tamano original del cubo
 0e8feac           2026-07-27  v1.4.5    GRANDE   feat: mejoras en seguridad, SEO, performance y UX
+790aae3           2026-08-04  v1.4.6    Pequeno  feat: boton Llamar ahora cambia de tel: a wa.me (WhatsApp)
 
 ----------------------------------------------------------------
  RESUMEN
@@ -37,6 +38,7 @@ Cambios PEQUENOS (bump de Z):
   3. v1.2.3 c770970 — Header flotante y cubo mas grande
   4. v1.2.4 0cf1982 — Script enviar.php (luego reemplazado)
   5. v1.3.5 a8d0c3f — Revert del tamano del cubo
+  6. v1.4.6 790aae3 — Boton Llamar ahora ahora abre WhatsApp
 
 ================================================================
  COMO BUMPEAR LA VERSION
