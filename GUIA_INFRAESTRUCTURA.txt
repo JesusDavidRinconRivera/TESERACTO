@@ -128,7 +128,7 @@ Formato de version: X.Y.Z
     X = 1 (version principal, fija)
     Y = cantidad de cambios GRANDES
     Z = cantidad de cambios PEQUENOS
-Version actual: v1.4.8  (visible como badge en el footer)
+Version actual: v1.4.9  (visible como badge en el footer)
 Regla: al hacer un cambio nuevo, subir Y o Z y actualizar:
     1. index.html  -> badge del footer
     2. VERSIONES.txt -> agregar fila con hash, fecha, tipo y version

@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.8
-(4 cambios grandes, 8 cambios pequenos)
+Version actual: 1.4.9
+(4 cambios grandes, 9 cambios pequenos)
 
 ----------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -24,6 +24,7 @@ a8d0c3f           2026-07-22  v1.3.5    Pequeno  revert: restaurar tamano origin
 790aae3           2026-08-04  v1.4.6    Pequeno  feat: boton Llamar ahora cambia de tel: a wa.me (WhatsApp)
 fd5ed76           2026-08-04  v1.4.7    Pequeno  feat: botones de WhatsApp abren en nueva pestana (nav + hero)
 9e80fd1           2026-08-04  v1.4.8    Pequeno  feat: telefono de contacto abre WhatsApp; eliminar color picker (color default #49111C)
+db75e63           2026-08-07  v1.4.9    Pequeno  feat: reordenar encabezados (rama master) en index.html
 
 ----------------------------------------------------------------
  RESUMEN
@@ -43,6 +44,7 @@ Cambios PEQUENOS (bump de Z):
   6. v1.4.6 790aae3 — Boton Llamar ahora ahora abre WhatsApp
   7. v1.4.7 fd5ed76 — Botones de WhatsApp abren en pestana nueva
   8. v1.4.8 9e80fd1 — Telefono de contacto a WhatsApp; se elimina el color picker
+  9. v1.4.9 db75e63 — Reordenamiento de encabezados (según rama master)
 
 ================================================================
  COMO BUMPEAR LA VERSION
