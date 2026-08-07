@@ -3,10 +3,6 @@
 ============================================================ */
 
 const CONSTANTS = {
-  // Colores
-  DEFAULT_MAROON: '#49111c',
-  DEFAULT_EMBER: '#D6334A',
-
   // Timing
   DRAW_TIME: 0.55,
   GAP_TIME: 0.08,
@@ -27,8 +23,6 @@ const CONSTANTS = {
   // Selectors
   NAV_TOGGLE_ID: 'navToggle',
   NAV_MOBILE_ID: 'navMobile',
-  BRAND_COLOR_PICKER_ID: 'brandColorPicker',
-  COLOR_RESET_BTN_ID: 'colorResetBtn',
   CUBE_CANVAS_MOUNT_ID: 'cubeCanvasMount',
   LOGO_ROW_ID: 'logoRow',
   FONDO_ISO_IMG_ID: 'fondoIsoImg',

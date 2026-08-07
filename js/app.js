@@ -3,8 +3,6 @@
 ============================================================ */
 
 import { initCube } from './cube/cube.js';
-import { initBrandColorPicker } from './brand/brandColorPicker.js';
-import { initBrandReset } from './brand/brandReset.js';
 import { initHeroLogoReveal } from './brand/heroLogoReveal.js';
 import { initHeroBackground } from './hero/heroBackground.js';
 import { initContactForm } from './forms/contactForm.js';
@@ -27,22 +25,6 @@ function initApp() {
       console.log('[TESERACTO] ✓ Cubo inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar cubo:', err);
-    }
-
-    try {
-      // Inicializar brand color picker
-      initBrandColorPicker();
-      console.log('[TESERACTO] ✓ Color picker inicializado');
-    } catch (err) {
-      console.warn('[TESERACTO] ✗ Error al inicializar color picker:', err);
-    }
-
-    try {
-      // Inicializar brand reset
-      initBrandReset();
-      console.log('[TESERACTO] ✓ Reset de color inicializado');
-    } catch (err) {
-      console.warn('[TESERACTO] ✗ Error al inicializar reset:', err);
     }
 
     try {
