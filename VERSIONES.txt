@@ -26,7 +26,7 @@ fd5ed76           2026-08-04  v1.4.7    Pequeno  feat: botones de WhatsApp abren
 9e80fd1           2026-08-04  v1.4.8    Pequeno  feat: telefono de contacto abre WhatsApp; eliminar color picker (color default #49111C)
 db75e63           2026-08-07  v1.4.9    Pequeno  feat: reordenar encabezados (rama master) en index.html
 8bbe9c0           2026-08-07  v1.4.10   Pequeno  feat: indicador de scroll redisenado como ovalo que cubre cada titulo del navbar
----               2026-08-07  v1.4.11   Pequeno  feat: badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
+0ac34c8           2026-08-07  v1.4.11   Pequeno  feat: badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
 
 ----------------------------------------------------------------
  RESUMEN
@@ -48,7 +48,7 @@ Cambios PEQUENOS (bump de Z):
   8. v1.4.8 9e80fd1 — Telefono de contacto a WhatsApp; se elimina el color picker
   9. v1.4.9 db75e63 — Reordenamiento de encabezados (según rama master)
   10. v1.4.10 8bbe9c0 — Indicador de scroll rediseñado como óvalo que cubre cada título del navbar
-  11. v1.4.11 --- — Badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
+  11. v1.4.11 0ac34c8 — Badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
 
 ================================================================
  COMO BUMPEAR LA VERSION
