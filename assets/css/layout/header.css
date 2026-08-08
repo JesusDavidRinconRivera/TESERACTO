@@ -11,6 +11,8 @@ header {
 }
 
 nav.wrap {
+  position: relative;
+  overflow: hidden;
   max-width: var(--maxw);
   margin: 0 auto;
   height: 60px;
@@ -23,6 +25,26 @@ nav.wrap {
   border-radius: var(--radius-pill);
   border: 1px solid var(--hair-d);
   padding: 0 20px;
+}
+
+/* ---- Indicador de scroll (óvalo que recorre los títulos) ---- */
+.nav-scroll-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 999px;
+  background: rgba(214, 51, 74, 0.28);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav-left,
+.navlinks a,
+.nav-actions {
+  position: relative;
+  z-index: 2;
 }
 
 .nav-left {
