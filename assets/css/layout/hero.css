@@ -7,6 +7,21 @@
   text-align: center;
   background: var(--paper);
   color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+#particles-js {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#particles-js canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .hero .wrap {

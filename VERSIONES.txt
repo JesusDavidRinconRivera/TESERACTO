@@ -27,6 +27,7 @@ fd5ed76           2026-08-04  v1.4.7    Pequeno  feat: botones de WhatsApp abren
 db75e63           2026-08-07  v1.4.9    Pequeno  feat: reordenar encabezados (rama master) en index.html
 8bbe9c0           2026-08-07  v1.4.10   Pequeno  feat: indicador de scroll redisenado como ovalo que cubre cada titulo del navbar
 0ac34c8           2026-08-07  v1.4.11   Pequeno  feat: badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
+9abebaa           2026-08-17  v1.4.12   Pequeno  feat: partículas carmesí en el hero (particles.js)
 
 ----------------------------------------------------------------
  RESUMEN
@@ -49,6 +50,7 @@ Cambios PEQUENOS (bump de Z):
   9. v1.4.9 db75e63 — Reordenamiento de encabezados (según rama master)
   10. v1.4.10 8bbe9c0 — Indicador de scroll rediseñado como óvalo que cubre cada título del navbar
   11. v1.4.11 0ac34c8 — Badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
+  12. v1.4.12 9abebaa — Partículas carmesí en el hero (particles.js)
 
 ================================================================
  COMO BUMPEAR LA VERSION
