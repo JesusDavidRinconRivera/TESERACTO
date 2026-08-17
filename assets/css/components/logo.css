@@ -68,6 +68,7 @@
   position: relative;
   left: clamp(0px, 20vw, 150px);
   top: 0;
+  z-index: 2;
   font-family: var(--display);
   font-weight: 700;
   letter-spacing: 0.01em;

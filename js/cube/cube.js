@@ -17,7 +17,7 @@ import {
 } from './cubeAnimation.js';
 
 import {
-  makeGrowLine, createFaceFill, createRenderer, createCamera,
+  makeGrowLine, createFaceFill, createOuterFace, createRenderer, createCamera,
 } from './cubeRenderer.js';
 
 import { getContainerSize, handleCubeResize } from './cubeResize.js';
@@ -175,6 +175,14 @@ export function initCube() {
     const mesh = createFaceFill(scene, points);
     return { mesh };
   });
+
+  // ====== CARAS EXTERNAS (rombos blancos opacos) ======
+  const outerFaceDefs = [
+    [vertices[0], vertices[1], CENTER, vertices[5]],
+    [vertices[1], CENTER, vertices[3], vertices[2]],
+    [vertices[5], CENTER, vertices[3], vertices[4]],
+  ];
+  const outerFaceMeshes = outerFaceDefs.map((pts) => createOuterFace(scene, pts));
 
   // ========== ANIMACIÓN Y RENDER ==========
   let elapsed = reducedMotion ? TOTAL_END + 1 : 0;
