@@ -269,7 +269,7 @@
   }
 
   /* Cards */
-  .pillar-card,
+  .pillar-card .pillar-content,
   .contact-info,
   .contact-form {
     padding: 28px 22px;

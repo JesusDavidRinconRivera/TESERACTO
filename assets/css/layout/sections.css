@@ -2,6 +2,46 @@
    SECCIONES GENERALES
 ============================================================ */
 
+/* ---- Servicios — dentro del área de partículas ---- */
+#servicios {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+#servicios .section-head {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Centrar el bloque interno (eyebrow sobre el h2) */
+#servicios .section-head > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#servicios .eyebrow::before {
+  display: none;
+}
+
+#servicios .section-head .note {
+  text-align: center;
+  max-width: none;
+}
+
+/* Párrafo 1 en un solo renglón en pantallas anchas */
+@media (min-width: 900px) {
+  #servicios .section-head .note p:first-child {
+    white-space: nowrap;
+  }
+}
+
+#servicios .section-head .note p + p {
+  margin-top: 10px;
+}
+
 /* ---- Estadísticas — cards glass sobre partículas ---- */
 .stat-strip {
   position: relative;
@@ -69,13 +109,14 @@
   font-family: var(--display);
   font-weight: 700;
   font-size: clamp(26px, 2.8vw, 36px);
-  color: var(--paper);
+  color: var(--maroon);
 }
 
 .stat-item .lbl {
   font-family: var(--mono);
   font-size: 11px;
-  color: rgba(242, 244, 243, 0.72);
+  color: var(--maroon);
+  opacity: 0.75;
   letter-spacing: 0.06em;
   margin-top: 8px;
   text-transform: uppercase;
