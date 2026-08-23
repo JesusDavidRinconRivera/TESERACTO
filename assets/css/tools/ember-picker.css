@@ -1,0 +1,59 @@
+/* ============================================================
+   TOOL — COLOR PICKER DE --ember
+   Panel flotante para cambiar en vivo todos los componentes
+   que usan la variable --ember.
+============================================================ */
+
+.ember-picker {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.ember-picker label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--maroon);
+  cursor: pointer;
+}
+
+.ember-picker input[type="color"] {
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ember-picker input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.ember-picker input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+/* ---- Segundo picker apilado arriba del primero ---- */
+.ember-picker.stacked {
+  bottom: 76px;
+}
+
+.ember-picker.stacked label {
+  color: var(--ink);
+}

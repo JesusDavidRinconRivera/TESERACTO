@@ -152,18 +152,55 @@
     .card {
       aspect-ratio: 1;
       border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ---- Liquid Glass — mismas capas que el navbar ---- */
+    .lg-effect {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      filter: url(#glass-distortion);
+      overflow: hidden;
+      isolation: isolate;
+      pointer-events: none;
+    }
+
+    .lg-tint {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .lg-shine {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      overflow: hidden;
+      box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+        inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
     }
 
     .card .num {
@@ -216,9 +253,9 @@
 
 <div id="particles-js"></div>
 
-<!-- Panel izquierdo: color de número -->
+<!-- Panel izquierdo: color de letra -->
 <div class="panel panel-left">
-  <label>Color número</label>
+  <label>Color letra</label>
   <input type="color" id="pickerText" value="#F2F4F3">
 </div>
 
@@ -233,13 +270,65 @@
   <button class="toggle-bg-btn" id="toggleBg">Fondo: negro</button>
   <div class="blur-row">
     <label>Blur global</label>
-    <input type="range" id="blurRange" min="0" max="40" value="0" step="1">
-    <span class="blur-val" id="blurVal">0px</span>
+    <input type="range" id="blurRange" min="0" max="40" value="3" step="1">
+    <span class="blur-val" id="blurVal">3px</span>
   </div>
 </div>
 
 <!-- Grid de 10 cards -->
 <div class="grid" id="grid"></div>
+
+<!-- Filtro de distorsión para liquid glass -->
+<svg style="display: none" aria-hidden="true">
+  <filter
+    id="glass-distortion"
+    x="0%"
+    y="0%"
+    width="100%"
+    height="100%"
+    filterUnits="objectBoundingBox"
+  >
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency="0.01 0.01"
+      numOctaves="1"
+      seed="5"
+      result="turbulence"
+    />
+    <feComponentTransfer in="turbulence" result="mapped">
+      <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+      <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+      <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+    </feComponentTransfer>
+    <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+    <feSpecularLighting
+      in="softMap"
+      surfaceScale="5"
+      specularConstant="1"
+      specularExponent="100"
+      lighting-color="white"
+      result="specLight"
+    >
+      <fePointLight x="-200" y="-200" z="300" />
+    </feSpecularLighting>
+    <feComposite
+      in="specLight"
+      operator="arithmetic"
+      k1="0"
+      k2="1"
+      k3="1"
+      k4="0"
+      result="litImage"
+    />
+    <feDisplacementMap
+      in="SourceGraphic"
+      in2="softMap"
+      scale="150"
+      xChannelSelector="R"
+      yChannelSelector="G"
+    />
+  </filter>
+</svg>
 
 <!-- Particles.js CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
@@ -310,19 +399,40 @@
   for (let i = 1; i <= COUNT; i++) {
     const card = document.createElement('div');
     card.className = 'card';
+
+    const effect = document.createElement('div');
+    effect.className = 'lg-effect';
+
+    const tint = document.createElement('div');
+    tint.className = 'lg-tint';
+
+    const shine = document.createElement('div');
+    shine.className = 'lg-shine';
+
+    const content = document.createElement('div');
+    content.className = 'card-content';
+
     const num = document.createElement('span');
     num.className = 'num';
     num.textContent = i;
+
     const info = document.createElement('span');
     info.className = 'info';
+
     const toast = document.createElement('span');
     toast.className = 'copy-toast';
     toast.textContent = 'copiado';
-    card.appendChild(num);
-    card.appendChild(info);
-    card.appendChild(toast);
+
+    content.appendChild(num);
+    content.appendChild(info);
+    content.appendChild(toast);
+    card.appendChild(effect);
+    card.appendChild(tint);
+    card.appendChild(shine);
+    card.appendChild(content);
     grid.appendChild(card);
-    cards.push({ el: card, numEl: num, infoEl: info, toastEl: toast, idx: i });
+
+    cards.push({ el: card, effectEl: effect, tintEl: tint, numEl: num, infoEl: info, toastEl: toast, idx: i });
   }
 
   /* Saturation offsets: pre-computed so each card always has the same variation */
@@ -351,11 +461,12 @@
 
       const bg = `hsla(${hsl.h}, ${sat}%, ${hsl.l}%, ${alpha})`;
       const hexAlpha = Math.round(alpha * 255).toString(16).padStart(2, '0');
-      const cssColor = `background: ${bg};\nbackdrop-filter: blur(${blur}px);`;
+      const bf = blur > 0 ? `blur(${blur}px)` : 'none';
+      const cssColor = `background: ${bg};\nbackdrop-filter: ${bf};`;
 
-      c.el.style.background = bg;
-      c.el.style.backdropFilter = blur ? `blur(${blur}px)` : 'none';
-      c.el.style.webkitBackdropFilter = blur ? `blur(${blur}px)` : 'none';
+      c.tintEl.style.background = bg;
+      c.effectEl.style.backdropFilter = bf;
+      c.effectEl.style.webkitBackdropFilter = bf;
       c.numEl.style.color = textColor;
       c.infoEl.style.color = textColor;
       c.infoEl.textContent = `${hex}${hexAlpha} · ${alphaPct}% · blur ${blur}px`;

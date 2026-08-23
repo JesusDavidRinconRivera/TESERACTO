@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.13
-(4 cambios grandes, 13 cambios pequenos)
+Version actual: 1.4.14
+(4 cambios grandes, 14 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -29,6 +29,7 @@ db75e63           2026-08-07  v1.4.9    Pequeno  feat: reordenar encabezados (ra
 0ac34c8           2026-08-07  v1.4.11   Pequeno  feat: badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
 9abebaa           2026-08-17  v1.4.12   Pequeno  feat: partículas carmesí en el hero (particles.js)
 cda6007           2026-08-23  v1.4.13   Pequeno  feat: liquid glass en navbar y stats (filtro SVG), firma Tech, fix centrado cubo, paleta.html
+(pendiente)       2026-08-23  v1.4.14   Pequeno  feat: pickers de color --ember/--maroon, header maroon/blanco invertido, liquid glass en paleta.html
 
 ----------------------------------------------------------------
  RESUMEN
@@ -53,6 +54,7 @@ Cambios PEQUENOS (bump de Z):
   11. v1.4.11 0ac34c8 — Badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
   12. v1.4.12 9abebaa — Partículas carmesí en el hero (particles.js)
   13. v1.4.13 cda6007 — Liquid glass en navbar/stats, firma Tech, fix centrado cubo, paleta.html
+  14. v1.4.14 (pendiente) — Pickers de color --ember/--maroon, header invertido, glass en paleta.html
 
 ================================================================
  COMO BUMPEAR LA VERSION
