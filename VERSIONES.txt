@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.11
-(4 cambios grandes, 11 cambios pequenos)
+Version actual: 1.4.13
+(4 cambios grandes, 13 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -51,6 +51,7 @@ Cambios PEQUENOS (bump de Z):
   10. v1.4.10 8bbe9c0 — Indicador de scroll rediseñado como óvalo que cubre cada título del navbar
   11. v1.4.11 0ac34c8 — Badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
   12. v1.4.12 9abebaa — Partículas carmesí en el hero (particles.js)
+  13. v1.4.13 (pendiente) — Liquid glass en navbar/stats, firma Tech, fix centrado cubo, paleta.html
 
 ================================================================
  COMO BUMPEAR LA VERSION

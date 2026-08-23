@@ -2,24 +2,67 @@
    SECCIONES GENERALES
 ============================================================ */
 
-/* ---- Franja de cifras — bloque marca sólido ---- */
+/* ---- Estadísticas — cards glass sobre partículas ---- */
+.stat-strip {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  padding: 0 0 80px;
+}
+
 .stat-strip .wrap {
-  padding: 0;
+  padding: 0 32px;
 }
 
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .stat-item {
+  position: relative;
+  overflow: hidden;
   padding: 44px 30px;
-  border-left: 1px solid rgba(242, 244, 243, 0.22);
   text-align: center;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.stat-item:first-child {
-  border-left: none;
+/* ---- Liquid Glass — capas (efecto / tinte / brillo) ---- */
+.stat-item .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.stat-item .liquidGlass-tint {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: var(--glass-bg);
+  pointer-events: none;
+}
+
+.stat-item .liquidGlass-shine {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.stat-item .stat-content {
+  position: relative;
+  z-index: 3;
 }
 
 .stat-item .num {

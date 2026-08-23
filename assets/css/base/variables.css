@@ -21,6 +21,13 @@
   --hair-l: rgba(10, 9, 8, 0.14);        /* línea fina oscura */
   --hair-l2: rgba(10, 9, 8, 0.30);       /* línea fina oscura más visible */
 
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(20px);
+  --glass-bg-maroon: rgba(73, 17, 28, 0.45);
+  --glass-border-maroon: rgba(73, 17, 28, 0.3);
+
   /* Tipografías */
   --display: 'Unbounded', sans-serif;
   --body: 'Inter', sans-serif;

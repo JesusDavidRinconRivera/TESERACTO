@@ -105,13 +105,68 @@
   </defs>
 </svg>
 
+<!-- Filtro de distorsión para liquid glass -->
+<svg style="display: none" aria-hidden="true">
+  <filter
+    id="glass-distortion"
+    x="0%"
+    y="0%"
+    width="100%"
+    height="100%"
+    filterUnits="objectBoundingBox"
+  >
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency="0.01 0.01"
+      numOctaves="1"
+      seed="5"
+      result="turbulence"
+    />
+    <feComponentTransfer in="turbulence" result="mapped">
+      <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+      <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+      <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+    </feComponentTransfer>
+    <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+    <feSpecularLighting
+      in="softMap"
+      surfaceScale="5"
+      specularConstant="1"
+      specularExponent="100"
+      lighting-color="white"
+      result="specLight"
+    >
+      <fePointLight x="-200" y="-200" z="300" />
+    </feSpecularLighting>
+    <feComposite
+      in="specLight"
+      operator="arithmetic"
+      k1="0"
+      k2="1"
+      k3="1"
+      k4="0"
+      result="litImage"
+    />
+    <feDisplacementMap
+      in="SourceGraphic"
+      in2="softMap"
+      scale="150"
+      xChannelSelector="R"
+      yChannelSelector="G"
+    />
+  </filter>
+</svg>
+
 
 
 <!-- ================= HEADER ================= -->
 <header>
   <nav class="wrap">
+    <div class="liquidGlass-effect" aria-hidden="true"></div>
+    <div class="liquidGlass-tint" aria-hidden="true"></div>
+    <div class="liquidGlass-shine" aria-hidden="true"></div>
     <div class="nav-left">
-      <a href="#" class="logo-lockup nav-logo" style="color:var(--paper);">
+      <a href="#" class="logo-lockup nav-logo" style="color:#fff;">
         <span class="logo-mark"><svg viewBox="0 0 100 100"><use href="#teseracto-mark"/></svg></span>
         <span class="logo-word">TESERACTO</span>
       </a>
@@ -150,16 +205,21 @@
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- ================= HERO + STATS (mismo contenedor de partículas) ================= -->
+<div class="hero-area">
 <section class="hero on-paper">
-  <div id="particles-js"></div>
   <img src="" alt="" class="hero-bg-image" id="fondoIsoImg">
   <div class="wrap">
-    <div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.12 · partículas en el hero, cubo sólido</span></div>
+    <div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.13 · liquid glass en navbar y stats</span></div>
 
     <div class="hero-logo-reveal">
       <div class="logo-row" id="logoRow" aria-label="Teseracto">
-        <span class="wm-full" aria-hidden="true">TESERACTO</span>
+        <div class="wm-wrap">
+          <div class="wm-reveal">
+            <span class="wm-full" aria-hidden="true">TESERACTO</span>
+          </div>
+          <span class="wm-tech" aria-hidden="true">Tech</span>
+        </div>
         <div class="cube-slot">
           <div class="cube-canvas-mark" id="cubeCanvasMount">
             <div class="cube-glow"></div>
@@ -185,16 +245,38 @@
 </section>
 
 <!-- ================= FRANJA DE CIFRAS ================= -->
-<section class="stat-strip on-brand">
+<section class="stat-strip">
   <div class="wrap">
     <div class="stat-grid">
-      <div class="stat-item"><div class="num">+5 años</div><div class="lbl">De experiencia</div></div>
-      <div class="stat-item"><div class="num">24/7</div><div class="lbl">Soporte técnico</div></div>
-      <div class="stat-item"><div class="num">&lt; 2h</div><div class="lbl">Tiempo de respuesta</div></div>
-      <div class="stat-item"><div class="num">+150</div><div class="lbl">Empresas atendidas</div></div>
+      <div class="stat-item">
+        <div class="liquidGlass-effect" aria-hidden="true"></div>
+        <div class="liquidGlass-tint" aria-hidden="true"></div>
+        <div class="liquidGlass-shine" aria-hidden="true"></div>
+        <div class="stat-content"><div class="num">+5 años</div><div class="lbl">De experiencia</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="liquidGlass-effect" aria-hidden="true"></div>
+        <div class="liquidGlass-tint" aria-hidden="true"></div>
+        <div class="liquidGlass-shine" aria-hidden="true"></div>
+        <div class="stat-content"><div class="num">24/7</div><div class="lbl">Soporte técnico</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="liquidGlass-effect" aria-hidden="true"></div>
+        <div class="liquidGlass-tint" aria-hidden="true"></div>
+        <div class="liquidGlass-shine" aria-hidden="true"></div>
+        <div class="stat-content"><div class="num">&lt; 2h</div><div class="lbl">Tiempo de respuesta</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="liquidGlass-effect" aria-hidden="true"></div>
+        <div class="liquidGlass-tint" aria-hidden="true"></div>
+        <div class="liquidGlass-shine" aria-hidden="true"></div>
+        <div class="stat-content"><div class="num">+150</div><div class="lbl">Empresas atendidas</div></div>
+      </div>
     </div>
   </div>
 </section>
+<div id="particles-js"></div>
+</div>
 
 <!-- ================= SERVICIOS ================= -->
 <section class="section on-paper" id="servicios">

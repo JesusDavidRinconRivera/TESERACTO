@@ -4,8 +4,8 @@
 
 body {
   font-family: var(--body);
-  background: var(--void);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 h1, h2, h3 {

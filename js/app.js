@@ -76,6 +76,20 @@ function initApp() {
     }
 
     console.log('[TESERACTO] ✓ Aplicación completamente inicializada');
+
+    // Header glass: agrega clase is-scrolled al hacer scroll
+    var header = document.querySelector('header');
+    if (header) {
+      var onScroll = function () {
+        if (window.scrollY > 30) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
   });
 }
 

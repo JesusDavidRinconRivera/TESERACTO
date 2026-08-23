@@ -56,15 +56,6 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .stat-item:nth-child(odd) {
-    border-left: none;
-  }
-
-  .stat-item:nth-child(1),
-  .stat-item:nth-child(2) {
-    border-bottom: 1px solid rgba(242, 244, 243, 0.22);
-  }
-
   .stat-item {
     padding: 36px 24px;
   }
@@ -176,16 +167,29 @@
     row-gap: 16px;
   }
 
-  .wm-full {
+  .wm-wrap {
     left: 0;
+  }
+
+  .wm-full {
     font-size: clamp(22px, 7.5vw, 36px);
     white-space: normal;
     text-align: center;
     transform: none;
   }
 
-  .logo-row.is-assembled .wm-full {
+  .logo-row.is-assembled .wm-reveal {
     max-width: 92vw;
+  }
+
+  .wm-tech {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+  .logo-row.is-assembled .wm-tech {
+    transform: translateX(-50%) translateY(0);
   }
 
   h1 {
@@ -257,16 +261,11 @@
   /* Stats */
   .stat-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .stat-item {
-    border-left: none !important;
-    border-top: 1px solid rgba(242, 244, 243, 0.22);
     padding: 28px 20px;
-  }
-
-  .stat-item:first-child {
-    border-top: none;
   }
 
   /* Cards */
