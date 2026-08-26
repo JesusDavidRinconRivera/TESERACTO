@@ -2,8 +2,11 @@
    TOOL — COLOR PICKER DE --ember
    Panel flotante para cambiar en vivo todos los componentes
    que usan la variable --ember.
-============================================================ */
 
+   DESCOMENTAR TODO PARA HABILITAR (junto con el HTML en index.html)
+=========================================================== */
+
+/*
 .ember-picker {
   position: fixed;
   left: 16px;
@@ -49,7 +52,6 @@
   border-radius: 50%;
 }
 
-/* ---- Segundo picker apilado arriba del primero ---- */
 .ember-picker.stacked {
   bottom: 76px;
 }
@@ -57,3 +59,4 @@
 .ember-picker.stacked label {
   color: var(--ink);
 }
+*/

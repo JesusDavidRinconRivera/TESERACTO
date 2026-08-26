@@ -6,9 +6,9 @@
   /* Colores principales */
   --void: #0A0908;           /* negro cálido — fondo primario */
   --void-2: #15120F;         /* superficie elevada sobre vacío */
-  --maroon: #49111C;         /* rojo marca — bloques y acentos */
-  --maroon-2: #601622;       /* hover / variante clara del rojo marca */
-  --ember: #D6334A;          /* rojo vivo — solo para el resplandor del signo y focos */
+  --maroon: #0e3a8b;         /* azul marca — bloques y acentos */
+  --maroon-2: #154bc2;       /* hover / variante clara del azul marca */
+  --ember: #d0d0d0;          /* gris claro — solo para el resplandor del signo y focos */
   --paper: #F2F4F3;          /* blanco marfil — fondo secundario */
   --paper-2: #E6E2DF;        /* superficie sobre marfil */
   --ink: #0A0908;            /* texto sobre marfil */
@@ -25,8 +25,8 @@
   --glass-bg: rgba(255, 255, 255, 0.45);
   --glass-border: rgba(255, 255, 255, 0.3);
   --glass-blur: blur(20px);
-  --glass-bg-maroon: rgba(73, 17, 28, 0.45);
-  --glass-border-maroon: rgba(73, 17, 28, 0.3);
+  --glass-bg-maroon: rgba(14, 58, 139, 0.45);
+  --glass-border-maroon: rgba(14, 58, 139, 0.3);
 
   /* Tipografías */
   --display: 'Unbounded', sans-serif;

@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.15
-(4 cambios grandes, 15 cambios pequenos)
+Version actual: 1.4.16
+(4 cambios grandes, 16 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -31,6 +31,7 @@ db75e63           2026-08-07  v1.4.9    Pequeno  feat: reordenar encabezados (ra
 cda6007           2026-08-23  v1.4.13   Pequeno  feat: liquid glass en navbar y stats (filtro SVG), firma Tech, fix centrado cubo, paleta.html
 b9a18a0           2026-08-23  v1.4.14   Pequeno  feat: pickers de color --ember/--maroon, header maroon/blanco invertido, liquid glass en paleta.html
 d6b7845           2026-08-23  v1.4.15   Pequeno  feat: pillar cards glass + particulas en servicios, textos maroon, ovalo ember, sin shine navbar, encabezado centrado
+(pendiente)       2026-08-24  v1.4.16   Pequeno  feat: tarjetas de confianza rediseñadas como carpetas estilo Windows, iconos con --ember
 
 ----------------------------------------------------------------
  RESUMEN
@@ -57,6 +58,7 @@ Cambios PEQUENOS (bump de Z):
   13. v1.4.13 cda6007 — Liquid glass en navbar/stats, firma Tech, fix centrado cubo, paleta.html
   14. v1.4.14 b9a18a0 — Pickers de color --ember/--maroon, header invertido, glass en paleta.html
   15. v1.4.15 d6b7845 — Pillar cards glass + particulas en servicios, textos maroon, ovalo ember, encabezado centrado
+  16. v1.4.16 (pendiente) — Tarjetas de confianza como carpetas Windows (pestaña sobresaliente, iconos flotantes --ember)
 
 ================================================================
  COMO BUMPEAR LA VERSION

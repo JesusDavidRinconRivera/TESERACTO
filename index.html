@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Unbounded (títulos/wordmark), Inter (texto), JetBrains Mono (labels) -->
 
   <!--
     Preconnect para CDN de Three.js.
@@ -84,7 +85,8 @@
   <link rel="stylesheet" href="assets/css/components/logo.css">
 
   <!-- CSS — TOOLS -->
-  <link rel="stylesheet" href="assets/css/tools/ember-picker.css">
+  <!-- COLOR PICKER — descomentar para habilitar el picker en vivo -->
+  <!-- <link rel="stylesheet" href="assets/css/tools/ember-picker.css"> -->
 
   <!-- CSS — THEMES -->
   <link rel="stylesheet" href="assets/css/themes/dark.css">
@@ -213,7 +215,7 @@
 <section class="hero on-paper">
   <img src="" alt="" class="hero-bg-image" id="fondoIsoImg">
   <div class="wrap">
-    <div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.15 · glass en servicios y pickers de color</span></div>
+    <div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.16 · carpetas Windows en confianza</span></div>
 
     <div class="hero-logo-reveal">
       <div class="logo-row" id="logoRow" aria-label="Teseracto">
@@ -344,35 +346,52 @@
     </div>
 
     <div class="trustpoints reveal">
-      <div class="tp-card">
-        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></div>
-        <h3>Respuesta rápida</h3>
-        <p>Atendemos incidencias críticas en menos de dos horas, con un canal directo de contacto.</p>
+      <div class="tp-item">
+        <div class="tp-tab">Respuesta rápida</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Atendemos incidencias críticas en menos de dos horas, con un canal directo de contacto.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></div>
+        </div>
       </div>
-      <div class="tp-card">
-        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
-        <h3>Garantía por escrito</h3>
-        <p>Cada trabajo queda respaldado por contrato: alcance, tiempos y garantía claros desde el inicio.</p>
+
+      <div class="tp-item">
+        <div class="tp-tab">Garantía por escrito</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Cada trabajo queda respaldado por contrato: alcance, tiempos y garantía claros desde el inicio.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+        </div>
       </div>
-      <div class="tp-card">
-        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
-        <h3>Técnicos certificados</h3>
-        <p>Personal capacitado y verificado, tanto en mantenimiento físico como en desarrollo de software.</p>
+
+      <div class="tp-item">
+        <div class="tp-tab">Técnicos certificados</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Personal capacitado y verificado, tanto en mantenimiento físico como en desarrollo de software.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        </div>
       </div>
-      <div class="tp-card">
-        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 19V6M10 19V10M16 19V4M22 19H2"/></svg></div>
-        <h3>Reportes y trazabilidad</h3>
-        <p>Cada intervención queda documentada: qué se hizo, cuándo y qué sigue.</p>
+
+      <div class="tp-item">
+        <div class="tp-tab">Reportes y trazabilidad</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Cada intervención queda documentada: qué se hizo, cuándo y qué sigue.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6M10 19V10M16 19V4M22 19H2"/></svg></div>
+        </div>
       </div>
-      <div class="tp-card">
-        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
-        <h3>Un solo contrato</h3>
-        <p>Mantenimiento y software bajo el mismo acuerdo de servicio, sin coordinar proveedores por separado.</p>
+
+      <div class="tp-item">
+        <div class="tp-tab">Un solo contrato</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Mantenimiento y software bajo el mismo acuerdo de servicio, sin coordinar proveedores por separado.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+        </div>
       </div>
-      <div class="tp-card">
-        <div class="tp-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-        <h3>Soporte continuo</h3>
-        <p>Monitoreo permanente para detectar fallas antes de que detengan tu operación.</p>
+
+      <div class="tp-item">
+        <div class="tp-tab">Soporte continuo</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Monitoreo permanente para detectar fallas antes de que detengan tu operación.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        </div>
       </div>
     </div>
   </div>
@@ -486,19 +505,20 @@
 
 <!-- ================= SCRIPTS ================= -->
 
-<!-- Color picker de --ember (herramienta en vivo) -->
+<!-- COLOR PICKER — descomentar para habilitar los pickers en vivo -->
+<!--
 <div class="ember-picker" title="Cambia el color --ember en todo el sitio">
   <label for="emberPicker">--ember</label>
-  <input type="color" id="emberPicker" value="#D6334A">
+  <input type="color" id="emberPicker" value="#d0d0d0">
 </div>
 
-<!-- Color picker de --maroon (herramienta en vivo) -->
 <div class="ember-picker stacked" title="Cambia el color --maroon en todo el sitio">
   <label for="maroonPicker">--maroon</label>
-  <input type="color" id="maroonPicker" value="#49111C">
+  <input type="color" id="maroonPicker" value="#0e3a8b">
 </div>
 <script src="js/ui/emberPicker.js" defer></script>
 <script src="js/ui/maroonPicker.js" defer></script>
+-->
 
 <!-- Three.js Library (CDN) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

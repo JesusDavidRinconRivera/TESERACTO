@@ -94,46 +94,87 @@
   background: var(--maroon);
 }
 
-/* ---- Tarjetas de confianza ---- */
+/* ---- Tarjetas de confianza — carpetas estilo Windows ---- */
 .trustpoints {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--hair-d);
-  border: 1px solid var(--hair-d);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  column-gap: 28px;
+  row-gap: 72px;
 }
 
-.tp-card {
+/* Espacio para las pestañas que sobresalen */
+#confianza .section-head {
+  margin-bottom: 110px;
+}
+
+#confianza .eyebrow::before {
+  display: none;
+}
+
+.tp-item {
+  position: relative;
+}
+
+/* Pestaña sobresaliente: arranca desde la punta del extremo izquierdo */
+.tp-tab {
+  position: absolute;
+  top: -37px;
+  left: 0;
   background: var(--void);
-  padding: 36px 32px;
-  border-radius: var(--radius-lg);
+  color: var(--paper);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 5px 20px 13px;
+  border: 1px solid var(--hair-d);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  z-index: 2;
 }
 
-.tp-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 22px;
+/* Cuerpo de la carpeta */
+.tp-card {
+  position: relative;
+  background: var(--void);
+  border: 1px solid var(--hair-d);
+  border-radius: 20px;
+  border-top-left-radius: 0; /* se une con la pestaña */
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 150px;
+}
+
+.tp-text p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--mist);
+  line-height: 1.55;
+}
+
+/* Icono flotando en el mismo eje horizontal que la pestaña, sin fondo */
+.tp-float {
+  position: absolute;
+  top: -41px;
+  right: 18px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--hair-d2);
-  border-radius: 50%;
+  z-index: 2;
 }
 
-.tp-icon svg {
-  width: 19px;
-  height: 19px;
+.tp-float svg {
+  width: 42px;
+  height: 42px;
   stroke: var(--ember);
-}
-
-.tp-card h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  font-family: var(--display);
-  color: var(--paper);
+  fill: none;
 }
 
 .tp-card p {

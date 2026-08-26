@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAB — Por qué elegirnos (carpetas Windows)</title>
+
+<!-- CSS BASE -->
+<link rel="stylesheet" href="assets/css/base/variables.css">
+<link rel="stylesheet" href="assets/css/base/reset.css">
+<link rel="stylesheet" href="assets/css/base/typography.css">
+<link rel="stylesheet" href="assets/css/base/global.css">
+
+<style>
+  /* ===== Barra de laboratorio ===== */
+  .lab-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--maroon);
+  }
+  .lab-bar strong { color: var(--ember); }
+
+  body {
+    background: var(--void);
+    padding-top: 33px;
+  }
+
+  /* ================= POR QUÉ CONFIAR (copiado del ejemplo) ================= */
+  .section {
+    position: relative;
+    padding: 112px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 110px; /* espacio para las pestañas */
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 14px;
+  }
+
+  .section-head h2 {
+    font-size: 34px;
+    color: var(--paper);
+  }
+
+  .section-head .note {
+    font-family: var(--mono);
+    font-size: 12px;
+    max-width: 34ch;
+    text-align: right;
+    line-height: 1.65;
+    color: var(--mist);
+  }
+
+  /* ---- Grilla ---- */
+  .trustpoints {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 28px;
+    row-gap: 72px; /* aire para que las pestañas respiren */
+  }
+
+  /* ---- Wrapper: ancla pestaña + tarjeta ---- */
+  .tp-item {
+    position: relative;
+  }
+
+  /* Pestaña sobresaliente: arranca desde la punta del extremo izquierdo */
+  .tp-tab {
+    position: absolute;
+    top: -37px;
+    left: 0;
+    background: var(--void);
+    color: var(--paper);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    padding: 5px 20px 13px;
+    text-align: center;
+    border: 1px solid var(--hair-d);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+  }
+
+  /* Cuerpo de la carpeta */
+  .tp-card {
+    position: relative;
+    background: var(--void);
+    border: 1px solid var(--hair-d);
+    border-radius: 20px;
+    border-top-left-radius: 0; /* se une con la pestaña */
+    padding: 32px 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 150px;
+  }
+
+  .tp-text p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--mist);
+    line-height: 1.55;
+  }
+
+  /* Icono flotando en el mismo eje horizontal que la pestaña, sin fondo */
+  .tp-float {
+    position: absolute;
+    top: -41px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .tp-float svg {
+    width: 42px;
+    height: 42px;
+    stroke: var(--ember);
+    fill: none;
+  }
+
+  /* ---- Móvil ---- */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 22px; }
+    .section-head { flex-direction: column; align-items: flex-start; margin-bottom: 96px; }
+    .section-head .note { text-align: left; }
+    .trustpoints { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lab-bar">LAB · copia de <strong>Por qué elegirnos</strong> — estilo carpeta Windows</div>
+
+<section class="section on-void" id="confianza">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Confianza que se demuestra, no se promete</div>
+        <h2>Por qué elegirnos</h2>
+      </div>
+      <p class="note">Trabajamos como una extensión de tu equipo, no como un proveedor más en la lista de contactos.</p>
+    </div>
+
+    <div class="trustpoints">
+      <div class="tp-item">
+        <div class="tp-tab">Respuesta rápida</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Atendemos incidencias críticas en menos de dos horas, con un canal directo de contacto.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></div>
+        </div>
+      </div>
+
+      <div class="tp-item">
+        <div class="tp-tab">Garantía por escrito</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Cada trabajo queda respaldado por contrato: alcance, tiempos y garantía claros desde el inicio.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+        </div>
+      </div>
+
+      <div class="tp-item">
+        <div class="tp-tab">Técnicos certificados</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Personal capacitado y verificado, tanto en mantenimiento físico como en desarrollo de software.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        </div>
+      </div>
+
+      <div class="tp-item">
+        <div class="tp-tab">Reportes y trazabilidad</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Cada intervención queda documentada: qué se hizo, cuándo y qué sigue.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6M10 19V10M16 19V4M22 19H2"/></svg></div>
+        </div>
+      </div>
+
+      <div class="tp-item">
+        <div class="tp-tab">Un solo contrato</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Mantenimiento y software bajo el mismo acuerdo de servicio, sin coordinar proveedores por separado.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+        </div>
+      </div>
+
+      <div class="tp-item">
+        <div class="tp-tab">Soporte continuo</div>
+        <div class="tp-card">
+          <div class="tp-text"><p>Monitoreo permanente para detectar fallas antes de que detengan tu operación.</p></div>
+          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

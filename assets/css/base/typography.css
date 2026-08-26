@@ -64,13 +64,7 @@ p.lead {
 }
 
 .eyebrow::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ember);
-  display: inline-block;
-  box-shadow: 0 0 10px var(--ember);
+  display: none;
 }
 
 .on-paper .eyebrow {
