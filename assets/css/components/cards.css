@@ -107,10 +107,6 @@
   margin-bottom: 110px;
 }
 
-#confianza .eyebrow::before {
-  display: none;
-}
-
 .tp-item {
   position: relative;
 }

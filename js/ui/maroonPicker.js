@@ -8,7 +8,7 @@
 /*
 (function () {
   var STORAGE_KEY = 'teseracto-maroon';
-  var DEFAULT = '#0e3a8b';
+  var DEFAULT = '#49111C';
 
   var picker = document.getElementById('maroonPicker');
   if (!picker) return;

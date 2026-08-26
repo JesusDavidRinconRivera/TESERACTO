@@ -8,7 +8,7 @@
 /*
 (function () {
   var STORAGE_KEY = 'teseracto-ember';
-  var DEFAULT = '#d0d0d0';
+  var DEFAULT = '#D6334A';
 
   var picker = document.getElementById('emberPicker');
   if (!picker) return;
