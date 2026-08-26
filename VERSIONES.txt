@@ -32,7 +32,7 @@ cda6007           2026-08-23  v1.4.13   Pequeno  feat: liquid glass en navbar y 
 b9a18a0           2026-08-23  v1.4.14   Pequeno  feat: pickers de color --ember/--maroon, header maroon/blanco invertido, liquid glass en paleta.html
 d6b7845           2026-08-23  v1.4.15   Pequeno  feat: pillar cards glass + particulas en servicios, textos maroon, ovalo ember, sin shine navbar, encabezado centrado
 b7fd949           2026-08-24  v1.4.16   Pequeno  feat: carpetas Windows en confianza, variables maroon/ember cambiadas, pickers comentados
-(pendiente)       2026-08-24  v1.4.17   Pequeno  feat: README actualizado, variables restauradas a azul/gris, eyebrows sin puntos
+3b75d29           2026-08-24  v1.4.17   Pequeno  feat: README actualizado, variables restauradas a azul/gris, eyebrows sin puntos
 
 ----------------------------------------------------------------
  RESUMEN
@@ -60,7 +60,7 @@ Cambios PEQUENOS (bump de Z):
   14. v1.4.14 b9a18a0 — Pickers de color --ember/--maroon, header invertido, glass en paleta.html
   15. v1.4.15 d6b7845 — Pillar cards glass + particulas en servicios, textos maroon, ovalo ember, encabezado centrado
   16. v1.4.16 b7fd949 — Tarjetas de confianza como carpetas Windows (pestaña sobresaliente, iconos flotantes --ember)
-  17. v1.4.17 (pendiente) — README actualizado, variables azul/gris, eyebrows sin puntos
+  17. v1.4.17 3b75d29 — README actualizado, variables azul/gris, eyebrows sin puntos
 
 ================================================================
  COMO BUMPEAR LA VERSION
