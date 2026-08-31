@@ -33,8 +33,7 @@ b9a18a0           2026-08-23  v1.4.14   Pequeno  feat: pickers de color --ember/
 d6b7845           2026-08-23  v1.4.15   Pequeno  feat: pillar cards glass + particulas en servicios, textos maroon, ovalo ember, sin shine navbar, encabezado centrado
 b7fd949           2026-08-24  v1.4.16   Pequeno  feat: carpetas Windows en confianza, variables maroon/ember cambiadas, pickers comentados
 3b75d29           2026-08-24  v1.4.17   Pequeno  feat: README actualizado, variables restauradas a azul/gris, eyebrows sin puntos
-PENDIENTE         2026-08-31  v1.4.18   Pequeno  feat: laboratorio de cotización interactiva (lab-contacto.html) con cuestionario por botones, descarga .txt y preview de correo
- 
+ba1e860           2026-08-31  v1.4.18   Pequeno  feat: laboratorio de cotización interactiva (lab-contacto.html) con cuestionario por botones, descarga .txt y preview de correo
 
 ----------------------------------------------------------------
  RESUMEN
