@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAB — Contacto (cotización)</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS BASE -->
+  <link rel="stylesheet" href="assets/css/base/reset.css">
+  <link rel="stylesheet" href="assets/css/base/variables.css">
+  <link rel="stylesheet" href="assets/css/base/typography.css">
+  <link rel="stylesheet" href="assets/css/base/global.css">
+  <link rel="stylesheet" href="assets/css/base/animations.css">
+
+  <!-- CSS COMPONENTS -->
+  <link rel="stylesheet" href="assets/css/components/forms.css">
+  <link rel="stylesheet" href="assets/css/components/buttons.css">
+  <link rel="stylesheet" href="assets/css/components/grid.css">
+  <link rel="stylesheet" href="assets/css/components/logo.css">
+
+  <!-- CSS LAYOUT -->
+  <link rel="stylesheet" href="assets/css/layout/sections.css">
+  <link rel="stylesheet" href="assets/css/layout/footer.css">
+  <link rel="stylesheet" href="assets/css/layout/responsive.css">
+
+  <!-- CSS THEME -->
+  <link rel="stylesheet" href="assets/css/themes/dark.css">
+
+  <style>
+    .lab-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--maroon);
+    }
+    .lab-bar strong { color: var(--ember); }
+    body { background: var(--void); padding-top: 33px; }
+
+    /* ===== Cuestionario interactivo ===== */
+    .quiz { display: flex; flex-direction: column; gap: 18px; }
+    .quiz-step { animation: quizIn 0.35s ease; }
+    @keyframes quizIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .quiz-q {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 14px;
+    }
+    .quiz-opts { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-opt {
+      display: block;
+      width: 100%;
+      text-align: left;
+      font-family: var(--body);
+      font-size: 14px;
+      padding: 14px 16px;
+      color: var(--paper);
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--hair-l2);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.1s;
+    }
+    .quiz-opt:hover { background: var(--paper-2); border-color: var(--ember); }
+    .quiz-opt:active { transform: scale(0.98); }
+    .quiz-summary {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px dashed var(--hair-d2);
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--mist);
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lab-bar">LAB · copia de la zona de <strong>contacto / cotización</strong></div>
+
+<!-- ================= CONTACTO ================= -->
+<section class="section on-void" id="contacto">
+  <div class="grid-field"></div>
+  <div class="wrap">
+    <div class="section-head reveal is-visible">
+      <div>
+        <div class="eyebrow">Hablemos hoy mismo</div>
+        <h2>CONTACTO</h2>
+      </div>
+      <p class="note">Respondemos en menos de 24 horas. Para urgencias, llámanos directamente.</p>
+    </div>
+
+    <div class="contact-grid reveal is-visible">
+      <div class="contact-info">
+        <h3>Información de contacto</h3>
+        <p class="sub">Atendemos empresas de todos los tamaños. Cuéntanos qué necesitas y te contactamos con una propuesta concreta.</p>
+
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.2a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2Z"/></svg></div>
+          <div><div class="label">Teléfono / WhatsApp</div><a class="value" href="https://wa.me/+573203269673" target="_blank" rel="noopener">+57 320 326 9673</a></div>
+        </div>
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><div class="label">Correo</div><a class="value" href="mailto:contacto@teseracto.tech">contacto@teseracto.tech</a></div>
+        </div>
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><div class="label">Horario de atención</div><div class="value">Lun–Vie 8:00–18:00 · Urgencias 24/7</div></div>
+        </div>
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="label">Cobertura</div><div class="value">Cartagena, Turbaco y Magangué</div></div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Solicita tu cotización</h3>
+
+        <!-- ================= CUESTIONARIO INTERACTIVO ================= -->
+        <div class="quiz" id="quiz">
+
+          <!-- Paso 1: Objetivo principal -->
+          <div class="quiz-step" data-step="1">
+            <div class="quiz-q">¿Qué quieres lograr en tu empresa?</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt" data-branch="money">💰 Ahorrar dinero</button>
+              <button class="quiz-opt" data-branch="earn">📈 Ganar dinero</button>
+              <button class="quiz-opt" data-branch="time">⏱️ Ahorrar tiempo</button>
+            </div>
+          </div>
+
+          <!-- Paso 2: sub-pregunta según rama -->
+          <div class="quiz-step" data-step="2" hidden>
+            <div class="quiz-q" id="q2">…</div>
+            <div class="quiz-opts" id="opts2"></div>
+          </div>
+
+          <!-- Paso 3: segunda sub-pregunta -->
+          <div class="quiz-step" data-step="3" hidden>
+            <div class="quiz-q" id="q3">…</div>
+            <div class="quiz-opts" id="opts3"></div>
+          </div>
+
+          <!-- Paso 4: reunión -->
+          <div class="quiz-step" data-step="4" hidden>
+            <div class="quiz-q">¿Preferís reunión virtual o presencial?</div>
+            <div class="quiz-opts">
+              <button class="quiz-opt" data-meeting="Virtual">💻 Reunión virtual</button>
+              <button class="quiz-opt" data-meeting="Presencial">🏢 Reunión presencial</button>
+            </div>
+          </div>
+
+          <!-- Paso 5: correo -->
+          <div class="quiz-step" data-step="5" hidden>
+            <div class="quiz-q">¿A qué correo nos ponemos en contacto?</div>
+            <div class="field">
+              <input id="contactEmail" name="correo" type="email" placeholder="tu@correo.com">
+            </div>
+            <p class="form-note">Durante la prueba: si no escribes correo, se enviará a <strong>Test@gmail.com</strong>.</p>
+          </div>
+
+          <!-- Paso 6: resumen + descarga -->
+          <div class="quiz-step" data-step="6" hidden>
+            <div class="quiz-summary" id="quizSummary"></div>
+            <button type="button" class="submit-btn" id="downloadTxt">⬇ Descargar informe (.txt)</button>
+            <p class="form-note" id="quizNote">Durante la prueba: el informe se enviará a <strong>Test@gmail.com</strong> o al correo que escribiste.</p>
+          </div>
+
+        </div>
+        <!-- ============ FIN CUESTIONARIO ============ -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============================================================
+   LAB — CUESTIONARIO INTERACTIVO DE COTIZACIÓN
+   Tree de 3 preguntas → correo → descarga .txt
+============================================================ */
+
+const BRANCHES = {
+  money: {
+    label: 'Ahorrar dinero',
+    q2: '¿Dónde sientes que pierdes dinero hoy?',
+    opts2: [
+      'Pagos excesivos por mantenimiento',
+      'Fallas frecuentes que detienen la operación',
+      'Repuestos por urgencia (sobreprecio)',
+      'No sé exactamente dónde'
+    ],
+    q3: '¿Con qué frecuencia ocurren esos gastos?',
+    opts3: ['Semanal', 'Mensual', 'Trimestral', 'No es algo recurrente']
+  },
+  earn: {
+    label: 'Ganar dinero',
+    q2: '¿Qué evita que ganes más dinero?',
+    opts2: [
+      'Procesos manuales que ralentizan mi operación',
+      'No tengo visibilidad en tiempo real',
+      'Pérdida de clientes por demoras en servicio',
+      'Mi software es viejo y no me deja crecer'
+    ],
+    q3: '¿Qué tan urgente es resolverlo?',
+    opts3: ['Ya perdimos dinero', 'Este mes', 'Este trimestre', 'Estoy planificando']
+  },
+  time: {
+    label: 'Ahorrar tiempo',
+    q2: '¿Qué te quita más tiempo a tu equipo?',
+    opts2: [
+      'Coordinar varios proveedores',
+      'Repetir tareas manuales',
+      'Esperar respuesta a incidencias',
+      'Trámites y papeleo administrativo'
+    ],
+    q3: '¿Cuántas horas semanales estimas que se pierden?',
+    opts3: ['1–5 horas', '5–10 horas', '10–20 horas', 'Más de 20 horas']
+  }
+};
+
+const state = { branch: null, a2: null, a3: null, meeting: null };
+
+function showStep(n) {
+  document.querySelectorAll('.quiz-step').forEach(s => s.hidden = parseInt(s.dataset.step) !== n);
+}
+
+function buildOpts(container, texts, onPick) {
+  container.innerHTML = '';
+  texts.forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'quiz-opt';
+    b.textContent = t;
+    b.addEventListener('click', () => { onPick(t); });
+    container.appendChild(b);
+  });
+}
+
+const steps = {
+  1: null,
+  2: (branch) => {
+    document.getElementById('q2').textContent = branch.q2;
+    buildOpts(document.getElementById('opts2'), branch.opts2, (t) => {
+      state.a2 = t;
+      document.getElementById('q3').textContent = branch.q3;
+      buildOpts(document.getElementById('opts3'), branch.opts3, (t) => {
+        state.a3 = t;
+        renderSummary();
+        showStep(4);
+      });
+      showStep(3);
+    });
+  }
+};
+
+document.querySelectorAll('.quiz-opt[data-branch]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.branch = BRANCHES[btn.dataset.branch];
+    steps[2](state.branch);
+    showStep(2);
+  });
+});
+
+function renderSummary() {
+  const dest = document.getElementById('contactEmail').value.trim();
+  const meeting = state.meeting || 'por definir';
+  const contactLine = dest ? 'Contáctenme en este correo: ' + dest + '.' : '';
+
+  const txt =
+`Hola equipo de TESERACTO,
+
+Necesito una cotización para una solución dirigida a ${state.branch.label.toLowerCase()} en mi empresa.
+
+El problema está en: ${state.a2.toLowerCase()}.
+
+El factor más crítico es: ${state.a3.toLowerCase()}.
+
+Prefiero reunión ${meeting.toLowerCase()}.${contactLine ? ('\n' + contactLine) : ''}
+
+Quedo atento.`;
+
+  document.getElementById('quizSummary').textContent = txt;
+  return txt;
+}
+
+/* Paso 3 → Paso 4: selección de reunión */
+document.querySelectorAll('.quiz-opt[data-meeting]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.meeting = btn.dataset.meeting;
+    showStep(5);
+  });
+});
+
+/* Paso 4 → Paso 6: botón continuar desde el correo */
+const emailField = document.getElementById('contactEmail');
+const emailNextBtn = document.createElement('button');
+emailNextBtn.type = 'button';
+emailNextBtn.className = 'submit-btn';
+emailNextBtn.textContent = 'Continuar →';
+emailNextBtn.style.marginTop = '14px';
+emailNextBtn.addEventListener('click', () => {
+  renderSummary();
+  showStep(6);
+});
+emailField.closest('.quiz-step').appendChild(emailNextBtn);
+
+document.getElementById('downloadTxt').addEventListener('click', () => {
+  const txt = (document.getElementById('quizSummary').textContent ||
+    'Completa las preguntas antes de descargar.');
+  const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'cotizacion-teseracto.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  document.getElementById('quizNote').textContent = '✓ Archivo descargado con el resumen para la empresa.';
+});
+</script>
+
+</body>
+</html>
