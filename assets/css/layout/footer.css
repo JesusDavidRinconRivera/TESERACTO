@@ -31,3 +31,32 @@ footer .foot-note {
   font-size: 11px;
   color: var(--mist);
 }
+
+footer .footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+}
+
+footer .fc-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+footer .fc-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mist);
+}
+
+footer .fc-value {
+  font-size: 13px;
+  color: var(--paper);
+}
+
+footer .fc-value:hover {
+  color: var(--ember);
+}
