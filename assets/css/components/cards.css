@@ -73,62 +73,18 @@
   row-gap: 72px;
 }
 
-/* Espacio para las pestañas que sobresalen */
+/* Espacio para las tarjetas */
 #confianza .section-head {
-  margin-bottom: 110px;
+  margin-bottom: 40px;
 }
 
 .tp-item {
   position: relative;
+  height: 100%;
 }
 
-/* Pestaña sobresaliente: arranca desde la punta del extremo izquierdo */
-.tp-tab {
-  position: absolute;
-  top: -37px;
-  left: 0;
-  background: var(--void);
-  color: var(--paper);
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  padding: 5px 20px 13px;
-  border: 1px solid var(--hair-d);
-  border-bottom: none;
-  border-radius: 12px 12px 0 0;
-  z-index: 2;
-}
-
-/* Cuerpo de la carpeta */
-.tp-card {
-  position: relative;
-  background: var(--void);
-  border: 1px solid var(--hair-d);
-  border-radius: 20px;
-  border-top-left-radius: 0; /* se une con la pestaña */
-  padding: 32px 28px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  min-height: 150px;
-}
-
-.tp-text p {
-  margin: 0;
-  font-size: 13.5px;
-  color: var(--mist);
-  line-height: 1.55;
-}
-
-/* Icono flotando en el mismo eje horizontal que la pestaña, sin fondo */
+/* Ícono: va arriba, alineado a la izquierda, antes del título */
 .tp-float {
-  position: absolute;
-  top: -41px;
-  right: 18px;
   width: 56px;
   height: 56px;
   display: flex;
@@ -138,10 +94,43 @@
 }
 
 .tp-float svg {
-  width: 42px;
-  height: 42px;
+  width: 29px;
+  height: 29px;
   stroke: var(--ember);
   fill: none;
+}
+
+/* Título de la tarjeta */
+.tp-tab {
+  color: var(--paper);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Cuerpo de la carpeta */
+.tp-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--void);
+  border: 1px solid var(--hair-d);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tp-text p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--mist);
+  line-height: 1.55;
 }
 
 .tp-card p {
