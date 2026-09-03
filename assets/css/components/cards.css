@@ -12,39 +12,12 @@
 .pillar-card {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-/* ---- Liquid Glass — capas (efecto / tinte / brillo) ---- */
-.pillar-card .liquidGlass-effect {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  filter: url(#glass-distortion);
-  overflow: hidden;
-  isolation: isolate;
-  pointer-events: none;
-}
-
-.pillar-card .liquidGlass-tint {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: var(--glass-bg);
-  pointer-events: none;
-}
-
-.pillar-card .liquidGlass-shine {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  overflow: hidden;
-  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
-  pointer-events: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px) saturate(200%);
+  -webkit-backdrop-filter: blur(22px) saturate(200%);
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.5);
 }
 
 .pillar-card .pillar-content {
@@ -56,7 +29,7 @@
 .pillar-card .tag {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--maroon);
+  color: var(--paper);
   letter-spacing: 0.12em;
   margin-bottom: 16px;
 }
@@ -64,7 +37,7 @@
 .pillar-card h3 {
   font-size: 25px;
   margin-bottom: 20px;
-  color: var(--ink);
+  color: var(--paper);
   text-align: center;
 }
 
@@ -80,7 +53,7 @@
   gap: 12px;
   align-items: flex-start;
   font-size: 14.6px;
-  color: var(--fog);
+  color: rgba(242, 244, 243, 0.85);
   line-height: 1.55;
 }
 
@@ -91,7 +64,7 @@
   border-radius: 50%;
   margin-top: 6px;
   flex: none;
-  background: var(--maroon);
+  background: var(--paper);
 }
 
 /* ---- Tarjetas de confianza — carpetas estilo Windows ---- */

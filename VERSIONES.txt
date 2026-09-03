@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.19
-(4 cambios grandes, 19 cambios pequenos)
+Version actual: 1.4.20
+(4 cambios grandes, 20 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -35,6 +35,7 @@ b7fd949           2026-08-24  v1.4.16   Pequeno  feat: carpetas Windows en confi
 3b75d29           2026-08-24  v1.4.17   Pequeno  feat: README actualizado, variables restauradas a azul/gris, eyebrows sin puntos
 ba1e860           2026-08-31  v1.4.18   Pequeno  feat: laboratorio de cotización interactiva (lab-contacto.html) con cuestionario por botones, descarga .txt y preview de correo
 ea9f9b1           2026-09-01  v1.4.19   Pequeno  feat: contenido actualizado (h1, servicios, listas), info de contacto movida al footer, partículas hero hasta el top
+PENDIENTE         2026-09-03  v1.4.20   Pequeno  feat: glassmorphism vidrio saturado en tarjetas de servicios, partículas restauradas solo en hero
 
 ----------------------------------------------------------------
  RESUMEN

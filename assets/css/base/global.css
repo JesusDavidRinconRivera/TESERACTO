@@ -46,6 +46,10 @@
   --g-line: rgba(10, 9, 8, 0.06);
 }
 
+.on-brand .grid-field {
+  --g-line: rgba(242, 244, 243, 0.08);
+}
+
 /* ---- Secciones ---- */
 .section {
   padding: 112px 0;

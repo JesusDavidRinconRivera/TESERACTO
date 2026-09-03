@@ -2,11 +2,10 @@
    SECCIONES GENERALES
 ============================================================ */
 
-/* ---- Servicios — dentro del área de partículas ---- */
+/* ---- Servicios ---- */
 #servicios {
   position: relative;
   z-index: 1;
-  background: transparent;
 }
 
 #servicios .section-head {
