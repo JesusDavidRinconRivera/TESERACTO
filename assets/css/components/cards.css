@@ -79,7 +79,7 @@
 }
 
 #confianza {
-  padding: 20px 0;
+  padding: 112px 0;
 }
 
 .tp-item {
@@ -102,6 +102,13 @@
   height: 48px;
   stroke: var(--ember);
   fill: none;
+}
+
+/* Iconos Material Symbols de las tarjetas (48px base → 53px, luego 5% menos = 50px) */
+.tp-card .material-symbols-outlined {
+  font-size: 50px;
+  line-height: 1;
+  color: var(--ember);
 }
 
 /* Título de la tarjeta */

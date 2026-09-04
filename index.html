@@ -22,7 +22,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=contract_edit,schedule" /> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=contract_edit,acute,engineering,contract" /> 
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Unbounded (títulos/wordmark), Inter (texto), JetBrains Mono (labels) -->
 
@@ -213,9 +213,10 @@
 
 <!-- ================= HERO + STATS (mismo contenedor de partículas) ================= -->
 <div class="hero-area">
+<div class="hero-zone">
+  <div id="particles-js" aria-hidden="true"></div>
 <section class="hero on-paper">
   <img src="" alt="" class="hero-bg-image" id="fondoIsoImg">
-  <div id="particles-js" aria-hidden="true"></div>
   <div class="wrap">
 <div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.23 · Cuestionario interactivo de cotización (5 pasos) con envío de correo</span></div>
 
@@ -240,7 +241,12 @@
 
     <div class="cta-row reveal">
       <a href="https://wa.me/+573203269673" class="btn btn-solid" target="_blank" rel="noopener">Llamar ahora</a>
-      <a href="#contacto" class="btn btn-outline">Solicitar cotización</a>
+      <a href="#contacto" class="btn btn-outline btn-glass">
+        <span class="liquidGlass-effect" aria-hidden="true"></span>
+        <span class="liquidGlass-tint" aria-hidden="true"></span>
+        <span class="liquidGlass-shine" aria-hidden="true"></span>
+        <span class="btn-label">Solicitar cotización</span>
+      </a>
     </div>
 
     <!-- Badges de confianza (desactivados temporalmente)
@@ -261,7 +267,7 @@
         <div class="liquidGlass-effect" aria-hidden="true"></div>
         <div class="liquidGlass-tint" aria-hidden="true"></div>
         <div class="liquidGlass-shine" aria-hidden="true"></div>
-        <div class="stat-content"><div class="num">+5 años</div><div class="lbl">De experiencia</div></div>
+        <div class="stat-content"><div class="num">+3 años</div><div class="lbl">De experiencia</div></div>
       </div>
       <div class="stat-item">
         <div class="liquidGlass-effect" aria-hidden="true"></div>
@@ -284,6 +290,7 @@
     </div>
   </div>
 </section>
+</div>
 <!-- ================= SERVICIOS ================= -->
 <section class="section on-brand" id="servicios">
   <div class="grid-field" style="opacity:.3"></div>
@@ -344,7 +351,7 @@
     <div class="trustpoints reveal">
       <div class="tp-item">
         <div class="tp-card">
-          <span class="material-symbols-outlined">schedule</span>
+          <span class="material-symbols-outlined">acute</span>
           <div class="tp-tab">Respuesta rápida</div>
           <div class="tp-text"><p>Atendemos incidencias críticas en menos de dos horas, con un canal directo de contacto.</p></div>
         </div>
@@ -361,7 +368,7 @@
 
       <div class="tp-item">
         <div class="tp-card">
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <span class="material-symbols-outlined">engineering</span>
           <div class="tp-tab">Contratar Mantenimiento <br> Técnico</div>
           <div class="tp-text"><p>Para evitar fallos criticos y asegurar la vida util de tus equipos y así evitar perdida de tiempo y de dinero para tu empresa.</p></div>
         </div>
@@ -369,7 +376,7 @@
 
       <div class="tp-item">
         <div class="tp-card">
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+          <span class="material-symbols-outlined">contract</span>
           <div class="tp-tab">Un solo contrato / <br>
           Soporte continuo</div>
           <div class="tp-text"><p>Mantenimiento y software bajo el mismo acuerdo de servicio, sin coordinar proveedores por separado. Monitoreo permanente para detectar fallas antes de que detengan tu operación.</p></div>
@@ -429,6 +436,28 @@
     </div>
 
     <div class="contact-grid reveal">
+      <div class="contact-info">
+        <h3>Información de contacto</h3>
+        <p class="sub">Atendemos empresas de todos los tamaños. Cuéntanos qué necesitas y te contactamos con una propuesta concreta.</p>
+
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.2a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2Z"/></svg></div>
+          <div><div class="label">Teléfono / WhatsApp</div><a class="value" href="https://wa.me/+573203269673" target="_blank" rel="noopener">+57 320 326 9673</a></div>
+        </div>
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><div class="label">Correo</div><a class="value" href="mailto:contacto@teseracto.tech">contacto@teseracto.tech</a></div>
+        </div>
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><div class="label">Horario de atención</div><div class="value">Lun–Vie 8:00–18:00 · Urgencias 24/7</div></div>
+        </div>
+        <div class="contact-line">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="label">Cobertura</div><div class="value">Cartagena, Turbaco y Magangué</div></div>
+        </div>
+      </div>
+
       <div class="contact-form">
         <h3>Solicita tu cotización</h3>
 
@@ -490,34 +519,11 @@
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <div class="footer-top">
-      <div class="logo-lockup">
-        <span class="logo-mark"><svg viewBox="0 0 100 100"><use href="#teseracto-mark"/></svg></span>
-        <span class="logo-word">TESERACTO</span>
-      </div>
-      <div class="footer-contact">
-        <div class="fc-item">
-          <span class="fc-label">Teléfono / WhatsApp</span>
-          <a class="fc-value" href="https://wa.me/+573203269673" target="_blank" rel="noopener">+57 320 326 9673</a>
-        </div>
-        <div class="fc-item">
-          <span class="fc-label">Correo</span>
-          <a class="fc-value" href="mailto:contacto@teseracto.tech">contacto@teseracto.tech</a>
-        </div>
-        <div class="fc-item">
-          <span class="fc-label">Horario de atención</span>
-          <span class="fc-value">Lun–Vie 8:00–18:00 · Urgencias 24/7</span>
-        </div>
-        <div class="fc-item">
-          <span class="fc-label">Cobertura</span>
-          <span class="fc-value">Cartagena, Turbaco y Magangué</span>
-        </div>
-      </div>
+    <div class="logo-lockup">
+      <span class="logo-mark"><svg viewBox="0 0 100 100"><use href="#teseracto-mark"/></svg></span>
+      <span class="logo-word">TESERACTO</span>
     </div>
-    <div class="footer-bottom">
-      <span class="foot-note">© 2026 TESERACTO — Mantenimiento y Software para Empresas</span>
-      <span class="foot-tag">Hecho con precisión técnica</span>
-    </div>
+    <span class="foot-note">© 2026 TESERACTO — Mantenimiento y Software para Empresas</span>
   </div>
 </footer>
 
