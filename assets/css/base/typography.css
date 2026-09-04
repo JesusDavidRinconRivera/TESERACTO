@@ -26,7 +26,7 @@ h1 {
 h1 em {
   font-style: normal;
   color: var(--maroon);
-  background: linear-gradient(180deg, transparent 62%, rgba(73, 17, 28, 0.14) 62%);
+  background: linear-gradient(180deg, transparent 62%, var(--maroon-tint) 62%);
 }
 
 h2 {

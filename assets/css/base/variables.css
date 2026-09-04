@@ -27,6 +27,7 @@
   --glass-blur: blur(20px);
   --glass-bg-maroon: rgba(14, 58, 139, 0.45);
   --glass-border-maroon: rgba(14, 58, 139, 0.3);
+  --maroon-tint: rgba(14, 58, 139, 0.14);  /* resaltado (cuadro) de texto en azul marca */
 
   /* Tipografías */
   --display: 'Unbounded', sans-serif;
