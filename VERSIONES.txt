@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.22
-(4 cambios grandes, 22 cambios pequenos)
+Version actual: 1.4.23
+(4 cambios grandes, 23 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -41,6 +41,7 @@ f9d040a           2026-09-04  v1.4.20   Pequeno  feat: tarjetas de confianza red
 e95aa00           2026-09-04  v1.4.21   Pequeno  feat: zona confianza a 4 tarjetas, favicon y h1, listas renovadas, contacto a la sección (Jose)
 9b7b3f7           2026-09-04  v1.4.21   Pequeno  feat: icono Respuesta rápida cambiado a reloj (Jose)
 8bed77e           2026-09-04  v1.4.22   Pequeno  feat: grid 2x2 compacta en confianza, tarjetas glass 80px, hero sin badges, padding 40
+PENDIENTE         2026-09-04  v1.4.23   Pequeno  feat: cuestionario interactivo de cotización (5 pasos, carrusel) + información de contacto al footer + envío por correo
 
 ----------------------------------------------------------------
  RESUMEN

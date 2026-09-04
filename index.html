@@ -15,7 +15,7 @@
   <meta property="og:locale" content="es_CO">
   <meta property="og:site_name" content="TESERACTO">
   <meta property="og:title" content="TESERACTO — Mantenimiento y Software para Empresas">
-  <meta property="og:description" content="Un solo proveedor para lo físico y lo digital: mantenimiento preventivo y correctivo de tu operación, más el software que la mantiene corriendo.">
+  <meta property="og:description" content="Mantenimiento de equipos de computo y oficina, desarrollo de paginas web y software para empresas.">
   <meta property="og:url" content="https://teseracto.tech/">
   <meta property="og:image" content="https://teseracto.tech/assets/og-image.png">
 
@@ -217,7 +217,7 @@
   <img src="" alt="" class="hero-bg-image" id="fondoIsoImg">
   <div id="particles-js" aria-hidden="true"></div>
   <div class="wrap">
-<div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.22 · Grid 2×2 compacta en "Por qué elegirnos", tarjetas glass 80px, hero sin badges</span></div>
+<div class="status-line"><span class="status-dot"></span> Sistemas monitoreados en tiempo real <span class="status-version" title="Mensaje del commit de esta versión">v1.4.23 · Cuestionario interactivo de cotización (5 pasos) con envío de correo</span></div>
 
     <div class="hero-logo-reveal">
       <div class="logo-row" id="logoRow" aria-label="Teseracto">
@@ -235,8 +235,8 @@
       </div>
     </div>
 
-    <h1 class="reveal">Infraestructura y software que <em>nunca se detienen</em>.</h1>
-    <p class="lead reveal">Un solo proveedor para lo físico y lo digital: mantenimiento preventivo y correctivo de tu operación, más el software que la mantiene corriendo. Respuesta certificada, trazable y disponible cuando la necesitas.</p>
+    <h1 class="reveal">Mantenimiento y desarrollo de <em>software para empresas</em></h1>
+    <p class="lead reveal">Mantenimiento de equipos de computo y oficina, Desarollo de paginas web y software para empresas</p>
 
     <div class="cta-row reveal">
       <a href="https://wa.me/+573203269673" class="btn btn-solid" target="_blank" rel="noopener">Llamar ahora</a>
@@ -429,46 +429,59 @@
     </div>
 
     <div class="contact-grid reveal">
-      <div class="contact-info">
-        <h3>Información de contacto</h3>
-        <p class="sub">Atendemos empresas de todos los tamaños. Cuéntanos qué necesitas y te contactamos con una propuesta concreta.</p>
-
-        <div class="contact-line">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.2a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2Z"/></svg></div>
-          <div><div class="label">Teléfono / WhatsApp</div><a class="value" href="https://wa.me/+573203269673" target="_blank" rel="noopener">+57 320 326 9673</a></div>
-        </div>
-        <div class="contact-line">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
-          <div><div class="label">Correo</div><a class="value" href="mailto:contacto@teseracto.tech">contacto@teseracto.tech</a></div>
-        </div>
-        <div class="contact-line">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-          <div><div class="label">Horario de atención</div><div class="value">Lun–Vie 8:00–18:00 · Urgencias 24/7</div></div>
-        </div>
-        <div class="contact-line">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><div class="label">Cobertura</div><div class="value">Cartagena, Turbaco y Magangué</div></div>
-        </div>
-      </div>
-
       <div class="contact-form">
         <h3>Solicita tu cotización</h3>
-        <form action="/api/contact" method="post" id="contactForm">
-          <div class="field-row">
-            <div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" required></div>
-            <div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" required></div>
+
+        <!-- ================= CUESTIONARIO INTERACTIVO (6 pasos) ================= -->
+        <div class="quiz" id="quiz">
+
+          <!-- Progreso -->
+          <div class="quiz-progress" id="quizProgress" aria-hidden="true"></div>
+
+          <!-- Carrusel: el viewport recorta los paneles -->
+          <div class="quiz-viewport" id="quizViewport">
+
+            <!-- Paso 1: objetivo principal (definir rama) -->
+            <section class="quiz-step" data-step="1" aria-label="Paso 1 de 5">
+              <div class="quiz-q">¿Qué quieres lograr en tu empresa?</div>
+              <div class="quiz-opts" data-cols="1" id="opts1"></div>
+            </section>
+
+            <!-- Paso 2: primera sub-pregunta (dinámica según rama) -->
+            <section class="quiz-step" data-step="2" aria-label="Paso 2 de 5">
+              <div class="quiz-q" id="q2">…</div>
+              <div class="quiz-opts" data-cols="2" id="opts2"></div>
+            </section>
+
+            <!-- Paso 3: segunda sub-pregunta (dinámica según rama) -->
+            <section class="quiz-step" data-step="3" aria-label="Paso 3 de 5">
+              <div class="quiz-q" id="q3">…</div>
+              <div class="quiz-opts" data-cols="2" id="opts3"></div>
+            </section>
+
+            <!-- Paso 4: pregunta fija de reunión -->
+            <section class="quiz-step" data-step="4" aria-label="Paso 4 de 5">
+              <div class="quiz-q">¿Prefieres reunión virtual o presencial?</div>
+              <div class="quiz-opts" data-cols="2">
+                <button type="button" class="quiz-opt" data-value="virtual">Reunión virtual</button>
+                <button type="button" class="quiz-opt" data-value="presencial">Reunión presencial</button>
+              </div>
+            </section>
+
+            <!-- Paso 5: correo de contacto + envío -->
+            <section class="quiz-step" data-step="5" aria-label="Paso 5 de 5">
+              <div class="quiz-q">¿A qué correo te contactamos?</div>
+              <div class="field">
+                <label for="contactEmail">Correo</label>
+                <input id="contactEmail" name="correo" type="email" placeholder="tu@empresa.com" autocomplete="email">
+              </div>
+              <button type="button" class="submit-btn" id="sendMailBtn">Enviar solicitud</button>
+              <p class="form-note" id="quizNote">Al enviar, TESERACTO te responde con una propuesta concreta.</p>
+            </section>
+
           </div>
-          <div class="field-row">
-            <div class="field"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" required></div>
-            <div class="field"><label for="correo">Correo</label><input id="correo" name="correo" type="email" required></div>
-          </div>
-          <div class="field">
-            <label for="mensaje">¿Qué necesitas?</label>
-            <textarea id="mensaje" name="mensaje" rows="3" placeholder="Mantenimiento preventivo, soporte de software, una cotización general..."></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Enviar solicitud</button>
-          <p class="form-note" id="formNote">Respondemos en menos de 24 horas.</p>
-        </form>
+        </div>
+        <!-- ============ FIN CUESTIONARIO ============ -->
       </div>
     </div>
   </div>
@@ -477,11 +490,34 @@
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <div class="logo-lockup">
-      <span class="logo-mark"><svg viewBox="0 0 100 100"><use href="#teseracto-mark"/></svg></span>
-      <span class="logo-word">TESERACTO</span>
+    <div class="footer-top">
+      <div class="logo-lockup">
+        <span class="logo-mark"><svg viewBox="0 0 100 100"><use href="#teseracto-mark"/></svg></span>
+        <span class="logo-word">TESERACTO</span>
+      </div>
+      <div class="footer-contact">
+        <div class="fc-item">
+          <span class="fc-label">Teléfono / WhatsApp</span>
+          <a class="fc-value" href="https://wa.me/+573203269673" target="_blank" rel="noopener">+57 320 326 9673</a>
+        </div>
+        <div class="fc-item">
+          <span class="fc-label">Correo</span>
+          <a class="fc-value" href="mailto:contacto@teseracto.tech">contacto@teseracto.tech</a>
+        </div>
+        <div class="fc-item">
+          <span class="fc-label">Horario de atención</span>
+          <span class="fc-value">Lun–Vie 8:00–18:00 · Urgencias 24/7</span>
+        </div>
+        <div class="fc-item">
+          <span class="fc-label">Cobertura</span>
+          <span class="fc-value">Cartagena, Turbaco y Magangué</span>
+        </div>
+      </div>
     </div>
-    <span class="foot-note">© 2026 TESERACTO — Mantenimiento y Software para Empresas</span>
+    <div class="footer-bottom">
+      <span class="foot-note">© 2026 TESERACTO — Mantenimiento y Software para Empresas</span>
+      <span class="foot-tag">Hecho con precisión técnica</span>
+    </div>
   </div>
 </footer>
 

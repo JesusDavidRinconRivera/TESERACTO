@@ -184,3 +184,199 @@
 @keyframes spinner {
   to { transform: rotate(360deg); }
 }
+
+/* ============================================================
+   CUESTIONARIO INTERACTIVO DE COTIZACIÓN (carrusel 6 pasos)
+============================================================ */
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ---- Puntos de progreso ---- */
+.quiz-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0 4px;
+}
+
+.quiz-progress .pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hair-d2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.quiz-progress .pip.is-done {
+  background: var(--maroon);
+}
+
+.quiz-progress .pip.is-active {
+  background: var(--paper);
+  transform: scale(1.4);
+}
+
+/* ---- Viewport: recorta los paneles ---- */
+.quiz-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--hair-d);
+  background: var(--void-2);
+  min-height: 320px;
+}
+
+/* ---- Paneles: reposo = oculto absoluto; activo = relativo (define alto) ---- */
+.quiz-step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateX(-24px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  padding: clamp(20px, 4vw, 32px);
+}
+
+.quiz-step.is-active {
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Estados intermedios de entrada/salida (gestionados por JS).
+   Mientras deslizan, los paneles deben permanecer visibles. */
+.quiz-step.is-from-right {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(48px);
+}
+
+.quiz-step.is-from-left {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-48px);
+}
+
+.quiz-step.is-to-right {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(48px);
+}
+
+.quiz-step.is-to-left {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-48px);
+}
+
+/* ---- Pregunta ---- */
+.quiz-q {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+
+/* ---- Opciones ---- */
+.quiz-opts {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+.quiz-opts[data-cols="2"] {
+  grid-template-columns: 1fr 1fr;
+}
+
+.quiz-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--body);
+  font-size: 14px;
+  padding: 14px 16px;
+  background: var(--void-2);
+  color: var(--paper);
+  border: 1px solid var(--hair-d);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+.quiz-opt:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -12px var(--maroon);
+  border-color: var(--maroon);
+  background: var(--maroon);
+  color: var(--paper);
+}
+
+.quiz-opt:active {
+  transform: scale(0.985);
+}
+
+/* ---- Botón volver ---- */
+.quiz-back {
+  margin-top: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  color: var(--mist);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.25s ease;
+}
+
+.quiz-back:hover {
+  color: var(--paper);
+}
+
+/* ---- Campo del paso final ---- */
+.quiz .field {
+  margin-bottom: 0;
+}
+
+/* ---- Botón de envío del paso final ---- */
+.quiz-step[data-step="5"] .submit-btn {
+  width: 100%;
+  margin-top: 4px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.quiz-step[data-step="5"] .submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -12px var(--maroon);
+}
+
+.quiz-step[data-step="5"] .submit-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.quiz-step[data-step="5"] .submit-btn.btn--loading {
+  animation: sendPulse 1s ease-in-out infinite;
+}
+
+@keyframes sendPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(214, 51, 74, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(214, 51, 74, 0);
+  }
+}

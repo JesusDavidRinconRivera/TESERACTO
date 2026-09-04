@@ -3,7 +3,7 @@
 ============================================================ */
 
 footer {
-  padding: 36px 0;
+  padding: 56px 0 36px;
   border-top: 1px solid var(--hair-d);
   background: var(--void);
   color: var(--paper);
@@ -11,10 +11,16 @@ footer {
 
 footer .wrap {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+footer .footer-top {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 28px;
 }
 
 footer .logo-word {
@@ -32,29 +38,47 @@ footer .foot-note {
   color: var(--mist);
 }
 
+footer .foot-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mist);
+  opacity: 0.7;
+}
+
+footer .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hair-d);
+}
+
 footer .footer-contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 28px;
+  gap: 22px 48px;
 }
 
 footer .fc-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 footer .fc-label {
   font-family: var(--mono);
   font-size: 9.5px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--mist);
 }
 
 footer .fc-value {
   font-size: 13px;
   color: var(--paper);
+  text-decoration: none;
 }
 
 footer .fc-value:hover {

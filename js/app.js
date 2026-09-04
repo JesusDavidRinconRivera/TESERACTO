@@ -5,7 +5,7 @@
 import { initCube } from './cube/cube.js';
 import { initHeroLogoReveal } from './brand/heroLogoReveal.js';
 import { initHeroBackground } from './hero/heroBackground.js';
-import { initContactForm } from './forms/contactForm.js';
+import { initQuiz } from './forms/quiz.js';
 import { initRevealOnScroll } from './ui/revealOnScroll.js';
 import { initAnimations } from './ui/animations.js';
 import { initMobileNav } from './ui/mobileNav.js';
@@ -58,11 +58,11 @@ function initApp() {
     }
 
     try {
-      // Inicializar contact form
-      initContactForm();
-      console.log('[TESERACTO] ✓ Formulario de contacto inicializado');
+      // Inicializar cuestionario de cotización (6 pasos)
+      initQuiz();
+      console.log('[TESERACTO] ✓ Cuestionario de cotización inicializado');
     } catch (err) {
-      console.warn('[TESERACTO] ✗ Error al inicializar formulario:', err);
+      console.warn('[TESERACTO] ✗ Error al inicializar cuestionario:', err);
     }
 
     try {
