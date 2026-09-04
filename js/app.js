@@ -19,9 +19,23 @@ function initApp() {
   onReady(() => {
     console.log('[TESERACTO] Inicializando aplicación...');
 
+    // La animación del hero se muestra solo en la primera visita por navegador
+    const VISITED_KEY = 'teseracto_visto';
+    let isFirstVisit = false;
+    try {
+      isFirstVisit = localStorage.getItem(VISITED_KEY) === null;
+      if (isFirstVisit) {
+        localStorage.setItem(VISITED_KEY, '1');
+      }
+    } catch (err) {
+      console.warn('[TESERACTO] No se pudo acceder a localStorage:', err);
+    }
+    const skipAnimation = !isFirstVisit;
+    console.log('[TESERACTO] Primera visita:', isFirstVisit, '| skipAnimation:', skipAnimation);
+
     try {
       // Inicializar cube (Three.js)
-      initCube();
+      initCube(skipAnimation);
       console.log('[TESERACTO] ✓ Cubo inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar cubo:', err);
@@ -29,7 +43,7 @@ function initApp() {
 
     try {
       // Inicializar logo reveal
-      initHeroLogoReveal();
+      initHeroLogoReveal(skipAnimation);
       console.log('[TESERACTO] ✓ Logo reveal inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar logo reveal:', err);

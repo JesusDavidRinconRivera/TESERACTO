@@ -32,13 +32,14 @@ const CLOSE_LINE_THICKNESS = CONSTANTS.CLOSE_LINE_THICKNESS;
 const CROSS_LINE_LENGTH = CONSTANTS.CROSS_LINE_LENGTH;
 
 /**
- * Inicializa y anima el cubo
+ * Inicializa y anima el cubo.
+ * Si `skipAnimation` es true, se dibuja directamente en su estado final.
  */
-export function initCube() {
+export function initCube(skipAnimation = false) {
   const mount = document.getElementById(CONSTANTS.CUBE_CANVAS_MOUNT_ID);
   if (!mount || typeof THREE === 'undefined') return;
 
-  const reducedMotion = prefersReducedMotion();
+  const reducedMotion = prefersReducedMotion() || skipAnimation;
 
   // ========== SETUP ==========
   const scene = new THREE.Scene();
