@@ -14,7 +14,7 @@
 }
 
 .hero {
-  padding: 32px 0 100px;
+  padding: 32px 0 40px;
   text-align: center;
   background: var(--paper);
   color: var(--ink);
@@ -26,13 +26,6 @@
   display: block;
   width: 100% !important;
   height: 100% !important;
-}
-  padding: 32px 0 100px;
-  text-align: center;
-  background: var(--paper);
-  color: var(--ink);
-  position: relative;
-  overflow: hidden;
 }
 
 .hero .wrap {

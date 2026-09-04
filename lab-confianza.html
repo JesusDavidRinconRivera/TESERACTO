@@ -1,242 +1,591 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAB — Por qué elegirnos (carpetas Windows)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESERACTO — Lab: Sección "Por qué elegirnos"</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    :root {
+      /* Paleta (igual a variables.css) */
+      --void: #0A0908;
+      --void-2: #15120F;
+      --maroon: #0e3a8b;
+      --paper: #F2F4F3;
+      --paper-2: #E6E2DF;
+      --ink: #0A0908;
+      --fog: #706A66;
+      --mist: #A9A3A0;
+      --hair-d: rgba(242, 244, 243, 0.14);
+      --hair-d2: rgba(242, 244, 243, 0.30);
+      --g-line: rgba(242, 244, 243, 0.07);
+      --ember: #d0d0d0;
+      --display: 'Unbounded', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --maxw: 1180px;
 
-<!-- CSS BASE -->
-<link rel="stylesheet" href="assets/css/base/variables.css">
-<link rel="stylesheet" href="assets/css/base/reset.css">
-<link rel="stylesheet" href="assets/css/base/typography.css">
-<link rel="stylesheet" href="assets/css/base/global.css">
+      /* Valores editables por el lab (estado inicial = versión actual) */
+      --lab-sec-py: 112px;
+      --lab-head-mb: 60px;
+      --lab-col-gap: 28px;
+      --lab-row-gap: 72px;
+      --lab-pad: 15px;
+      --lab-min-h: 170px;
+      --lab-radius: 10px;
+      --lab-gap: 7px;
+      --lab-title: 15px;
+      --lab-text: 13.5px;
+      --lab-icon-w: 28px;
+      --lab-icon-svg: 15px;
+      --lab-bg-a: 0.06;
+      --lab-brd-a: 0.18;
+    }
 
-<style>
-  /* ===== Barra de laboratorio ===== */
-  .lab-bar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--paper);
-    background: var(--maroon);
-  }
-  .lab-bar strong { color: var(--ember); }
+    * { box-sizing: border-box; }
 
-  body {
-    background: var(--void);
-    padding-top: 33px;
-  }
+    body {
+      margin: 0;
+      font-family: var(--body);
+      background: #1a1815;
+      color: var(--paper);
+    }
 
-  /* ================= POR QUÉ CONFIAR (copiado del ejemplo) ================= */
-  .section {
-    position: relative;
-    padding: 112px 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+    /* ---------- Copia exacta de la sección (como en index.html) ---------- */
+    #confianza {
+      position: relative;
+      background: var(--void);
+      color: var(--paper);
+      padding: var(--lab-sec-py) 0;
+      overflow: hidden;
+    }
 
-  .wrap {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 0 40px;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-  }
+    #confianza .grid-field {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      background-image:
+        linear-gradient(30deg, var(--g-line) 1px, transparent 1px),
+        linear-gradient(150deg, var(--g-line) 1px, transparent 1px);
+      background-size: 90px 156px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 78%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 20%, transparent 78%);
+    }
 
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
-    margin-bottom: 110px; /* espacio para las pestañas */
-    flex-wrap: wrap;
-  }
+    #confianza .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
 
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--mist);
-    margin-bottom: 14px;
-  }
+    #confianza .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+      margin-bottom: var(--lab-head-mb);
+    }
 
-  .section-head h2 {
-    font-size: 34px;
-    color: var(--paper);
-  }
+    #confianza .section-head .eyebrow {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      color: var(--mist);
+    }
 
-  .section-head .note {
-    font-family: var(--mono);
-    font-size: 12px;
-    max-width: 34ch;
-    text-align: right;
-    line-height: 1.65;
-    color: var(--mist);
-  }
+    #confianza .section-head h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      font-size: clamp(26px, 3.2vw, 38px);
+      margin: 0;
+      color: var(--paper);
+    }
 
-  /* ---- Grilla ---- */
-  .trustpoints {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 28px;
-    row-gap: 72px; /* aire para que las pestañas respiren */
-  }
+    #confianza .section-head .note {
+      font-family: var(--mono);
+      font-size: 12px;
+      max-width: 34ch;
+      text-align: right;
+      line-height: 1.65;
+      color: var(--mist);
+      margin: 0;
+    }
 
-  /* ---- Wrapper: ancla pestaña + tarjeta ---- */
-  .tp-item {
-    position: relative;
-  }
+    .trustpoints {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--lab-col-gap);
+      row-gap: var(--lab-row-gap);
+    }
 
-  /* Pestaña sobresaliente: arranca desde la punta del extremo izquierdo */
-  .tp-tab {
-    position: absolute;
-    top: -37px;
-    left: 0;
-    background: var(--void);
-    color: var(--paper);
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    padding: 5px 20px 13px;
-    text-align: center;
-    border: 1px solid var(--hair-d);
-    border-bottom: none;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 -6px 14px rgba(0, 0, 0, 0.25);
-    z-index: 2;
-  }
+    .tp-item {
+      position: relative;
+      height: 100%;
+    }
 
-  /* Cuerpo de la carpeta */
-  .tp-card {
-    position: relative;
-    background: var(--void);
-    border: 1px solid var(--hair-d);
-    border-radius: 20px;
-    border-top-left-radius: 0; /* se une con la pestaña */
-    padding: 32px 28px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    min-height: 150px;
-  }
+    .tp-float {
+      width: var(--lab-icon-w);
+      height: var(--lab-icon-w);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
 
-  .tp-text p {
-    margin: 0;
-    font-size: 13.5px;
-    color: var(--mist);
-    line-height: 1.55;
-  }
+    .tp-float svg {
+      width: var(--lab-icon-svg);
+      height: var(--lab-icon-svg);
+      stroke: var(--ember);
+      fill: none;
+    }
 
-  /* Icono flotando en el mismo eje horizontal que la pestaña, sin fondo */
-  .tp-float {
-    position: absolute;
-    top: -41px;
-    right: 18px;
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
+    .tp-tab {
+      color: var(--paper);
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: var(--lab-title);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
 
-  .tp-float svg {
-    width: 42px;
-    height: 42px;
-    stroke: var(--ember);
-    fill: none;
-  }
+    .tp-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: var(--lab-min-h);
+      background: rgba(255, 255, 255, var(--lab-bg-a));
+      border: 1px solid rgba(255, 255, 255, var(--lab-brd-a));
+      border-radius: var(--lab-radius);
+      padding: var(--lab-pad);
+      box-shadow: 0 10px 20px -9px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--lab-gap);
+    }
 
-  /* ---- Móvil ---- */
-  @media (max-width: 900px) {
-    .wrap { padding: 0 22px; }
-    .section-head { flex-direction: column; align-items: flex-start; margin-bottom: 96px; }
-    .section-head .note { text-align: left; }
-    .trustpoints { grid-template-columns: 1fr; }
-  }
-</style>
+    .tp-text p,
+    .tp-card p {
+      margin: 0;
+      font-size: var(--lab-text);
+      color: var(--mist);
+      line-height: 1.62;
+    }
+
+    /* ---------- Panel de controles ---------- */
+    .lab-panel {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 320px;
+      max-height: calc(100vh - 24px);
+      overflow-y: auto;
+      background: rgba(10, 9, 8, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      padding: 16px 18px;
+      z-index: 50;
+      font-family: var(--mono);
+      font-size: 11px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    .lab-panel h3 {
+      font-family: var(--display);
+      font-size: 13px;
+      margin: 0 0 14px;
+      color: var(--paper);
+    }
+
+    .lab-panel .grp {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    .lab-panel .grp:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .lab-panel .ctrl {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 7px 0;
+    }
+
+    .lab-panel label {
+      flex: 1;
+      color: var(--mist);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lab-panel input[type="range"] {
+      flex: 0 0 96px;
+      accent-color: var(--maroon);
+    }
+
+    .lab-panel .val {
+      flex: 0 0 52px;
+      text-align: right;
+      color: var(--ember);
+    }
+
+    .lab-panel textarea {
+      width: 100%;
+      height: 330px;
+      resize: vertical;
+      background: #0d0c0a;
+      color: #cfd8e4;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 10px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+
+    .lab-panel .btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 9px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--maroon);
+      color: var(--paper);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .lab-panel .btn:hover { background: #154bc2; }
+
+    .lab-panel .hint {
+      font-size: 10px;
+      color: var(--mist);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .lab-reset {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 50;
+      padding: 8px 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      background: rgba(242, 244, 243, 0.06);
+      color: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .lab-reset:hover { background: rgba(242, 244, 243, 0.16); }
+  </style>
 </head>
 <body>
 
-<div class="lab-bar">LAB · copia de <strong>Por qué elegirnos</strong> — estilo carpeta Windows</div>
+  <button class="lab-reset" onclick="labReset()">Restablecer valores</button>
 
-<section class="section on-void" id="confianza">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Confianza que se demuestra, no se promete</div>
-        <h2>Por qué elegirnos</h2>
-      </div>
-      <p class="note">Trabajamos como una extensión de tu equipo, no como un proveedor más en la lista de contactos.</p>
-    </div>
-
-    <div class="trustpoints">
-      <div class="tp-item">
-        <div class="tp-tab">Respuesta rápida</div>
-        <div class="tp-card">
-          <div class="tp-text"><p>Atendemos incidencias críticas en menos de dos horas, con un canal directo de contacto.</p></div>
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></div>
+  <!-- ============ COPIA EXACTA DE LA SECCIÓN (index.html) ============ -->
+  <section class="section on-void" id="confianza">
+    <div class="grid-field"></div>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Confianza que se demuestra, no se promete</div>
+          <h2>Por qué elegirnos</h2>
         </div>
       </div>
 
-      <div class="tp-item">
-        <div class="tp-tab">Garantía por escrito</div>
-        <div class="tp-card">
-          <div class="tp-text"><p>Cada trabajo queda respaldado por contrato: alcance, tiempos y garantía claros desde el inicio.</p></div>
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+      <div class="trustpoints reveal">
+        <div class="tp-item">
+          <div class="tp-card">
+            <span class="material-symbols-outlined">schedule</span>
+            <div class="tp-tab">Respuesta rápida</div>
+            <div class="tp-text"><p>Atendemos incidencias críticas en menos de dos horas, con un canal directo de contacto.</p></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tp-item">
-        <div class="tp-tab">Técnicos certificados</div>
-        <div class="tp-card">
-          <div class="tp-text"><p>Personal capacitado y verificado, tanto en mantenimiento físico como en desarrollo de software.</p></div>
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <div class="tp-item">
+          <div class="tp-card">
+            <span class="material-symbols-outlined">contract_edit</span>
+            <div class="tp-tab">Garantía por escrito</div>
+            <div class="tp-text"><p>Cada trabajo queda respaldado por contrato: alcance, tiempos y garantía claros desde el inicio. Cada intervención queda documentada: qué se hizo, cuándo y qué sigue.
+            </p></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tp-item">
-        <div class="tp-tab">Reportes y trazabilidad</div>
-        <div class="tp-card">
-          <div class="tp-text"><p>Cada intervención queda documentada: qué se hizo, cuándo y qué sigue.</p></div>
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6M10 19V10M16 19V4M22 19H2"/></svg></div>
+        <div class="tp-item">
+          <div class="tp-card">
+            <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <div class="tp-tab">Contratar Mantenimiento <br> Técnico</div>
+            <div class="tp-text"><p>Para evitar fallos criticos y asegurar la vida util de tus equipos y así evitar perdida de tiempo y de dinero para tu empresa.</p></div>
+          </div>
         </div>
-      </div>
 
-      <div class="tp-item">
-        <div class="tp-tab">Un solo contrato</div>
-        <div class="tp-card">
-          <div class="tp-text"><p>Mantenimiento y software bajo el mismo acuerdo de servicio, sin coordinar proveedores por separado.</p></div>
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
-        </div>
-      </div>
-
-      <div class="tp-item">
-        <div class="tp-tab">Soporte continuo</div>
-        <div class="tp-card">
-          <div class="tp-text"><p>Monitoreo permanente para detectar fallas antes de que detengan tu operación.</p></div>
-          <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <div class="tp-item">
+          <div class="tp-card">
+            <div class="tp-float"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+            <div class="tp-tab">Un solo contrato / <br>
+            Soporte continuo</div>
+            <div class="tp-text"><p>Mantenimiento y software bajo el mismo acuerdo de servicio, sin coordinar proveedores por separado. Monitoreo permanente para detectar fallas antes de que detengan tu operación.</p></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <aside class="lab-panel">
+    <h3>Controles — Sección confianza</h3>
+
+    <div class="grp">
+      <div class="ctrl">
+        <label>Padding sección</label>
+        <input type="range" id="sec-py" min="0" max="240" step="4" value="112" oninput="labUpdate()">
+        <span class="val" id="v-sec-py">112px</span>
+      </div>
+      <div class="ctrl">
+        <label>Margen header (abajo)</label>
+        <input type="range" id="head-mb" min="0" max="160" step="4" value="60" oninput="labUpdate()">
+        <span class="val" id="v-head-mb">60px</span>
+      </div>
+      <div class="ctrl">
+        <label>Col gap (entre columnas)</label>
+        <input type="range" id="col-gap" min="0" max="80" step="2" value="28" oninput="labUpdate()">
+        <span class="val" id="v-col-gap">28px</span>
+      </div>
+      <div class="ctrl">
+        <label>Row gap (entre filas)</label>
+        <input type="range" id="row-gap" min="0" max="160" step="4" value="72" oninput="labUpdate()">
+        <span class="val" id="v-row-gap">72px</span>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="ctrl">
+        <label>Padding tarjeta</label>
+        <input type="range" id="pad" min="0" max="80" step="2" value="15" oninput="labUpdate()">
+        <span class="val" id="v-pad">15px</span>
+      </div>
+      <div class="ctrl">
+        <label>Alto mínimo (min-height)</label>
+        <input type="range" id="min-h" min="0" max="600" step="10" value="170" oninput="labUpdate()">
+        <span class="val" id="v-min-h">170px</span>
+      </div>
+      <div class="ctrl">
+        <label>Radio esquinas</label>
+        <input type="range" id="radius" min="0" max="60" step="2" value="10" oninput="labUpdate()">
+        <span class="val" id="v-radius">10px</span>
+      </div>
+      <div class="ctrl">
+        <label>Gap interno tarjeta</label>
+        <input type="range" id="gap" min="0" max="60" step="2" value="7" oninput="labUpdate()">
+        <span class="val" id="v-gap">7px</span>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="ctrl">
+        <label>Tamaño título (tp-tab)</label>
+        <input type="range" id="title" min="8" max="40" step="1" value="15" oninput="labUpdate()">
+        <span class="val" id="v-title">15px</span>
+      </div>
+      <div class="ctrl">
+        <label>Tamaño texto (tp-text)</label>
+        <input type="range" id="text" min="8" max="40" step="1" value="13.5" oninput="labUpdate()">
+        <span class="val" id="v-text">13.5px</span>
+      </div>
+      <div class="ctrl">
+        <label>Contenedor ícono</label>
+        <input type="range" id="icon-w" min="16" max="96" step="2" value="28" oninput="labUpdate()">
+        <span class="val" id="v-icon-w">28px</span>
+      </div>
+      <div class="ctrl">
+        <label>Ícono (svg)</label>
+        <input type="range" id="icon-svg" min="8" max="48" step="1" value="15" oninput="labUpdate()">
+        <span class="val" id="v-icon-svg">15px</span>
+      </div>
+    </div>
+
+    <div class="grp">
+      <div class="ctrl">
+        <label>Fondo blanco (opacidad)</label>
+        <input type="range" id="bg-a" min="0" max="30" step="1" value="6" oninput="labUpdate()">
+        <span class="val" id="v-bg-a">0.06</span>
+      </div>
+      <div class="ctrl">
+        <label>Borde blanco (opacidad)</label>
+        <input type="range" id="brd-a" min="0" max="50" step="1" value="18" oninput="labUpdate()">
+        <span class="val" id="v-brd-a">0.18</span>
+      </div>
+    </div>
+
+    <button class="btn" onclick="labCopy()">Copiar código CSS</button>
+    <textarea id="labOut"></textarea>
+    <div class="hint">Ajusta las barras y copia el CSS final para pegarlo en el index.</div>
+  </aside>
+
+  <script>
+    const root = document.documentElement;
+    const DEFAULTS = {
+      'sec-py': 112, 'head-mb': 60, 'col-gap': 28, 'row-gap': 72,
+      'pad': 15, 'min-h': 170, 'radius': 10, 'gap': 7,
+      'title': 15, 'text': 13.5, 'icon-w': 28, 'icon-svg': 15,
+      'bg-a': 6, 'brd-a': 18,
+    };
+
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? parseFloat(el.value) : DEFAULT_VALS[id];
+    }
+
+    function labUpdate() {
+      const vars = {
+        '--lab-sec-py': val('sec-py') + 'px',
+        '--lab-head-mb': val('head-mb') + 'px',
+        '--lab-col-gap': val('col-gap') + 'px',
+        '--lab-row-gap': val('row-gap') + 'px',
+        '--lab-pad': val('pad') + 'px',
+        '--lab-min-h': val('min-h') + 'px',
+        '--lab-radius': val('radius') + 'px',
+        '--lab-gap': val('gap') + 'px',
+        '--lab-title': val('title') + 'px',
+        '--lab-text': val('text') + 'px',
+        '--lab-icon-w': val('icon-w') + 'px',
+        '--lab-icon-svg': val('icon-svg') + 'px',
+        '--lab-bg-a': (val('bg-a') / 100).toFixed(2),
+        '--lab-brd-a': (val('brd-a') / 100).toFixed(2),
+      };
+      for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v);
+
+      document.getElementById('v-sec-py').textContent = vars['--lab-sec-py'];
+      document.getElementById('v-head-mb').textContent = vars['--lab-head-mb'];
+      document.getElementById('v-col-gap').textContent = vars['--lab-col-gap'];
+      document.getElementById('v-row-gap').textContent = vars['--lab-row-gap'];
+      document.getElementById('v-pad').textContent = vars['--lab-pad'];
+      document.getElementById('v-min-h').textContent = vars['--lab-min-h'];
+      document.getElementById('v-radius').textContent = vars['--lab-radius'];
+      document.getElementById('v-gap').textContent = vars['--lab-gap'];
+      document.getElementById('v-title').textContent = vars['--lab-title'];
+      document.getElementById('v-text').textContent = vars['--lab-text'];
+      document.getElementById('v-icon-w').textContent = vars['--lab-icon-w'];
+      document.getElementById('v-icon-svg').textContent = vars['--lab-icon-svg'];
+      document.getElementById('v-bg-a').textContent = vars['--lab-bg-a'];
+      document.getElementById('v-brd-a').textContent = vars['--lab-brd-a'];
+
+      document.getElementById('labOut').value = labCode();
+    }
+
+    function labCode() {
+      const bg = (val('bg-a') / 100).toFixed(2);
+      const brd = (val('brd-a') / 100).toFixed(2);
+      return `.trustpoints {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: ${val('col-gap')}px;
+  row-gap: ${val('row-gap')}px;
+}
+
+.tp-item {
+  position: relative;
+  height: 100%;
+}
+
+.tp-float {
+  width: ${val('icon-w')}px;
+  height: ${val('icon-w')}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.tp-float svg {
+  width: ${val('icon-svg')}px;
+  height: ${val('icon-svg')}px;
+  stroke: var(--ember);
+  fill: none;
+}
+
+.tp-tab {
+  color: var(--paper);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: ${val('title')}px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.tp-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: ${val('min-h')}px;
+  background: rgba(255, 255, 255, ${bg});
+  border: 1px solid rgba(255, 255, 255, ${brd});
+  border-radius: ${val('radius')}px;
+  padding: ${val('pad')}px;
+  box-shadow: 0 10px 20px -9px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: ${val('gap')}px;
+}
+
+.tp-text p,
+.tp-card p {
+  margin: 0;
+  font-size: ${val('text')}px;
+  color: var(--mist);
+  line-height: 1.62;
+}
+
+#confianza .section-head {
+  margin-bottom: ${val('head-mb')}px;
+}
+
+#confianza {
+  padding: ${val('sec-py')}px 0;
+}`;
+    }
+
+    function labCopy() {
+      const ta = document.getElementById('labOut');
+      ta.select();
+      ta.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(ta.value).then(() => {
+        const btn = document.querySelector('.lab-panel .btn');
+        btn.textContent = '¡Copiado!';
+        setTimeout(() => { btn.textContent = 'Copiar código CSS'; }, 1200);
+      });
+    }
+
+    function labReset() {
+      for (const [id, dval] of Object.entries(DEFAULTS)) {
+        const el = document.getElementById(id);
+        if (el) el.value = dval;
+      }
+      labUpdate();
+    }
+
+    labUpdate();
+  </script>
 </body>
 </html>

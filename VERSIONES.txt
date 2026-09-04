@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.21
-(4 cambios grandes, 21 cambios pequenos)
+Version actual: 1.4.22
+(4 cambios grandes, 22 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -37,6 +37,10 @@ ba1e860           2026-08-31  v1.4.18   Pequeno  feat: laboratorio de cotizació
 ea9f9b1           2026-09-01  v1.4.19   Pequeno  feat: contenido actualizado (h1, servicios, listas), info de contacto movida al footer, partículas hero hasta el top
 5265b79           2026-09-03  v1.4.20   Pequeno  feat: glassmorphism vidrio saturado en tarjetas de servicios, partículas restauradas solo en hero
 e616e54           2026-09-03  v1.4.21   Pequeno  feat: animación del hero solo en la primera visita (localStorage), sin backdrop-filter en servicios
+f9d040a           2026-09-04  v1.4.20   Pequeno  feat: tarjetas de confianza rediseñadas (Jose)
+e95aa00           2026-09-04  v1.4.21   Pequeno  feat: zona confianza a 4 tarjetas, favicon y h1, listas renovadas, contacto a la sección (Jose)
+9b7b3f7           2026-09-04  v1.4.21   Pequeno  feat: icono Respuesta rápida cambiado a reloj (Jose)
+PENDIENTE         2026-09-04  v1.4.22   Pequeno  feat: grid 2x2 compacta en confianza, tarjetas glass 80px, hero sin badges, padding 40
 
 ----------------------------------------------------------------
  RESUMEN
