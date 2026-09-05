@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- Opcional: Fondo oscuro para visualización (los trazados vectoriales son blancos) -->
+  <rect width="500" height="500" rx="60" fill="#121212" />
+
+  <g stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cubo Exterior -->
+    <path d="M 250 50 
+             L 430 154 
+             L 430 362 
+             L 250 466 
+             L 70 362 
+             L 70 154 
+             Z" 
+          stroke-width="28" />
+
+    <!-- Aristas internas del cubo grande hacia el centro -->
+    <path d="M 250 50 L 250 180" stroke-width="28" />
+    <path d="M 70 154 L 180 217.5" stroke-width="28" />
+    <path d="M 430 154 L 320 217.5" stroke-width="28" />
+
+    <!-- Marco hexagonal interior que rodea al cubo pequeño -->
+    <path d="M 250 170 
+             L 330 216 
+             L 330 308 
+             L 250 354 
+             L 170 308 
+             L 170 216 
+             Z" 
+          stroke-width="24" />
+
+    <!-- Línia vertical inferior del cubo exterior -->
+    <path d="M 250 340 L 250 466" stroke-width="28" />
+
+    <!-- Cubo Interior Pequeño (Caras/Líneas) -->
+    <!-- Cara Superior del cubo interno -->
+    <polygon points="250,210 290,233 250,256 210,233" fill="#ffffff" stroke="#ffffff" stroke-width="6" />
+    
+    <!-- Cara Izquierda del cubo interno -->
+    <polygon points="210,233 250,256 250,302 210,279" fill="#ffffff" stroke="#ffffff" stroke-width="6" />
+    
+    <!-- Cara Derecha del cubo interno -->
+    <polygon points="250,256 290,233 290,279 250,302" fill="#ffffff" stroke="#ffffff" stroke-width="6" />
+
+    <!-- Detalle de líneas divisorias en el cubo interior -->
+    <path d="M 250 256 L 250 302
+             M 250 256 L 210 233
+             M 250 256 L 290 233" 
+          stroke="#121212" stroke-width="5" />
+  </g>
+</svg>
