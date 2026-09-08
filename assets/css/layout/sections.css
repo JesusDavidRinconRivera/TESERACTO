@@ -55,7 +55,8 @@
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
   gap: 16px;
 }
 
@@ -119,6 +120,128 @@
   letter-spacing: 0.06em;
   margin-top: 8px;
   text-transform: uppercase;
+}
+
+/* ---- Cinta continua: Empresas atendidas ---- */
+.clients-carousel {
+  position: relative;
+  background: transparent;
+  padding: 8px 0 40px;
+  overflow: hidden;
+}
+
+.clients-marquee {
+  overflow: hidden;
+}
+
+.clients-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: clients-scroll 24s linear infinite;
+}
+
+@keyframes clients-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.client-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 28px;
+  white-space: nowrap;
+}
+
+.client-ico {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  overflow: hidden;
+  color: var(--maroon);
+}
+
+.client-ico img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2px;
+}
+
+.client-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-placeholder svg {
+  width: 75%;
+  height: 75%;
+  opacity: 0.6;
+}
+
+.client-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+/* ---- Equipo — sección negra ---- */
+#equipo {
+  padding: 112px 0;
+}
+
+#equipo .section-head {
+  margin-bottom: 56px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+  gap: 48px;
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+  margin-bottom: 20px;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--paper);
+  letter-spacing: 0.02em;
 }
 
 /* ---- Visión / misión — franja marca en diagonal ---- */

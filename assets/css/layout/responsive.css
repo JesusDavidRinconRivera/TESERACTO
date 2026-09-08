@@ -53,7 +53,14 @@
 
   /* Stats */
   .stat-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 320px));
+    justify-content: center;
+  }
+
+  /* Equipo */
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 300px));
+    gap: 32px;
   }
 
   .stat-item {
@@ -266,6 +273,26 @@
 
   .stat-item {
     padding: 28px 20px;
+  }
+
+  /* Equipo */
+  .team-grid {
+    grid-template-columns: minmax(0, 340px);
+    gap: 40px;
+  }
+
+  .team-name {
+    font-size: 17px;
+  }
+
+  /* Cinta de empresas atendidas */
+  .client-item {
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .client-name {
+    font-size: 14px;
   }
 
   /* Cards */

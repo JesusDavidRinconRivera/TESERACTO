@@ -42,6 +42,7 @@ e95aa00           2026-09-04  v1.4.21   Pequeno  feat: zona confianza a 4 tarjet
 9b7b3f7           2026-09-04  v1.4.21   Pequeno  feat: icono Respuesta rápida cambiado a reloj (Jose)
 8bed77e           2026-09-04  v1.4.22   Pequeno  feat: grid 2x2 compacta en confianza, tarjetas glass 80px, hero sin badges, padding 40
 bebd849           2026-09-04  v1.4.23   Pequeno  feat: cuestionario interactivo de cotización (5 pasos, carrusel) + información de contacto al footer + envío por correo
+PENDIENTE          2026-09-08  v1.4.24   Pequeno  feat: estadísticas centradas, cinta de empresas atendidas (4 clientes), sección Conoce nuestro equipo, botón hero glass, partículas hasta servicios
 
 ----------------------------------------------------------------
  RESUMEN
