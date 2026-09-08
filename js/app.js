@@ -10,6 +10,7 @@ import { initRevealOnScroll } from './ui/revealOnScroll.js';
 import { initAnimations } from './ui/animations.js';
 import { initMobileNav } from './ui/mobileNav.js';
 import { initClientsCarousel } from './ui/clientsCarousel.js';
+import { initWhatsAppWidget } from './ui/whatsappWidget.js';
 import { onReady } from './utils/helpers.js';
 
 /**
@@ -96,6 +97,14 @@ function initApp() {
       console.log('[TESERACTO] ✓ Carrusel de empresas inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar carrusel de empresas:', err);
+    }
+
+    try {
+      // Inicializar widget flotante de WhatsApp
+      initWhatsAppWidget();
+      console.log('[TESERACTO] ✓ Widget de WhatsApp inicializado');
+    } catch (err) {
+      console.warn('[TESERACTO] ✗ Error al inicializar widget de WhatsApp:', err);
     }
 
     console.log('[TESERACTO] ✓ Aplicación completamente inicializada');

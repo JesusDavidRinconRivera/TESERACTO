@@ -88,32 +88,6 @@
   transform: translateY(-2px);
 }
 
-.btn-phone {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.03em;
-  color: var(--maroon);
-  border: 1px solid var(--hair-l2);
-  padding: 9px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: border-color 0.2s, color 0.2s;
-  white-space: nowrap;
-  border-radius: var(--radius-pill);
-}
-
-.btn-phone:hover {
-  border-color: var(--brand);
-  color: var(--brand);
-}
-
-.btn-phone svg {
-  width: 13px;
-  height: 13px;
-  flex: none;
-}
-
 .btn-cta-nav {
   font-family: var(--mono);
   font-size: 12px;

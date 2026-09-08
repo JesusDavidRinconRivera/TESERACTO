@@ -137,10 +137,6 @@
     height: 22px;
   }
 
-  .btn-phone {
-    padding: 10px 12px;
-  }
-
   /* Hero */
   .hero {
     padding: 40px 0 56px;
@@ -414,17 +410,6 @@
     padding-right: 16px;
   }
 
-  .btn-phone .phone-label {
-    display: none;
-  }
-
-  .btn-phone {
-    padding: 10px;
-    min-width: 44px;
-    min-height: 44px;
-    justify-content: center;
-  }
-
   .nav-logo .logo-word {
     display: none;
   }
@@ -463,7 +448,6 @@
   .navlinks a,
   .nav-mobile a,
   .btn,
-  .btn-phone,
   .btn-cta-nav,
   .submit-btn {
     min-height: 44px;
@@ -471,7 +455,6 @@
 
   .btn-solid:hover,
   .btn-outline:hover,
-  .btn-phone:hover,
   .btn-cta-nav:hover {
     transform: none;
   }

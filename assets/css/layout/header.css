@@ -190,20 +190,6 @@ nav.wrap .liquidGlass-shine {
   color: var(--brand);
 }
 
-.nav-mobile-phone {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-  color: var(--ink) !important;
-}
-
-.nav-mobile-phone svg {
-  width: 18px;
-  height: 18px;
-  flex: none;
-}
-
 .nav-mobile-cta {
   margin-top: 20px;
   text-align: center;
