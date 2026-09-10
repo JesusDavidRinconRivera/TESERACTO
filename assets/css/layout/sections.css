@@ -244,6 +244,47 @@
   letter-spacing: 0.02em;
 }
 
+.team-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px auto 0;
+  padding: 8px 16px 8px 12px;
+  color: rgba(242, 244, 243, 0.8);
+  background: rgba(242, 244, 243, 0.08);
+  border: 1px solid rgba(242, 244, 243, 0.2);
+  border-radius: 999px;
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.team-links svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+}
+
+.team-links .team-gh {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+.team-links:hover {
+  color: var(--paper);
+  border-color: rgba(242, 244, 243, 0.6);
+  background: rgba(242, 244, 243, 0.14);
+  transform: translateY(-2px);
+}
+
+.team-links:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+}
+
 /* ---- Visión / misión — franja marca en diagonal ---- */
 .brand-band {
   background: var(--maroon);
