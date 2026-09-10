@@ -1,7 +1,7 @@
 # TESERACTO — Mantenimiento y Software para Empresas
 
 Sitio web moderno y responsivo para la empresa de mantenimiento e infraestructura TESERACTO.  
-Versión actual: **v1.4.16** (rama `Experimentos-Front`)
+Versión actual: **v1.4.25** (rama `Experimentos-Front`)
 
 ## Estructura del Proyecto
 
@@ -174,6 +174,62 @@ Crea un módulo en la carpeta correspondiente e importa en `app.js`.
 El proyecto sigue un esquema manual `v1.4.X`:
 - **X** se incrementa por cada lote de cambios
 - Cada versión incluye: badge en el hero + fila en `VERSIONES.txt` + commit
+
+## ICP — Perfil de Cliente Ideal
+
+> Alineado con el quiz de cotización y las ramas de la página principal.
+
+**Qué es el ICP**: el tipo de empresa que le conviene más a TESERACTO — la que tiene el problema que resolvemos, presupuesto para pagar y más probabilidad de quedarse a largo plazo. Todo el copy, el quiz y las promesas de la web (24/7, respuesta <2h) apuntan a este perfil.
+
+### Perfil central
+
+**Nombre interno**: *"Negocio local en operación con equipos que ya están costando."*
+
+| Atributo | Detalle |
+|---|---|
+| **Rubro** | Restaurantes/hostelería, farmacias, clínicas, hoteles, comercios, producción de eventos y fundaciones |
+| **Ubicación** | Cartagena, Turbaco, Magangué y municipios cercanos |
+| **Tamaño** | 5–80 empleados, 1–4 puntos de operación |
+| **Infraestructura** | Punto de venta, impresión, red y equipos críticos que no pueden parar |
+| **Referencias visibles** | Carmelo Alvis, Club San Sebastián del Pastelillo, Playa Producciones, Fundación Vida Abundante |
+
+### Dolores principales
+- Equipos viejos que se caen en horas pico.
+- Pagos imprevistos y sobreprecios por urgencia y repuestos.
+- No tener visibilidad del estado de sus equipos ("no sé quién responde").
+- Coordinar varios proveedores sin resultados.
+- Software viejo (o ninguno) que no deja crecer.
+
+### Motivos de compra
+- Certeza: respuesta en menos de 2 horas, 24/7.
+- Contrato de mantenimiento simple (prevenir = ahorrar).
+- Un solo proveedor que les haga mantenimiento y software a la medida.
+- Confianza y cercanía local (hablar claro, en persona o virtual).
+
+### Quién decide
+El **dueño o gerente local** (no una central corporativa). Valora la confianza, la referencia y la claridad en el precio.
+
+### Señales de encaje (leads ideales)
+- Ya pagaron soporte/mantenimiento antes y lo sienten caro o lento.
+- Odian el "no tengo a quién llamar" cuando falla algo.
+- Crecen y necesitan un solo proveedor (compran mantenimiento + software).
+- Están en la zona de cobertura (Cartagena, Turbaco, Magangué).
+
+### Mapeo con el quiz de la página
+
+| Rama del quiz | Necesidad | Perfil asociado |
+|---|---|---|
+| **Ahorrar dinero** | Detener fugas de gasto en mantenimiento y fallas | Negocio que ya paga demasiado por urgencias |
+| **Ganar dinero** | Recuperar ventas perdidas por demoras y modernizar | Negocio en crecimiento con software viejo |
+| **Ahorrar tiempo** | Quitar procesos manuales y coordinar menos | Negocio con operación manual y varios proveedores |
+| **Quiero crear una aplicación** | Prototipo a medida (web, ERP, automatización, app móvil) | Dueño con idea clara que quiere construir |
+
+Las 4 ramas son matices de un mismo ICP central: un negocio local que necesita que esto funcione para **no perder dinero ni tiempo**.
+
+### Qué NO es nuestro ICP (por ahora)
+- Grandes corporaciones con IT interno y procesos de compra largos.
+- Clientes fuera de la zona de cobertura sin soporte onsite.
+- Empresas que solo quieren una compra puntual barata sin contrato.
 
 ---
 
