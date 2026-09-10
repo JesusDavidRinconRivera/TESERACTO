@@ -92,6 +92,7 @@
   margin-bottom: 26px;
   font-family: var(--display);
   color: var(--paper);
+  text-align: center;
 }
 
 .field {
@@ -297,6 +298,10 @@
 
 .quiz-opts[data-cols="2"] {
   grid-template-columns: 1fr 1fr;
+}
+
+.quiz-opts[data-cols="3"] {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .quiz-opt {

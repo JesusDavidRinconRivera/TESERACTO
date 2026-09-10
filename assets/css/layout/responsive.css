@@ -366,7 +366,8 @@
     word-break: break-word;
   }
 
-  .quiz-opts[data-cols="2"] {
+  .quiz-opts[data-cols="2"],
+  .quiz-opts[data-cols="3"] {
     grid-template-columns: 1fr;
   }
 

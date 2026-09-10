@@ -95,6 +95,15 @@
 
   <!-- CSS — RESPONSIVE (debe cargar al final) -->
   <link rel="stylesheet" href="assets/css/layout/responsive.css">
+
+  <!-- Import map — Motion (animaciones en JavaScript) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "motion": "https://cdn.jsdelivr.net/npm/motion@13.2.0/+esm"
+    }
+  }
+  </script>
 </head>
 <body>
 <!-- SVG Icons -->
@@ -506,7 +515,7 @@
             <!-- Paso 1: objetivo principal (definir rama) -->
             <section class="quiz-step" data-step="1" aria-label="Paso 1 de 5">
               <div class="quiz-q">¿Qué quieres lograr en tu empresa?</div>
-              <div class="quiz-opts" data-cols="1" id="opts1"></div>
+              <div class="quiz-opts" data-cols="2" id="opts1"></div>
             </section>
 
             <!-- Paso 2: primera sub-pregunta (dinámica según rama) -->

@@ -21,12 +21,23 @@ const BRANCHES = {
     q2: '¿Qué evita que ganes más dinero?',
     opts2: [
       'Procesos manuales que ralentizan mi operación',
-      'No tengo visibilidad en tiempo real',
       'Pérdida de clientes por demoras en servicio',
       'Mi software es viejo y no me deja crecer',
     ],
     q3: '¿Qué tan urgente es resolverlo?',
     opts3: ['Ya perdimos dinero', 'Este mes', 'Este trimestre', 'Estoy planificando'],
+  },
+  app: {
+    label: 'Quiero crear una aplicación',
+    q2: '¿Qué idea quieres construir?',
+    opts2: [
+      'Plataforma web',
+      'Sistema de gestión / ERP',
+      'Automatización',
+      'App móvil',
+    ],
+    q3: '¿Qué tan pronto necesitas tenerla lista?',
+    opts3: ['Urgentemente', 'Este mes', 'Este trimestre', 'Estoy explorando ideas'],
   },
   tiempo: {
     label: 'Ahorrar tiempo',
