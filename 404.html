@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | TESERACTO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #0A0908;
+      --paper: #F2F4F3;
+      --ink: #0A0908;
+      --fog: #706A66;
+      --maroon: #0E3A8B;
+      --particle: #595959;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: var(--paper);
+    }
+
+    .glass-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    /* Tarjeta glass transparente (igual que los contenedores de la página principal) */
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 48px 40px;
+      border-radius: 24px;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: min(720px, 92vw);
+      width: 100%;
+    }
+
+    .liquidGlass-effect {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      filter: url(#glass-distortion);
+      overflow: hidden;
+      isolation: isolate;
+      pointer-events: none;
+    }
+
+    .liquidGlass-tint {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.45);
+      pointer-events: none;
+    }
+
+    .liquidGlass-shine {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      overflow: hidden;
+      box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+        inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+    }
+
+    .glass-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .code-wrap {
+      position: relative;
+      user-select: none;
+    }
+
+    .glitch {
+      position: relative;
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(96px, 20vw, 200px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--maroon);
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      -webkit-text-stroke: 0 transparent;
+    }
+
+    .glitch::before {
+      color: rgba(14, 58, 139, 0.18);
+      transform: translate(-6px, 4px);
+    }
+
+    .glitch::after {
+      color: rgba(89, 89, 89, 0.14);
+      transform: translate(6px, -4px);
+    }
+
+    h1.status {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 600;
+      font-size: clamp(18px, 2.6vw, 24px);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    p.desc {
+      max-width: 46ch;
+      color: var(--fog);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #fff;
+      background: var(--maroon);
+      padding: 14px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); background: #154BC2; }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .foot {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--fog);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glitch::before, .glitch::after { content: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <!-- Tutorial SVG filtro de distorsión para liquid glass (idéntico al de la página principal) -->
+  <svg style="display: none" aria-hidden="true">
+    <filter
+      id="glass-distortion"
+      x="0%"
+      y="0%"
+      width="100%"
+      height="100%"
+      filterUnits="objectBoundingBox"
+    >
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.01 0.01"
+        numOctaves="1"
+        seed="5"
+        result="turbulence"
+      />
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+      <feSpecularLighting
+        in="softMap"
+        surfaceScale="5"
+        specularConstant="1"
+        specularExponent="100"
+        lighting-color="white"
+        result="specLight"
+      >
+        <fePointLight x="-200" y="-200" z="300" />
+      </feSpecularLighting>
+      <feComposite
+        in="specLight"
+        operator="arithmetic"
+        k1="0"
+        k2="1"
+        k3="1"
+        k4="0"
+        result="litImage"
+      />
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="softMap"
+        scale="150"
+        xChannelSelector="R"
+        yChannelSelector="G"
+      />
+    </filter>
+  </svg>
+
+  <div class="glass-layer">
+    <div class="glass-card">
+      <div class="liquidGlass-effect" aria-hidden="true"></div>
+      <div class="liquidGlass-tint" aria-hidden="true"></div>
+      <div class="liquidGlass-shine" aria-hidden="true"></div>
+      <div class="glass-content">
+        <div class="code-wrap">
+          <div class="glitch" data-text="404" aria-hidden="true">404</div>
+        </div>
+        <h1 class="status">Página no encontrada</h1>
+        <p class="desc">La página que buscas no existe, fue movida o nunca estuvo aquí. Tu negocio sigue en marcha: vuelve al inicio o escríbenos y lo resolvemos.</p>
+        <a class="btn" href="/">Volver al inicio</a>
+      </div>
+    </div>
+    <div class="foot">TESERACTO · Mantenimiento y Software para Empresas</div>
+  </div>
+
+  <!-- Mismo particles.js del proyecto principal (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 50, density: { enable: true, value_area: 800 } },
+            color: { value: '#595959' },
+            shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 4 }, image: { src: 'img/github.svg', width: 100, height: 100 } },
+            opacity: { value: 1, random: true, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+            size: { value: 12.298408585928971, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+            line_linked: { enable: false, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'bubble' }, onclick: { enable: true, mode: 'repulse' }, resize: true },
+            modes: {
+              grab: { distance: 400, line_linked: { opacity: 1 } },
+              bubble: { distance: 211.8239286277962, size: 10, duration: 2, opacity: 8, speed: 3 },
+              repulse: { distance: 200, duration: 0.4 },
+              push: { particles_nb: 4 },
+              remove: { particles_nb: 2 }
+            }
+          },
+          retina_detect: true
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -113,11 +113,23 @@ TESERACTO/
 | **Inter** | `--body` | Texto general |
 | **JetBrains Mono** | `--mono` | Eyebrows, badges, labels, código |
 
+## Skills usadas en el proyecto
+
+- `ui-ux-pro-max`
+- `design-taste-frontend`
+- `banner-design`
+- `brand`
+- `design`
+- `design-system`
+- `slides`
+- `ui-styling`
+
 ## Dependencias
 
 - **Three.js** (CDN) — Cubo 3D isométrico
 - **particles.js** (CDN) — Partículas carmesí en el hero
 - **Google Fonts** — Unbounded, Inter, JetBrains Mono
+- **Google Analytics (GA4)** — Medición de tráfico y eventos de conversión (etiqueta gtag `G-QLK7B30SC0` en el `<head>` de todas las páginas: `index.html`, `servicios.html`, `paleta.html`, `lab-confianza.html`, `lab-contacto.html`, `lab-contacto-buena.html`)
 
 ## Características Principales
 

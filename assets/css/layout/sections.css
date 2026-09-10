@@ -340,3 +340,23 @@
   color: var(--fog);
   line-height: 1.6;
 }
+
+.promise {
+  max-width: 44ch;
+  margin: 0 auto 56px;
+  text-align: center;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.promise em {
+  font-style: normal;
+  color: var(--maroon);
+  background: linear-gradient(180deg, transparent 62%, rgba(73, 17, 28, 0.14) 62%);
+  white-space: nowrap;
+}
