@@ -12,15 +12,26 @@
 .pillar-card {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar-card.is-open {
+  border-color: rgba(255, 255, 255, 0.32);
 }
 
 .pillar-card .pillar-content {
   position: relative;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 48px 44px;
 }
 
@@ -63,6 +74,82 @@
   margin-top: 6px;
   flex: none;
   background: var(--paper);
+}
+
+/* ---- Toggle: flecha para desplegar más servicios ---- */
+.pillar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: auto;
+  margin: auto auto 6px;
+  padding: 18px 24px 8px;
+  background: none;
+  border: none;
+  color: rgba(242, 244, 243, 0.75);
+  cursor: pointer;
+}
+
+.pillar-toggle:hover .arrow-icon,
+.pillar-toggle:focus-visible .arrow-icon {
+  color: var(--paper);
+}
+
+.pillar-toggle:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.pillar-toggle .arrow-icon {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: rgba(242, 244, 243, 0.75);
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), color 0.2s ease;
+  animation: arrow-bob 1.8s ease-in-out infinite;
+}
+
+.pillar-card.is-open .pillar-toggle .arrow-icon {
+  transform: rotate(180deg);
+  animation: none;
+}
+
+@keyframes arrow-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.pillar-more {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.35s ease;
+}
+
+.pillar-card.is-open .pillar-more {
+  opacity: 1;
+}
+
+.pillar-more-inner {
+  padding-top: 18px;
+}
+
+.pillar-more-inner ul {
+  gap: 13px;
+}
+
+.pillar-more-inner li {
+  color: rgba(242, 244, 243, 0.68);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-more,
+  .pillar-toggle .arrow-icon {
+    transition: none;
+    animation: none;
+  }
 }
 
 /* ---- Tarjetas de confianza — carpetas estilo Windows ---- */
