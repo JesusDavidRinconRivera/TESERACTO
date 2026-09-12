@@ -94,10 +94,6 @@
   .process::before {
     display: none;
   }
-
-  .field-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ---- Mobile (≤560px) ---- */
@@ -293,8 +289,7 @@
 
   /* Cards */
   .pillar-card .pillar-content,
-  .contact-info,
-  .contact-form {
+  .contact-info {
     padding: 28px 22px;
   }
 
@@ -346,8 +341,7 @@
   }
 
   /* Contacto */
-  .contact-info h3,
-  .contact-form h3 {
+  .contact-info h3 {
     font-size: 19px;
   }
 
@@ -364,21 +358,6 @@
   .contact-line .value {
     font-size: 14px;
     word-break: break-word;
-  }
-
-  .quiz-opts[data-cols="2"],
-  .quiz-opts[data-cols="3"] {
-    grid-template-columns: 1fr;
-  }
-
-  .quiz-actions {
-    flex-direction: column;
-  }
-
-  .field input,
-  .field textarea {
-    font-size: 16px;
-    padding: 14px;
   }
 
   /* Footer */
@@ -430,7 +409,6 @@
 
   .pillar-card,
   .contact-info,
-  .contact-form,
   .tp-card {
     padding: 22px 18px;
   }
@@ -449,8 +427,7 @@
   .navlinks a,
   .nav-mobile a,
   .btn,
-  .btn-cta-nav,
-  .submit-btn {
+  .btn-cta-nav {
     min-height: 44px;
   }
 
