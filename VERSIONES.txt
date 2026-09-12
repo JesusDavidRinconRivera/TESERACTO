@@ -6,8 +6,8 @@
    Z = cantidad de cambios PEQUENOS
 ================================================================
 
-Version actual: 1.4.23
-(4 cambios grandes, 23 cambios pequenos)
+Version actual: 1.4.32
+(4 cambios grandes, 32 cambios pequenos)
 
 ---------------------------------------------------------------
 Commit            Fecha       Version   Tipo     Descripcion
@@ -42,8 +42,15 @@ e95aa00           2026-09-04  v1.4.21   Pequeno  feat: zona confianza a 4 tarjet
 9b7b3f7           2026-09-04  v1.4.21   Pequeno  feat: icono Respuesta rápida cambiado a reloj (Jose)
 8bed77e           2026-09-04  v1.4.22   Pequeno  feat: grid 2x2 compacta en confianza, tarjetas glass 80px, hero sin badges, padding 40
 bebd849           2026-09-04  v1.4.23   Pequeno  feat: cuestionario interactivo de cotización (5 pasos, carrusel) + información de contacto al footer + envío por correo
-PENDIENTE          2026-09-08  v1.4.24   Pequeno  feat: estadísticas centradas, cinta de empresas atendidas (4 clientes), sección Conoce nuestro equipo, botón hero glass, partículas hasta servicios
-PENDIENTE          2026-09-08  v1.4.25   Pequeno  feat: widget flotante de WhatsApp (esquina inferior izquierda) con ventana de chat, se quita el botón de WhatsApp del navbar
+49fd912           2026-09-08  v1.4.24   Pequeno  feat: estadísticas centradas, cinta de empresas atendidas, sección Conoce nuestro equipo, botón hero glass, partículas hasta servicios
+f382256           2026-09-08  v1.4.25   Pequeno  feat: widget flotante de WhatsApp (esquina inferior izquierda) con ventana de chat, se quita el botón de WhatsApp del navbar
+8982879           2026-09-09  v1.4.26   Pequeno  feat: rama 'Quiero crear una aplicación' en el quiz, opciones horizontales (2x2), título del formulario centrado, página standalone servicios.html, dependencia motion (package.json) y .gitignore
+4f87c68           2026-09-10  v1.4.27   Pequeno  feat: etiqueta GA4 en las 6 páginas, Twitter Card, sección Cómo trabajamos rediseñada (beneficios/entregables/garantía/bonos), promesa destacada con highlight, página 404 con particles.js + liquid glass, README con skills usadas
+21d12be           2026-09-10  v1.4.28   Pequeno  feat: links de GitHub con usuario visible en el equipo (JRarc201, JesusDavidRinconRivera), corrección nombre Canedo, carrusel con Audiprosalud S.A.S, toggle con flecha en tarjeta de software, se quita estadística +3 años y div huérfano
+444205a           2026-09-11  v1.4.29   Pequeno  feat: carrusel con placeholder SVG estable (sin pop/imagen rota), logo real con fade-in, flechas centradas en servicios con toggle equalize, fix identidad GitHub y nombre Canedo
+f1b2cd6           2026-09-11  v1.4.30   Pequeno  fix: botón Solicitar cotización idéntico al navbar — sin borde y shine sin sombra interna
+6701f2b           2026-09-11  v1.4.31   Pequeno  feat: menú móvil con liquid glass — capas effect/tint/shine como en el navbar
+fb9c237           2026-09-12  v1.4.32   Pequeno  feat: rediseño Solicita tu cotización integrado al sitio — glass panel, carrusel 5 pasos, pips, botones grandes con texto centrado, sin scroll; cotizacion-preview.html como referencia
 
 ----------------------------------------------------------------
  RESUMEN
@@ -68,10 +75,25 @@ Cambios PEQUENOS (bump de Z):
   11. v1.4.11 0ac34c8 — Badge del hero muestra el mensaje del commit; scrollbar oculta hasta hover del borde derecho
   12. v1.4.12 9abebaa — Partículas carmesí en el hero (particles.js)
   13. v1.4.13 cda6007 — Liquid glass en navbar/stats, firma Tech, fix centrado cubo, paleta.html
-  14. v1.4.14 b9a18a0 — Pickers de color --ember/--maroon, header invertido, glass en paleta.html
-  15. v1.4.15 d6b7845 — Pillar cards glass + particulas en servicios, textos maroon, ovalo ember, encabezado centrado
-  16. v1.4.16 b7fd949 — Tarjetas de confianza como carpetas Windows (pestaña sobresaliente, iconos flotantes --ember)
-  17. v1.4.17 3b75d29 — README actualizado, variables azul/gris, eyebrows sin puntos
+14. v1.4.14 b9a18a0 — Pickers de color --ember/--maroon, header invertido, glass en paleta.html
+   15. v1.4.15 d6b7845 — Pillar cards glass + particulas en servicios, textos maroon, ovalo ember, encabezado centrado
+   16. v1.4.16 b7fd949 — Tarjetas de confianza como carpetas Windows (pestaña sobresaliente, iconos flotantes --ember)
+   17. v1.4.17 3b75d29 — README actualizado, variables azul/gris, eyebrows sin puntos
+   18. v1.4.18 ba1e860 — Laboratorio de cotización interactiva (lab-contacto.html)
+   19. v1.4.19 ea9f9b1 — Contenido actualizado, contacto al footer, partículas hero hasta el top
+   20. v1.4.20 5265b79 — Glassmorphism en tarjetas, partículas solo en hero
+   21. v1.4.21 e616e54 — Animación hero primera visita, sin backdrop-filter en servicios
+   22. v1.4.22 8bed77e — Grid 2x2 confianza, tarjetas glass 80px, hero sin badges, padding 40
+   23. v1.4.23 bebd849 — Cuestionario interactivo de cotización (5 pasos, carrusel)
+   24. v1.4.24 49fd912 — Estadísticas centradas, cinta de empresas, sección equipo, hero glass
+   25. v1.4.25 f382256 — Widget flotante de WhatsApp con ventana de chat
+   26. v1.4.26 8982879 — Rama 'Quiero crear una aplicación' en quiz, opciones 2x2, servicios.html, motion
+   27. v1.4.27 4f87c68 — GA4, Twitter Card, Cómo trabajamos rediseñada, 404 particles, README
+   28. v1.4.28 21d12be — Links GitHub visibles, carrusel Audiprosalud, toggle software
+   29. v1.4.29 444205a — Carrusel SVG estable, logo fade-in, flechas centradas
+   30. v1.4.30 f1b2cd6 — Botón Solicitar cotización idéntico al navbar
+   31. v1.4.31 6701f2b — Menú móvil con liquid glass
+   32. v1.4.32 fb9c237 — Rediseño 'Solicita tu cotización' integrado (glass, 5 pasos, sin scroll)
 
 ================================================================
  COMO BUMPEAR LA VERSION
