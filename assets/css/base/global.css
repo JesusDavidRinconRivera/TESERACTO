@@ -24,6 +24,11 @@
   color: var(--paper);
 }
 
+.on-void-team {
+  background: #000000;
+  color: var(--paper);
+}
+
 /* ---- Fondo — grid isométrico sutil, solo textura, nunca protagonista ---- */
 .grid-field {
   position: absolute;

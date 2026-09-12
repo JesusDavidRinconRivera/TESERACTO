@@ -1,0 +1,22 @@
+{
+  "name": "teseracto",
+  "version": "1.0.0",
+  "description": "Sitio web moderno y responsivo para la empresa de mantenimiento e infraestructura TESERACTO.   Versión actual: **v1.4.16** (rama `Experimentos-Front`)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusDavidRinconRivera/TESERACTO.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JesusDavidRinconRivera/TESERACTO/issues"
+  },
+  "homepage": "https://github.com/JesusDavidRinconRivera/TESERACTO#readme",
+  "dependencies": {
+    "motion": "^13.2.0"
+  }
+}

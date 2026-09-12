@@ -53,7 +53,14 @@
 
   /* Stats */
   .stat-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 320px));
+    justify-content: center;
+  }
+
+  /* Equipo */
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 300px));
+    gap: 32px;
   }
 
   .stat-item {
@@ -86,10 +93,6 @@
 
   .process::before {
     display: none;
-  }
-
-  .field-row {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -128,10 +131,6 @@
   .nav-logo .logo-mark svg {
     width: 22px;
     height: 22px;
-  }
-
-  .btn-phone {
-    padding: 10px 12px;
   }
 
   /* Hero */
@@ -268,10 +267,29 @@
     padding: 28px 20px;
   }
 
+  /* Equipo */
+  .team-grid {
+    grid-template-columns: minmax(0, 340px);
+    gap: 40px;
+  }
+
+  .team-name {
+    font-size: 17px;
+  }
+
+  /* Cinta de empresas atendidas */
+  .client-item {
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .client-name {
+    font-size: 14px;
+  }
+
   /* Cards */
   .pillar-card .pillar-content,
-  .contact-info,
-  .contact-form {
+  .contact-info {
     padding: 28px 22px;
   }
 
@@ -323,8 +341,7 @@
   }
 
   /* Contacto */
-  .contact-info h3,
-  .contact-form h3 {
+  .contact-info h3 {
     font-size: 19px;
   }
 
@@ -341,20 +358,6 @@
   .contact-line .value {
     font-size: 14px;
     word-break: break-word;
-  }
-
-  .quiz-opts[data-cols="2"] {
-    grid-template-columns: 1fr;
-  }
-
-  .quiz-actions {
-    flex-direction: column;
-  }
-
-  .field input,
-  .field textarea {
-    font-size: 16px;
-    padding: 14px;
   }
 
   /* Footer */
@@ -387,17 +390,6 @@
     padding-right: 16px;
   }
 
-  .btn-phone .phone-label {
-    display: none;
-  }
-
-  .btn-phone {
-    padding: 10px;
-    min-width: 44px;
-    min-height: 44px;
-    justify-content: center;
-  }
-
   .nav-logo .logo-word {
     display: none;
   }
@@ -417,7 +409,6 @@
 
   .pillar-card,
   .contact-info,
-  .contact-form,
   .tp-card {
     padding: 22px 18px;
   }
@@ -436,15 +427,12 @@
   .navlinks a,
   .nav-mobile a,
   .btn,
-  .btn-phone,
-  .btn-cta-nav,
-  .submit-btn {
+  .btn-cta-nav {
     min-height: 44px;
   }
 
   .btn-solid:hover,
   .btn-outline:hover,
-  .btn-phone:hover,
   .btn-cta-nav:hover {
     transform: none;
   }

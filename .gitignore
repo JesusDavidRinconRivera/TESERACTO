@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+.DS_Store
+
+# Skill local de opencode (IA), no es parte del sitio
+.opencode/
