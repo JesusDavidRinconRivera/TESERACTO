@@ -51,6 +51,14 @@ p.lead {
   color: var(--fog);
   font-size: 16.5px;
   line-height: 1.75;
+  text-align: center;
+}
+
+p.ref { 
+  max-width: 52ch;
+  color: var(--fog);
+  font-size: 14px;
+  text-align: center;
 }
 
 .eyebrow {
