@@ -12,11 +12,11 @@ import { TOTAL_END } from '../cube/cubeAnimation.js';
  * (Nota: La lógica principal está en cube.js, pero esta función
  * puede usarse para ajustes adicionales si es necesario)
  */
-export function initHeroLogoReveal() {
+export function initHeroLogoReveal(skipAnimation = false) {
   const logoRow = document.getElementById(CONSTANTS.LOGO_ROW_ID);
   if (!logoRow) return;
 
-  const reducedMotion = prefersReducedMotion();
+  const reducedMotion = prefersReducedMotion() || skipAnimation;
   const revealDelayMs = reducedMotion ? 60 : (TOTAL_END * 1000 + CONSTANTS.REVEAL_DELAY_MS);
 
   // Inicializa el timeout

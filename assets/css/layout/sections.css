@@ -2,24 +2,25 @@
    SECCIONES GENERALES
 ============================================================ */
 
-/* ---- Servicios — dentro del área de partículas ---- */
+/* ---- Servicios ---- */
 #servicios {
   position: relative;
   z-index: 1;
-  background: transparent;
 }
 
 #servicios .section-head {
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
-/* Centrar el bloque interno (eyebrow sobre el h2) */
+
+
+/* Alinear el bloque interno (eyebrow sobre el h2) a la izquierda */
 #servicios .section-head > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #servicios .eyebrow::before {
@@ -27,11 +28,11 @@
 }
 
 #servicios .section-head .note {
-  text-align: center;
+  text-align: left;
   max-width: none;
 }
 
-/* Párrafo 1 en un solo renglón en pantallas anchas */
+/* Párrafo 2 en un solo renglón en pantallas anchas */
 @media (min-width: 900px) {
   #servicios .section-head .note p:first-child {
     white-space: nowrap;
@@ -56,7 +57,8 @@
 
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
   gap: 16px;
 }
 
@@ -120,6 +122,184 @@
   letter-spacing: 0.06em;
   margin-top: 8px;
   text-transform: uppercase;
+}
+
+/* ---- Cinta continua: Empresas atendidas ---- */
+.clients-carousel {
+  position: relative;
+  background: transparent;
+  padding: 8px 0 40px;
+  overflow: hidden;
+}
+
+.clients-marquee {
+  overflow: hidden;
+}
+
+.clients-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: clients-scroll 24s linear infinite;
+}
+
+@keyframes clients-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.client-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 28px;
+  white-space: nowrap;
+}
+
+.client-ico {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  overflow: hidden;
+  color: var(--maroon);
+}
+
+.client-ico img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 2px;
+  animation: client-logo-in 0.45s ease;
+}
+
+@keyframes client-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.client-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-placeholder svg {
+  width: 75%;
+  height: 75%;
+  opacity: 0.6;
+}
+
+.client-name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+/* ---- Equipo — sección negra ---- */
+#equipo {
+  padding: 112px 0;
+}
+
+#equipo .section-head {
+  margin-bottom: 56px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+  gap: 48px;
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+  margin-bottom: 20px;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--paper);
+  letter-spacing: 0.02em;
+}
+
+.team-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px auto 0;
+  padding: 8px 16px 8px 12px;
+  color: rgba(242, 244, 243, 0.8);
+  background: rgba(242, 244, 243, 0.08);
+  border: 1px solid rgba(242, 244, 243, 0.2);
+  border-radius: 999px;
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.team-links svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+}
+
+.team-links .team-gh {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+.team-links:hover {
+  color: var(--paper);
+  border-color: rgba(242, 244, 243, 0.6);
+  background: rgba(242, 244, 243, 0.14);
+  transform: translateY(-2px);
+}
+
+.team-links:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
 }
 
 /* ---- Visión / misión — franja marca en diagonal ---- */
@@ -217,4 +397,24 @@
   font-size: 13.6px;
   color: var(--fog);
   line-height: 1.6;
+}
+
+.promise {
+  max-width: 44ch;
+  margin: 0 auto 56px;
+  text-align: left;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.promise em {
+  font-style: normal;
+  color: var(--maroon);
+  background: linear-gradient(180deg, transparent 62%, rgba(73, 17, 28, 0.14) 62%);
+  white-space: nowrap;
 }

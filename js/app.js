@@ -5,10 +5,12 @@
 import { initCube } from './cube/cube.js';
 import { initHeroLogoReveal } from './brand/heroLogoReveal.js';
 import { initHeroBackground } from './hero/heroBackground.js';
-import { initContactForm } from './forms/contactForm.js';
+import { initQuiz } from './forms/quiz.js';
 import { initRevealOnScroll } from './ui/revealOnScroll.js';
 import { initAnimations } from './ui/animations.js';
 import { initMobileNav } from './ui/mobileNav.js';
+import { initClientsCarousel } from './ui/clientsCarousel.js';
+import { initWhatsAppWidget } from './ui/whatsappWidget.js';
 import { onReady } from './utils/helpers.js';
 
 /**
@@ -19,9 +21,23 @@ function initApp() {
   onReady(() => {
     console.log('[TESERACTO] Inicializando aplicación...');
 
+    // La animación del hero se muestra solo en la primera visita por navegador
+    const VISITED_KEY = 'teseracto_visto';
+    let isFirstVisit = false;
+    try {
+      isFirstVisit = localStorage.getItem(VISITED_KEY) === null;
+      if (isFirstVisit) {
+        localStorage.setItem(VISITED_KEY, '1');
+      }
+    } catch (err) {
+      console.warn('[TESERACTO] No se pudo acceder a localStorage:', err);
+    }
+    const skipAnimation = !isFirstVisit;
+    console.log('[TESERACTO] Primera visita:', isFirstVisit, '| skipAnimation:', skipAnimation);
+
     try {
       // Inicializar cube (Three.js)
-      initCube();
+      initCube(skipAnimation);
       console.log('[TESERACTO] ✓ Cubo inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar cubo:', err);
@@ -29,7 +45,7 @@ function initApp() {
 
     try {
       // Inicializar logo reveal
-      initHeroLogoReveal();
+      initHeroLogoReveal(skipAnimation);
       console.log('[TESERACTO] ✓ Logo reveal inicializado');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar logo reveal:', err);
@@ -44,11 +60,11 @@ function initApp() {
     }
 
     try {
-      // Inicializar contact form
-      initContactForm();
-      console.log('[TESERACTO] ✓ Formulario de contacto inicializado');
+      // Inicializar cuestionario de cotización (6 pasos)
+      initQuiz();
+      console.log('[TESERACTO] ✓ Cuestionario de cotización inicializado');
     } catch (err) {
-      console.warn('[TESERACTO] ✗ Error al inicializar formulario:', err);
+      console.warn('[TESERACTO] ✗ Error al inicializar cuestionario:', err);
     }
 
     try {
@@ -73,6 +89,22 @@ function initApp() {
       console.log('[TESERACTO] ✓ Animaciones inicializadas');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar animaciones:', err);
+    }
+
+    try {
+      // Inicializar carrusel de empresas atendidas
+      initClientsCarousel();
+      console.log('[TESERACTO] ✓ Carrusel de empresas inicializado');
+    } catch (err) {
+      console.warn('[TESERACTO] ✗ Error al inicializar carrusel de empresas:', err);
+    }
+
+    try {
+      // Inicializar widget flotante de WhatsApp
+      initWhatsAppWidget();
+      console.log('[TESERACTO] ✓ Widget de WhatsApp inicializado');
+    } catch (err) {
+      console.warn('[TESERACTO] ✗ Error al inicializar widget de WhatsApp:', err);
     }
 
     console.log('[TESERACTO] ✓ Aplicación completamente inicializada');

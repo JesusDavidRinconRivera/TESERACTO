@@ -6,16 +6,19 @@
   position: relative;
 }
 
+.hero-zone {
+  position: relative;
+}
+
 #particles-js {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  top: calc(-1 * var(--header-h, 60px));
 }
 
 .hero {
-  padding: 32px 0 100px;
+  padding: 32px 0 40px;
   text-align: center;
   background: var(--paper);
   color: var(--ink);

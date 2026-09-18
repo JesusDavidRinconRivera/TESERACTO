@@ -1,10 +1,27 @@
 /* ============================================================
    FORMULARIOS Y CONTACTO
-============================================================ */
+   Sección "Solicita tu cotización" rediseñada (quiz interactivo).
+   La información de contacto mantiene su diseño original.
+   El JS de lógica y envío (/js/forms/*) NO se toca.
+   ============================================================ */
 
+/* ------------------------------------------------------------
+   1. TOKENS derivados solo para el bloque de cotización
+   (mismos colores base de variables.css — no se inventan)
+   ------------------------------------------------------------ */
+:root {
+  --qz-maroon-glow: rgba(14, 58, 139, 0.35);
+  --qz-danger: #E6533C;   /* variante de alerta sobre --ember, únicamente para error */
+  --qz-success: #3FAE6B;
+  --qz-ease: cubic-bezier(.65, 0, .35, 1);
+}
+
+/* ------------------------------------------------------------
+   2. Grid de contacto
+   ------------------------------------------------------------ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 1px;
   background: var(--hair-d);
   border: 1px solid var(--hair-d);
@@ -12,6 +29,9 @@
   overflow: hidden;
 }
 
+/* ------------------------------------------------------------
+   3. Información de contacto (diseño original)
+   ------------------------------------------------------------ */
 .contact-info {
   background: var(--void);
   padding: 50px 46px;
@@ -80,107 +100,556 @@
   color: var(--ember);
 }
 
-/* ---- Formulario ---- */
+/* ------------------------------------------------------------
+   4. .contact-form — panel "glass" oscuro
+   ------------------------------------------------------------ */
 .contact-form {
-  background: var(--void-2);
-  padding: 50px 46px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 56px 40px 52px;
+  background:
+    linear-gradient(180deg, rgba(242, 244, 243, 0.05), rgba(242, 244, 243, 0.02)),
+    var(--void-2);
+  border: 1px solid var(--hair-d);
   border-radius: var(--radius-lg);
-}
-
-.contact-form h3 {
-  font-size: 22px;
-  margin-bottom: 26px;
-  font-family: var(--display);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+  font-family: var(--body);
   color: var(--paper);
+  overflow: hidden;
 }
 
+/* resplandor sutil de fondo, quieto */
+.contact-form::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--qz-maroon-glow), transparent 70%);
+  pointer-events: none;
+}
+
+.contact-form > h2,
+.contact-form > h3 {
+  position: relative;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+  line-height: 1.25;
+  color: var(--paper);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   5. #quiz — contenedor del cuestionario
+   ------------------------------------------------------------ */
+#quiz {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* #quiz se extiende hasta #quizProgress: el viewport queda arriba,
+     luego 10px de separación, el progreso y 10px de padding bajo él */
+  padding-bottom: 28px;
+}
+
+/* ------------------------------------------------------------
+   6. #quizProgress y .pip — progreso de pasos
+   ------------------------------------------------------------ */
+#quizProgress {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 4;
+}
+
+.pip {
+  --pip-size: 8px;
+  position: relative;
+  width: var(--pip-size);
+  height: var(--pip-size);
+  border-radius: var(--radius-pill);
+  background: var(--hair-d2);
+  transition: width .35s var(--qz-ease), background .35s ease, box-shadow .35s ease;
+}
+
+/* paso actual: se alarga en vez de solo cambiar de color */
+.pip.is-active {
+  width: 26px;
+  background: var(--maroon-2);
+  box-shadow: 0 0 0 4px var(--qz-maroon-glow);
+}
+
+.pip.is-done {
+  background: var(--paper);
+  opacity: .7;
+}
+
+/* ------------------------------------------------------------
+   7. #quizViewport y .quiz-step — carrusel de pasos
+   ------------------------------------------------------------ */
+#quizViewport {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden; /* el alto lo garantiza min-height (sin barra de scroll) */
+  min-height: 330px;
+}
+
+.quiz-step {
+  display: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(0);
+  transition: transform .5s var(--qz-ease), opacity .4s ease;
+  pointer-events: none;
+}
+
+/* paso activo: ocupa exactamente el tamaño de #quizViewport y centra
+   su contenido (pregunta + botones) verticalmente para no desbordarse */
+.quiz-step.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* punto de partida de un paso que ENTRA (sin transición, salto instantáneo) */
+.quiz-step.is-from-right {
+  display: block;
+  visibility: visible;
+  position: absolute;
+  transform: translateX(48px);
+  opacity: 0;
+  transition: none;
+}
+
+.quiz-step.is-from-left {
+  display: block;
+  visibility: visible;
+  position: absolute;
+  transform: translateX(-48px);
+  opacity: 0;
+  transition: none;
+}
+
+/* punto de llegada de un paso que SALE (con transición) */
+.quiz-step.is-to-right {
+  display: block;
+  visibility: visible;
+  position: absolute;
+  transform: translateX(48px);
+  opacity: 0;
+  transition: transform .45s var(--qz-ease), opacity .35s ease;
+  pointer-events: none;
+}
+
+.quiz-step.is-to-left {
+  display: block;
+  visibility: visible;
+  position: absolute;
+  transform: translateX(-48px);
+  opacity: 0;
+  transition: transform .45s var(--qz-ease), opacity .35s ease;
+  pointer-events: none;
+}
+
+/* cuando is-active coincide con is-from-*, gana el estado final (0 / opacity 1) */
+.quiz-step.is-from-right.is-active,
+.quiz-step.is-from-left.is-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform .5s var(--qz-ease), opacity .4s ease;
+}
+
+.quiz-step > .quiz-back + * {
+  margin-top: 0;
+}
+
+/* ------------------------------------------------------------
+   8. .quiz-back — volver (insertado por quiz.js dentro de cada paso)
+   ------------------------------------------------------------ */
+.quiz-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 12px 20px 12px 16px;
+  background: rgba(242, 244, 243, 0.05);
+  border: 1px solid var(--hair-d);
+  border-top: none;
+  border-right: none;
+  border-radius: 0 var(--radius-lg) 0 var(--radius-md);
+  font-family: var(--body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--mist);
+  cursor: pointer;
+  z-index: 6;
+}
+
+.quiz-back:hover {
+  color: var(--paper);
+  background: rgba(21, 75, 194, 0.14);
+}
+
+.quiz-back:focus-visible {
+  outline: 2px solid var(--maroon-2);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------
+   9. .quiz-q — enunciado de la pregunta
+   ------------------------------------------------------------ */
+.quiz-q {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  line-height: 1.35;
+  color: var(--paper);
+  text-align: center;
+  margin: 0 auto 20px;
+  max-width: 34ch;
+}
+
+/* el título del paso 1 usa el mismo tratamiento tipográfico */
+.quiz-step[data-step="1"] > p,
+.quiz-step[data-step="1"] > .quiz-q {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+  line-height: 1.35;
+  color: var(--paper);
+  text-align: center;
+  margin: 0 auto 20px;
+  max-width: 34ch;
+}
+
+/* ------------------------------------------------------------
+   10. .quiz-opts / .quiz-opt — opciones de respuesta
+   ------------------------------------------------------------ */
+.quiz-opts {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+  /* el contenedor de los botones se estira hacia abajo y los botones
+     llenan su área: cada fila reparte el alto disponible */
+  align-content: stretch;
+  grid-auto-rows: 1fr;
+  min-height: 280px;
+}
+
+.quiz-opts[data-cols="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%; /* el botón llena su celda (tamaño anclado al quiz) */
+  padding: 16px 18px;
+  background: rgba(242, 244, 243, 0.03);
+  border: 1px solid var(--hair-d);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-family: var(--body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--paper);
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.quiz-opt:hover {
+  border-color: var(--maroon-2);
+  background: rgba(21, 75, 194, 0.12);
+  transform: translateY(-2px);
+}
+
+.quiz-opt:active {
+  transform: translateY(0);
+}
+
+.quiz-opt:focus-visible {
+  outline: 2px solid var(--maroon-2);
+  outline-offset: 2px;
+}
+
+.quiz-opt.is-selected {
+  border-color: var(--maroon);
+  background: rgba(14, 58, 139, 0.22);
+  box-shadow: 0 0 0 1px var(--maroon-2) inset;
+}
+
+.quiz-opt:disabled,
+.quiz-opt[disabled] {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* paso 4: reunión virtual / presencial — 2 columnas por defecto y
+   separación más compacta */
+.quiz-step[data-step="4"] .quiz-opts {
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  gap: 5px;
+}
+
+/* ------------------------------------------------------------
+   11. .field / #contactEmail — paso 5
+   ------------------------------------------------------------ */
 .field {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
 .field label {
-  display: block;
   font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-size: 10.5px;
+  color: var(--mist);
   text-transform: uppercase;
-  color: var(--mist);
-  margin-bottom: 9px;
+  letter-spacing: 0.06em;
 }
 
-.field input,
-.field textarea {
-  width: 100%;
-  background: transparent;
+#contactEmail {
+  padding: 15px 18px;
+  background: rgba(242, 244, 243, 0.04);
   border: 1px solid var(--hair-d2);
-  color: var(--paper);
-  padding: 13px 14px;
-  font-family: var(--body);
-  font-size: 14.5px;
-  resize: vertical;
   border-radius: var(--radius-md);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  color: var(--paper);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
-.field input::placeholder,
-.field textarea::placeholder {
-  color: rgba(242, 244, 243, 0.35);
+#contactEmail::placeholder {
+  color: var(--mist);
 }
 
-.field input:focus,
-.field textarea:focus {
+#contactEmail:hover {
+  border-color: var(--hair-d2);
+  background: rgba(242, 244, 243, 0.06);
+}
+
+#contactEmail:focus {
   outline: none;
-  border-color: var(--ember);
-  box-shadow: 0 0 0 3px rgba(214, 51, 74, 0.18);
+  border-color: var(--maroon-2);
+  box-shadow: 0 0 0 3px var(--qz-maroon-glow);
 }
 
-.field-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+#contactEmail:invalid:not(:placeholder-shown) {
+  border-color: var(--qz-danger);
 }
 
+/* ------------------------------------------------------------
+   12. .submit-btn — envío + estado de carga
+   ------------------------------------------------------------ */
+.submit-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--maroon);
+  border: 1px solid var(--maroon);
+  border-radius: var(--radius-pill);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--paper);
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+
+.submit-btn:hover {
+  background: var(--maroon-2);
+  border-color: var(--maroon-2);
+  box-shadow: 0 10px 28px -10px var(--qz-maroon-glow);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+}
+
+.submit-btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* estado de carga: texto atenuado + spinner */
+.submit-btn.btn--loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.submit-btn.btn--loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(242, 244, 243, 0.35);
+  border-top-color: var(--paper);
+  animation: qz-spin .7s linear infinite;
+}
+
+@keyframes qz-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ------------------------------------------------------------
+   13. .form-note — feedback bajo el formulario
+   ------------------------------------------------------------ */
 .form-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+  margin: 14px 0 0;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--mist);
-  margin-top: 14px;
-  text-align: center;
-  transition: color 0.3s ease;
+  transition: color .2s ease;
 }
 
-/* ---- Estados de feedback del formulario ---- */
 .form-note--loading {
-  color: var(--mist);
+  color: var(--maroon-2);
+}
+
+.form-note--loading::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--maroon-2);
+  animation: qz-pulse 1s ease-in-out infinite;
 }
 
 .form-note--success {
-  color: #34d399;
+  color: var(--qz-success);
+}
+
+.form-note--success::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--qz-success);
 }
 
 .form-note--error {
-  color: var(--ember);
+  color: var(--qz-danger);
 }
 
-/* ---- Botón con estado de carga ---- */
-.btn--loading {
-  position: relative;
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-.btn--loading::after {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(242, 244, 243, 0.3);
-  border-top-color: var(--paper);
+.form-note--error::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
   border-radius: 50%;
-  margin-left: 8px;
-  vertical-align: middle;
-  animation: spinner 0.6s linear infinite;
+  background: var(--qz-danger);
 }
 
-@keyframes spinner {
-  to { transform: rotate(360deg); }
+@keyframes qz-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}
+
+/* ------------------------------------------------------------
+   14. Responsive — sección de contacto
+   ------------------------------------------------------------ */
+@media (max-width: 920px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info,
+  .contact-form {
+    border-radius: var(--radius-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 52px 24px 48px;
+    gap: 22px;
+  }
+
+  .quiz-back {
+    padding: 10px 16px 10px 12px;
+    font-size: 0.78rem;
+  }
+
+  #quizViewport {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 560px) {
+  .quiz-opts[data-cols="2"],
+  .quiz-step[data-step="4"] .quiz-opts {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 46px 18px 44px;
+  }
+
+  .quiz-opt {
+    padding: 14px 16px;
+  }
+}
+
+/* ------------------------------------------------------------
+   15. Accesibilidad — respeto a prefers-reduced-motion
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .quiz-step,
+  .quiz-opt,
+  .submit-btn,
+  .pip,
+  .quiz-back {
+    transition: none !important;
+    animation: none !important;
+  }
 }

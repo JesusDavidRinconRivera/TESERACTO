@@ -161,13 +161,39 @@ nav.wrap .liquidGlass-shine {
   z-index: 49;
   flex-direction: column;
   padding: 8px 24px 32px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: transparent;
   overflow-y: auto;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.16, 0.8, 0.24, 1);
   visibility: hidden;
+}
+
+.nav-mobile .liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.nav-mobile .liquidGlass-tint {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: var(--glass-bg);
+  pointer-events: none;
+}
+
+.nav-mobile .liquidGlass-shine {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .nav-mobile.is-open {
@@ -176,6 +202,8 @@ nav.wrap .liquidGlass-shine {
 }
 
 .nav-mobile a {
+  position: relative;
+  z-index: 3;
   font-family: var(--mono);
   font-size: 13px;
   letter-spacing: 0.08em;
@@ -188,20 +216,6 @@ nav.wrap .liquidGlass-shine {
 
 .nav-mobile a:hover {
   color: var(--brand);
-}
-
-.nav-mobile-phone {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-  color: var(--ink) !important;
-}
-
-.nav-mobile-phone svg {
-  width: 18px;
-  height: 18px;
-  flex: none;
 }
 
 .nav-mobile-cta {
