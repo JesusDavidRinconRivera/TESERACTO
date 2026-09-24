@@ -10,15 +10,17 @@
 
 #servicios .section-head {
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
-/* Centrar el bloque interno (eyebrow sobre el h2) */
+
+
+/* Alinear el bloque interno (eyebrow sobre el h2) a la izquierda */
 #servicios .section-head > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #servicios .eyebrow::before {
@@ -26,11 +28,11 @@
 }
 
 #servicios .section-head .note {
-  text-align: center;
+  text-align: left;
   max-width: none;
 }
 
-/* Párrafo 1 en un solo renglón en pantallas anchas */
+/* Párrafo 2 en un solo renglón en pantallas anchas */
 @media (min-width: 900px) {
   #servicios .section-head .note p:first-child {
     white-space: nowrap;
@@ -400,7 +402,7 @@
 .promise {
   max-width: 44ch;
   margin: 0 auto 56px;
-  text-align: center;
+  text-align: left;
   font-family: var(--display);
   font-size: clamp(22px, 2.6vw, 30px);
   font-weight: 600;
