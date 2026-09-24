@@ -91,3 +91,11 @@
 .on-void .section-head .note {
   color: var(--mist);
 }
+
+#como-trabajamos{
+  margin-bottom: 10px;
+}
+
+#texto-reveal{
+  margin-bottom: 20px;
+}

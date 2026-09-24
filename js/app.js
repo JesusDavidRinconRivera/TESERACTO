@@ -9,6 +9,7 @@ import { initQuiz } from './forms/quiz.js';
 import { initRevealOnScroll } from './ui/revealOnScroll.js';
 import { initAnimations } from './ui/animations.js';
 import { initMobileNav } from './ui/mobileNav.js';
+import { initNavScrollSpy } from './ui/navScrollSpy.js';
 import { initClientsCarousel } from './ui/clientsCarousel.js';
 import { initWhatsAppWidget } from './ui/whatsappWidget.js';
 import { onReady } from './utils/helpers.js';
@@ -73,6 +74,14 @@ function initApp() {
       console.log('[TESERACTO] ✓ Navegación móvil inicializada');
     } catch (err) {
       console.warn('[TESERACTO] ✗ Error al inicializar navegación móvil:', err);
+    }
+
+    try {
+      // Inicializar scrollspy (resalta la sección activa en la navbar)
+      initNavScrollSpy();
+      console.log('[TESERACTO] ✓ Scrollspy de navegación inicializado');
+    } catch (err) {
+      console.warn('[TESERACTO] ✗ Error al inicializar scrollspy:', err);
     }
 
     try {

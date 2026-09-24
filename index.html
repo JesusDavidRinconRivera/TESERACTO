@@ -216,7 +216,6 @@
         <span class="nav-toggle-bar"></span>
       </button>
     </div>
-    <div class="nav-scroll-progress" aria-hidden="true"></div>
   </nav>
 
   <div class="nav-mobile" id="navMobile" aria-hidden="true">
@@ -559,13 +558,13 @@
 <!-- ================= PROCESO ================= -->
 <section class="section on-paper">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head reveal" id="como-trabajamos">
       <div>
         <div class="eyebrow">Qué obtienes al trabajar con nosotros</div>
         <h2>COMO TRABAJAMOS</h2>
       </div>
     </div>
-    <div class="promise reveal">
+    <div class="promise reveal" id="texto-reveal">
       <p>Tu negocio nunca se detiene: respondemos <em>en menos de 2 horas</em>, <em>24/7</em>, y ningún problema técnico se queda sin dueño.</p>
     </div>
     <div class="process reveal">
@@ -794,9 +793,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- Main App Script (Module) -->
 <script type="module" src="js/app.js"></script>
-
-<!-- Indicador de scroll en el navbar (vainilla, carga diferida) -->
-<script src="js/ui/navScrollProgress.js" defer></script>
 
 <!-- Scrollbar visible solo al hover del borde derecho -->
 <script src="js/ui/scrollbarHover.js" defer></script>
