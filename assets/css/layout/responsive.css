@@ -69,6 +69,7 @@
 
   /* Grids */
   .pillars-2,
+  .pillars-3,
   .contact-grid {
     grid-template-columns: 1fr;
   }

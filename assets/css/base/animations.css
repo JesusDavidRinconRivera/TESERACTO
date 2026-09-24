@@ -54,4 +54,10 @@
   .wm-full {
     transition: none !important;
   }
+
+  .proc-dot {
+    animation: none;
+    opacity: 1;
+    left: var(--proc-end);
+  }
 }

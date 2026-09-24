@@ -9,6 +9,25 @@
   gap: 24px;
 }
 
+.pillars-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.pillars-3 .pillar-card h3 {
+  font-size: 19px;
+  gap: 10px;
+}
+
+.pillars-3 .title-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.pillars-3 .pillar-card li {
+  font-size: 13.5px;
+}
+
 .pillar-card {
   position: relative;
   overflow: hidden;
@@ -166,6 +185,8 @@
 .pillar-gear--dev {
   opacity: 1; /* la consola maneja su propia opacidad */
 }
+
+
 
 .dev-console {
   width: 100%;
