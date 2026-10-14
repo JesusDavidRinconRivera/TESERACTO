@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar TESERACTO — aislado</title>
+
+  <!--
+    ============================================================
+    NAVBAR TESERACTO — página aislada (solo el navbar)
+    ============================================================
+    Extraído de: rama Experimentos-Front
+      · index.html      (marcado del header)
+      · assets/css/base/{variables,reset,global,typography}.css
+      · assets/css/components/{logo,buttons}.css   (solo lo que usa el nav)
+      · assets/css/layout/header.css                (completo)
+      · assets/css/layout/responsive.css            (reglas de header/nav)
+      · js/ui/mobileNav.js
+      · js/app.js          (toggle .is-scrolled del header)
+
+    Todo el CSS y JS está inline en este único archivo.
+
+    COMPORTAMIENTO DE ESTA VERSIÓN (demo):
+      · La barra queda FIJA y centrada en la pantalla (no se mueve al
+        scrollear): position:fixed + top:50% + translateY(-50%).
+      · La "burbuja" (.nav-indicator) recorre el navbar según el avance
+        del scroll, en este orden:
+          TESERACTO (logo) → Servicios → Por qué elegirnos → Nosotros → Contacto
+        Empieza en el logo (arriba) y termina en Contacto (abajo).
+        Sustituye al scrollspy anterior (navScrollSpy) y está inspirada
+        en el antiguo js/ui/navScrollProgress.js.
+      · Las 4 <section class="demo-anchor"> invisibles solo dan altura
+        para poder scrollear y destino a los enlaces.
+    ============================================================
+  -->
+
+  <!-- Tipografías del navbar: Unbounded (wordmark) + JetBrains Mono (enlaces/botones) + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+  /* ============================================================
+     1) VARIABLES  (assets/css/base/variables.css)
+  ============================================================ */
+  :root {
+    /* Colores principales */
+    --void: #0A0908;
+    --void-2: #15120F;
+    --maroon: #0e3a8b;         /* azul marca — bloques y acentos */
+    --maroon-2: #154bc2;       /* hover / variante clara */
+    --ember: #d0d0d0;
+    --paper: #F2F4F3;
+    --paper-2: #E6E2DF;
+    --ink: #0A0908;
+    --fog: #706A66;
+    --mist: #A9A3A0;
+
+    /* Transparencias */
+    --hair-d: rgba(242, 244, 243, 0.14);
+    --hair-d2: rgba(242, 244, 243, 0.30);
+    --hair-l: rgba(10, 9, 8, 0.14);
+    --hair-l2: rgba(10, 9, 8, 0.30);
+
+    /* Glass */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-blur: blur(20px);
+    --glass-bg-maroon: rgba(14, 58, 139, 0.45);
+    --glass-border-maroon: rgba(14, 58, 139, 0.3);
+    --maroon-tint: rgba(14, 58, 139, 0.14);
+
+    /* Tipografías */
+    --display: 'Unbounded', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+
+    /* Layout */
+    --maxw: 1180px;
+
+    /* Espacios y radios */
+    --radius-lg: 32px;
+    --radius-md: 18px;
+    --radius-pill: 999px;
+
+    /* Header */
+    --header-h: 76px;
+  }
+
+  /* ============================================================
+     2) RESET  (assets/css/base/reset.css)
+  ============================================================ */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+  }
+
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  ::selection {
+    background: var(--maroon);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 2px;
+  }
+
+  /* ============================================================
+     3) TIPOGRAFÍA BASE  (assets/css/base/typography.css)
+  ============================================================ */
+  body {
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  /* ============================================================
+     4) GLOBAL  (assets/css/base/global.css) — solo .wrap
+  ============================================================ */
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============================================================
+     5) LOGO  (assets/css/components/logo.css) — solo lo del nav
+  ============================================================ */
+  .logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-word {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .nav-logo .logo-mark svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .cube-outer {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linejoin: round;
+  }
+
+  .cube-inner {
+    fill: currentColor;
+  }
+
+  /* ============================================================
+     6) BOTÓN CTA DEL NAV  (assets/css/components/buttons.css)
+  ============================================================ */
+  .btn-cta-nav {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    background: var(--maroon);
+    color: var(--paper);
+    border: 1px solid var(--maroon);
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+    border-radius: var(--radius-pill);
+  }
+
+  .btn-cta-nav:hover {
+    transform: translateY(-2px);
+    background: var(--maroon-2);
+  }
+
+  /* ============================================================
+     7) HEADER Y NAVEGACIÓN  (assets/css/layout/header.css)
+  ============================================================ */
+  header {
+    position: sticky;
+    top: 12px;
+    z-index: 50;
+    padding: 0 12px;
+    color: var(--ink);
+    background: transparent;
+  }
+
+  nav.wrap {
+    position: relative;
+    overflow: hidden;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+  }
+
+  /* ---- Liquid Glass — capas (efecto / tinte / brillo) ---- */
+  nav.wrap .liquidGlass-effect {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    filter: url(#glass-distortion);
+    overflow: hidden;
+    isolation: isolate;
+    pointer-events: none;
+  }
+
+  nav.wrap .liquidGlass-tint {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: var(--glass-bg);
+    pointer-events: none;
+  }
+
+  nav.wrap .liquidGlass-shine {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .nav-left,
+  .navlinks a,
+  .nav-actions {
+    position: relative;
+    z-index: 4;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .navlinks {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 52px;
+  }
+
+  .navlinks a {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--maroon);
+    transition: color 0.2s;
+  }
+
+  .navlinks a:hover {
+    color: var(--maroon-2);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ---- Menú hamburguesa ---- */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--hair-d2);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .nav-toggle:hover {
+    border-color: var(--ember);
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--maroon);
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .nav-toggle.is-active .nav-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle.is-active .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.is-active .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ---- Panel móvil ---- */
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: calc(var(--header-h) + 22px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 49;
+    flex-direction: column;
+    padding: 8px 24px 32px;
+    background: transparent;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 0.8, 0.24, 1);
+    visibility: hidden;
+  }
+
+  .nav-mobile .liquidGlass-effect {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    filter: url(#glass-distortion);
+    overflow: hidden;
+    isolation: isolate;
+    pointer-events: none;
+  }
+
+  .nav-mobile .liquidGlass-tint {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: var(--glass-bg);
+    pointer-events: none;
+  }
+
+  .nav-mobile .liquidGlass-shine {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .nav-mobile.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .nav-mobile a {
+    position: relative;
+    z-index: 3;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hair-l);
+    transition: color 0.2s;
+  }
+
+  /* OJO: --brand NO está definido en variables.css (posible bug del original).
+     Si quieres que el hover y el botón del menú móvil tengan color, define
+     --brand (p. ej. --brand: var(--maroon);) en el bloque :root. */
+  .nav-mobile a:hover {
+    color: var(--brand);
+  }
+
+  .nav-mobile-cta {
+    margin-top: 20px;
+    text-align: center;
+    background: var(--brand);
+    color: var(--paper) !important;
+    border: 1px solid var(--brand) !important;
+    border-radius: var(--radius-pill);
+    padding: 16px 24px !important;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  /* ---- Burbuja indicadora (recorre TESERACTO → Contacto) ---- */
+  .nav-indicator {
+    position: absolute;
+    z-index: 1;
+    border-radius: var(--radius-pill);
+    background: var(--maroon);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      left 0.6s cubic-bezier(0.33, 1, 0.68, 1),
+      top 0.6s cubic-bezier(0.33, 1, 0.68, 1),
+      width 0.6s cubic-bezier(0.33, 1, 0.68, 1),
+      height 0.6s cubic-bezier(0.33, 1, 0.68, 1),
+      opacity 0.25s ease;
+    will-change: left, top, width, height;
+  }
+
+  .navlinks a.is-active {
+    color: var(--paper);
+  }
+
+  .navlinks a.is-active:hover {
+    color: var(--paper);
+  }
+
+  /* El logo (TESERACTO) también se "activa" cuando la burbuja está encima.
+     El <a> lleva color inline, por eso hace falta !important. */
+  .nav-left.is-active a {
+    color: var(--paper) !important;
+  }
+
+  .nav-mobile a.is-active {
+    color: var(--maroon);
+  }
+
+  .nav-mobile a.is-active:hover {
+    color: var(--maroon);
+  }
+
+  .nav-mobile a.is-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 22px;
+    border-radius: 3px;
+    background: var(--maroon);
+  }
+
+  /* ============================================================
+     8) RESPONSIVE del header  (assets/css/layout/responsive.css)
+  ============================================================ */
+  /* ---- Tablet (≤920px) ---- */
+  @media (max-width: 920px) {
+    :root {
+      --header-h: 56px;
+    }
+
+    .wrap {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    header {
+      top: 10px;
+      padding: 0 10px;
+    }
+
+    nav.wrap {
+      height: var(--header-h);
+    }
+
+    .navlinks {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-mobile {
+      display: flex;
+      top: calc(var(--header-h) + 22px);
+    }
+
+    .btn-cta-nav {
+      display: none;
+    }
+  }
+
+  /* ---- Mobile (≤560px) ---- */
+  @media (max-width: 560px) {
+    :root {
+      --header-h: 52px;
+    }
+
+    header {
+      top: 8px;
+      padding: 0 8px;
+    }
+
+    .wrap {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    nav.wrap {
+      height: var(--header-h);
+      gap: 8px;
+      padding: 0 14px;
+    }
+
+    .nav-left {
+      gap: 10px;
+    }
+
+    .nav-logo .logo-word {
+      font-size: 14px;
+    }
+
+    .nav-logo .logo-mark svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  /* ---- Pantallas muy pequeñas (≤400px) ---- */
+  @media (max-width: 400px) {
+    .wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .nav-logo .logo-word {
+      display: none;
+    }
+
+    .nav-mobile {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  /* ---- Touch: áreas mínimas de toque ---- */
+  @media (hover: none) and (pointer: coarse) {
+    .navlinks a,
+    .nav-mobile a,
+    .btn-cta-nav {
+      min-height: 44px;
+    }
+
+    .btn-cta-nav:hover {
+      transform: none;
+    }
+  }
+
+  /* ============================================================
+     9) DEMO — navbar FIJO y centrado + regiones de scroll
+     (solo para esta vista aislada; NO forma parte del sitio)
+  ============================================================ */
+
+  /* La barra NO se mueve al scrollear: queda fija y centrada en la
+     pantalla (position:fixed + top:50% + translateY(-50%)).
+     Se sobreescribe aquí el position:sticky original. */
+  header {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  /* Regiones invisibles: dan altura para poder scrollear (y destino a
+     los enlaces). No se ven: la página sigue mostrando solo el navbar.
+     Bórralas cuando integres el navbar en tu sitio real. */
+  .demo-anchor {
+    height: 90vh;
+  }
+  </style>
+</head>
+<body>
+
+<!-- ================= SVG: marca del logo ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="teseracto-mark">
+      <polygon class="cube-outer" points="50,4 92,27 92,73 50,96 8,73 8,27"/>
+      <line class="cube-outer" x1="8" y1="27" x2="50" y2="50"/>
+      <line class="cube-outer" x1="92" y1="27" x2="50" y2="50"/>
+      <line class="cube-outer" x1="50" y1="50" x2="50" y2="96"/>
+      <polygon class="cube-inner" points="50,38 63,45.5 50,53 37,45.5"/>
+      <polygon class="cube-inner" points="37,45.5 50,53 50,66 37,58.5"/>
+      <polygon class="cube-inner" points="63,45.5 50,53 50,66 63,58.5"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- ================= SVG: filtro liquid glass ================= -->
+<svg style="display: none" aria-hidden="true">
+  <filter
+    id="glass-distortion"
+    x="0%"
+    y="0%"
+    width="100%"
+    height="100%"
+    filterUnits="objectBoundingBox"
+  >
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency="0.01 0.01"
+      numOctaves="1"
+      seed="5"
+      result="turbulence"
+    />
+    <feComponentTransfer in="turbulence" result="mapped">
+      <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+      <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+      <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+    </feComponentTransfer>
+    <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+    <feSpecularLighting
+      in="softMap"
+      surfaceScale="5"
+      specularConstant="1"
+      specularExponent="100"
+      lighting-color="white"
+      result="specLight"
+    >
+      <fePointLight x="-200" y="-200" z="300" />
+    </feSpecularLighting>
+    <feComposite
+      in="specLight"
+      operator="arithmetic"
+      k1="0"
+      k2="1"
+      k3="1"
+      k4="0"
+      result="litImage"
+    />
+    <feDisplacementMap
+      in="SourceGraphic"
+      in2="softMap"
+      scale="150"
+      xChannelSelector="R"
+      yChannelSelector="G"
+    />
+  </filter>
+</svg>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <nav class="wrap">
+    <div class="liquidGlass-effect" aria-hidden="true"></div>
+    <div class="liquidGlass-tint" aria-hidden="true"></div>
+    <div class="liquidGlass-shine" aria-hidden="true"></div>
+    <div class="nav-left">
+      <a href="#" class="logo-lockup nav-logo" style="color:var(--maroon);">
+        <span class="logo-mark"><svg viewBox="0 0 100 100"><use href="#teseracto-mark"/></svg></span>
+        <span class="logo-word">TESERACTO</span>
+      </a>
+    </div>
+    <div class="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#confianza">Por qué elegirnos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#contacto" class="btn-cta-nav">Solicitar visita</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMobile">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="liquidGlass-effect" aria-hidden="true"></div>
+    <div class="liquidGlass-tint" aria-hidden="true"></div>
+    <div class="liquidGlass-shine" aria-hidden="true"></div>
+    <a href="#servicios">Servicios</a>
+    <a href="#confianza">Por qué elegirnos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#contacto" class="nav-mobile-cta">Solicitar visita</a>
+  </div>
+</header>
+
+<!-- ================= ANCLAS DE DEMO (invisibles) =================
+     Solo para probar la animación del scrollspy (píldora que se
+     desliza entre los enlaces al hacer scroll). Sin contenido visible:
+     la página sigue mostrando únicamente el navbar. -->
+<section id="servicios" class="demo-anchor" aria-hidden="true"></section>
+<section id="confianza" class="demo-anchor" aria-hidden="true"></section>
+<section id="nosotros" class="demo-anchor" aria-hidden="true"></section>
+<section id="contacto" class="demo-anchor" aria-hidden="true"></section>
+
+<script>
+/* ============================================================
+   JS DEL NAVBAR (inline, sin módulos)
+   · NAVEGACIÓN MÓVIL  (js/ui/mobileNav.js + js/config/constants.js)
+   · BURBUJA           (recorre TESERACTO → Contacto según el scroll)
+   · HEADER SCROLL      (js/app.js — clase .is-scrolled)
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* Constantes usadas por el nav (de js/config/constants.js) */
+  var NAV_TOGGLE_ID = 'navToggle';
+  var NAV_MOBILE_ID = 'navMobile';
+
+  /* ---------- NAVEGACIÓN MÓVIL (initMobileNav) ---------- */
+  function initMobileNav() {
+    var toggle = document.getElementById(NAV_TOGGLE_ID);
+    var panel = document.getElementById(NAV_MOBILE_ID);
+    if (!toggle || !panel) return;
+
+    var links = panel.querySelectorAll('a');
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      panel.setAttribute('aria-hidden', String(!open));
+      panel.classList.toggle('is-open', open);
+      toggle.classList.toggle('is-active', open);
+      document.body.classList.toggle('nav-open', open);
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function () { setOpen(false); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    window.matchMedia('(min-width: 921px)').addEventListener('change', function (e) {
+      if (e.matches) setOpen(false);
+    });
+  }
+
+  /* ---------- BURBUJA DEL NAVBAR (initNavIndicator) ----------
+     Recorre el navbar según el avance del scroll, en este orden:
+       TESERACTO (logo) → Servicios → Por qué elegirnos → Nosotros → Contacto
+     Empieza en el logo (arriba del todo) y termina en Contacto (abajo).
+     Adaptado del antiguo js/ui/navScrollProgress.js. */
+  function initNavIndicator() {
+    var nav = document.querySelector('nav.wrap');
+    if (!nav) return;
+
+    var navLeft = nav.querySelector('.nav-left');
+    var links = Array.prototype.slice.call(nav.querySelectorAll('.navlinks a'));
+    var mobileQuery = window.matchMedia('(max-width: 920px)');
+
+    var targets = [];
+
+    /* Objetivos de la burbuja. En móvil los .navlinks están ocultos,
+       así que solo se usa el logo (la burbuja no se movería). */
+    function collectTargets() {
+      targets = [];
+      if (navLeft) targets.push(navLeft);
+      if (!mobileQuery.matches) targets = targets.concat(links);
+    }
+    collectTargets();
+    if (!targets.length) return;
+
+    var indicator = document.createElement('span');
+    indicator.className = 'nav-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    nav.appendChild(indicator);
+
+    var PAD_X = 14;
+    var PAD_Y = 8;
+    var currentIdx = -1;
+    var ticking = false;
+
+    function positionAt(el) {
+      var navRect = nav.getBoundingClientRect();
+      var r = el.getBoundingClientRect();
+      indicator.style.left = r.left - navRect.left - PAD_X + 'px';
+      indicator.style.top = r.top - navRect.top - PAD_Y + 'px';
+      indicator.style.width = r.width + PAD_X * 2 + 'px';
+      indicator.style.height = r.height + PAD_Y * 2 + 'px';
+      indicator.style.opacity = '1';
+    }
+
+    function setActive(idx) {
+      if (idx === currentIdx) return;
+      currentIdx = idx;
+      var linkOffset = navLeft ? 1 : 0;
+      if (navLeft) navLeft.classList.toggle('is-active', idx === 0);
+      links.forEach(function (link, i) {
+        link.classList.toggle('is-active', i + linkOffset === idx);
+      });
+      positionAt(targets[idx]);
+    }
+
+    function update() {
+      var doc = document.documentElement;
+      var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+      var scrollMax = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
+      var progress = scrollMax > 0 ? Math.max(0, Math.min(1, scrollTop / scrollMax)) : 0;
+      var last = targets.length - 1;
+      var idx = last > 0 ? Math.round(progress * last) : 0;
+      ticking = false;
+      setActive(idx);
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    function onResize() {
+      collectTargets();
+      currentIdx = -1;
+      update();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    window.addEventListener('load', onScroll);
+
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener('change', onResize);
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(onResize);
+    }
+
+    update();
+  }
+
+  /* ---------- HEADER SCROLL (de app.js) ---------- */
+  function initHeaderScroll() {
+    var header = document.querySelector('header');
+    if (!header) return;
+    var onScroll = function () {
+      if (window.scrollY > 30) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- ARRANQUE ---------- */
+  function init() {
+    initMobileNav();
+    initNavIndicator();
+    initHeaderScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>
