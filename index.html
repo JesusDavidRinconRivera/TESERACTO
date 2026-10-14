@@ -37,7 +37,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=contract_edit,acute,engineering,contract,handyman,devices,security,verified_user,support_agent,storage,inventory_2,code,web,sync_alt,monitoring,password,build,terminal" /> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=contract_edit,acute,engineering,contract,handyman,devices,security,verified_user,support_agent,storage,inventory_2,code,web,sync_alt,monitoring,password,build,terminal,route,trending_up" /> 
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Unbounded (títulos/wordmark), Inter (texto), JetBrains Mono (labels) -->
 
@@ -424,18 +424,20 @@
       </div>
 
       <div class="pillar-card" data-pillar>
-        <div class="pillar-gear" aria-hidden="true">
+        <div class="pillar-trend" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-            <circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line class="chart-bar" x1="6" y1="20" x2="6" y2="16"/>
+            <line class="chart-bar" x1="12" y1="20" x2="12" y2="10"/>
+            <line class="chart-bar" x1="18" y1="20" x2="18" y2="4"/>
           </svg>
         </div>
         <div class="pillar-content">
-          <h3><span class="title-icon" aria-hidden="true"><span class="material-symbols-outlined">engineering</span><span class="title-wave"></span></span>SERVICIOS EXTRAS</h3>
+          <h3><span class="title-icon" aria-hidden="true"><svg class="chart-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line class="chart-bar" x1="6" y1="20" x2="6" y2="16"/><line class="chart-bar" x1="12" y1="20" x2="12" y2="10"/><line class="chart-bar" x1="18" y1="20" x2="18" y2="4"/></svg><span class="title-wave"></span></span>SERVICIOS EXTRAS</h3>
           <ul>
             <li><span class="material-symbols-outlined" aria-hidden="true">monitoring</span>Análisis de datos</li>
             <li><span class="material-symbols-outlined" aria-hidden="true">security</span>Análisis de ciberseguridad</li>
             <li><span class="material-symbols-outlined" aria-hidden="true">storage</span>Administración de base de datos</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">route</span>Diagnóstico de madurez digital (Industria 4.0) y hoja de ruta</li>
           </ul>
         </div>
       </div>
@@ -734,41 +736,10 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
   <script>
+    // Las tarjetas son cuadradas y del mismo tamaño por CSS (aspect-ratio),
+    // así que ya no hace falta igualar alturas con JS. Solo gestionamos el
+    // botón "mostrar más" de cada tarjeta.
     const pillarCards = document.querySelectorAll('[data-pillar]');
-
-    function getRestingHeight(card) {
-      const more = card.querySelector('[data-pillar-more]');
-      if (!more) return card.getBoundingClientRect().height;
-      const prevMax = more.style.maxHeight;
-      const prevMin = card.style.minHeight;
-      more.style.maxHeight = '0px';
-      card.style.minHeight = '';
-      const height = card.getBoundingClientRect().height;
-      more.style.maxHeight = prevMax;
-      card.style.minHeight = prevMin;
-      return height;
-    }
-
-    function equalizeRestingHeight() {
-      let max = 0;
-      pillarCards.forEach((card) => {
-        max = Math.max(max, getRestingHeight(card));
-      });
-      pillarCards.forEach((card) => {
-        card.style.minHeight = max + 'px';
-      });
-    }
-
-    equalizeRestingHeight();
-    window.addEventListener('resize', () => {
-      equalizeRestingHeight();
-      pillarCards.forEach((card) => {
-        if (card.classList.contains('is-open')) {
-          const more = card.querySelector('[data-pillar-more]');
-          more.style.maxHeight = more.scrollHeight + 'px';
-        }
-      });
-    });
 
     pillarCards.forEach((card) => {
       const toggle = card.querySelector('[data-pillar-toggle]');
@@ -785,6 +756,16 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           card.classList.add('is-open');
           toggle.setAttribute('aria-expanded', 'true');
+          more.style.maxHeight = more.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Al redimensionar, re-mide el bloque desplegado de las tarjetas abiertas.
+    window.addEventListener('resize', () => {
+      pillarCards.forEach((card) => {
+        if (card.classList.contains('is-open')) {
+          const more = card.querySelector('[data-pillar-more]');
           more.style.maxHeight = more.scrollHeight + 'px';
         }
       });
