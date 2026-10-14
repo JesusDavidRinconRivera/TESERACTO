@@ -87,23 +87,29 @@
   transform: translateY(-2px);
 }
 
+/* CTA del navbar — idéntico a la gota: mismo degradado, misma sombra en reposo,
+   forma de píldora y tipografía mono. Al pasar el cursor toma la sombra intensa. */
 .btn-cta-nav {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 11px 20px;
-  background: var(--maroon);
+  padding: 8px 14px;
+  background: var(--blob-gradient);
   color: var(--paper);
-  border: 1px solid var(--maroon);
-  transition: background 0.2s, transform 0.2s;
+  border: 0;
+  filter: drop-shadow(0 2px 4px rgba(21, 75, 194, 0.25));
+  transition: transform 0.2s, filter 0.2s;
   white-space: nowrap;
   border-radius: var(--radius-pill);
 }
 
 .btn-cta-nav:hover {
   transform: translateY(-2px);
-  background: var(--maroon-2);
+  filter: drop-shadow(0 5px 11px rgba(21, 75, 194, 0.5));
 }
 
 .cta-row {

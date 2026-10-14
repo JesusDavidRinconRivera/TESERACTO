@@ -1,5 +1,10 @@
 /* ============================================================
    HEADER Y NAVEGACIÓN
+   Navbar con "gota" (blob) que se estira al hacer scroll.
+   El header se queda pegado arriba (sticky) y permanece visible al
+   hacer scroll, en su posición original.
+   La gota recorre los enlaces y, si el scroll se detiene a medias,
+   se recoge sola a su posición (lo controla js/ui/navScrollSpy.js).
 ============================================================ */
 
 header {
@@ -27,7 +32,7 @@ nav.wrap {
 }
 
 /* ---- Liquid Glass — capas (efecto / tinte / brillo) ---- */
-nav.wrap .liquidGlass-effect {
+.liquidGlass-effect {
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -39,7 +44,7 @@ nav.wrap .liquidGlass-effect {
   pointer-events: none;
 }
 
-nav.wrap .liquidGlass-tint {
+.liquidGlass-tint {
   position: absolute;
   z-index: 1;
   inset: 0;
@@ -47,17 +52,13 @@ nav.wrap .liquidGlass-tint {
   pointer-events: none;
 }
 
-nav.wrap .liquidGlass-shine {
+.liquidGlass-shine {
   position: absolute;
   z-index: 2;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
-
-/* ---- Indicador de scroll (óvalo que recorre los títulos) ----
-   ELIMINADO: el resaltado de sección ahora lo hace el scrollspy
-   con la clase .is-active (ver .navlinks a.is-active al final) */
 
 .nav-left,
 .navlinks a,
@@ -87,7 +88,7 @@ nav.wrap .liquidGlass-shine {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--maroon);
-  transition: color 0.2s;
+  transition: color 0.25s ease;
 }
 
 .navlinks a:hover {
@@ -161,34 +162,6 @@ nav.wrap .liquidGlass-shine {
   visibility: hidden;
 }
 
-.nav-mobile .liquidGlass-effect {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  filter: url(#glass-distortion);
-  overflow: hidden;
-  isolation: isolate;
-  pointer-events: none;
-}
-
-.nav-mobile .liquidGlass-tint {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: var(--glass-bg);
-  pointer-events: none;
-}
-
-.nav-mobile .liquidGlass-shine {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
 .nav-mobile.is-open {
   transform: translateX(0);
   visibility: visible;
@@ -204,19 +177,30 @@ nav.wrap .liquidGlass-shine {
   color: var(--ink);
   padding: 18px 0;
   border-bottom: 1px solid var(--hair-l);
-  transition: color 0.2s;
+  opacity: 0;
+  transform: translateX(18px);
+  transition: color 0.2s, opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 0.8, 0.24, 1);
 }
 
 .nav-mobile a:hover {
   color: var(--brand);
 }
 
+/* Entrada escalonada: cada enlace aparece 40 ms después del anterior (--i lo asigna el JS).
+   Al cerrar no hay retraso, así que desaparecen todos a la vez. */
+.nav-mobile.is-open a {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s, calc(var(--i, 0) * 40ms + 120ms), calc(var(--i, 0) * 40ms + 120ms);
+}
+
 .nav-mobile-cta {
   margin-top: 20px;
   text-align: center;
-  background: var(--brand);
+  background: var(--blob-gradient);
   color: var(--paper) !important;
-  border: 1px solid var(--brand) !important;
+  border: 0 !important;
+  filter: drop-shadow(0 2px 4px rgba(21, 75, 194, 0.25));
   border-radius: var(--radius-pill);
   padding: 16px 24px !important;
 }
@@ -225,40 +209,46 @@ body.nav-open {
   overflow: hidden;
 }
 
-/* ---- Estado activo del enlace (sección visible — scrollspy) ---- */
-
-/* Píldora indicadora que se desliza entre los enlaces del escritorio.
-   La crea navScrollSpy.js dentro de .navlinks y se anima vía
-   left/top/width/height (transición CSS). */
+/* ---- Gota (indicador de sección activa) ----
+   La crea js/ui/navScrollSpy.js dentro de nav.wrap. Es un <svg> que ocupa
+   todo el navbar y va dibujando la forma de gota en cada frame. */
 .nav-indicator {
   position: absolute;
   z-index: 1;
-  border-radius: var(--radius-pill);
-  background: var(--maroon);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
   opacity: 0;
   pointer-events: none;
-  transition:
-    left 0.6s cubic-bezier(0.33, 1, 0.68, 1),
-    top 0.6s cubic-bezier(0.33, 1, 0.68, 1),
-    width 0.6s cubic-bezier(0.33, 1, 0.68, 1),
-    height 0.6s cubic-bezier(0.33, 1, 0.68, 1),
-    opacity 0.25s ease;
-  will-change: left, top, width, height;
+  transition: opacity 0.25s ease;
+  /* Sombra azul bajo la gota: --glow (0 a 1) lo actualiza el JS según cuánto se estira */
+  filter: drop-shadow(
+    0 calc(2px + 3px * var(--glow, 0)) calc(4px + 7px * var(--glow, 0))
+      rgba(21, 75, 194, calc(0.25 + 0.25 * var(--glow, 0)))
+  );
 }
 
-.navlinks a.is-active {
-  color: var(--paper);
+/* Degradado vertical suave (más claro arriba); el primer fill es el respaldo */
+.nav-indicator path {
+  fill: var(--maroon);
+  fill: url(#navBlobGradient);
 }
 
+.nav-left a {
+  transition: color 0.25s ease;
+}
+
+.navlinks a.is-active,
 .navlinks a.is-active:hover {
   color: var(--paper);
 }
 
-/* Estado activo en el menú móvil */
-.nav-mobile a.is-active {
-  color: var(--maroon);
+.nav-left.is-active a {
+  color: var(--paper) !important;
 }
 
+.nav-mobile a.is-active,
 .nav-mobile a.is-active:hover {
   color: var(--maroon);
 }
@@ -273,4 +263,103 @@ body.nav-open {
   height: 22px;
   border-radius: 3px;
   background: var(--maroon);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-mobile a {
+    transform: none;
+    transition: color 0.2s;
+  }
+
+  .nav-mobile.is-open a {
+    transition-delay: 0s;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE DEL NAVBAR
+============================================================ */
+
+@media (max-width: 920px) {
+  :root {
+    --header-h: 56px;
+  }
+
+  header {
+    top: 10px;
+    padding: 0 10px;
+  }
+
+  nav.wrap {
+    height: var(--header-h);
+  }
+
+  .navlinks {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-mobile {
+    display: flex;
+    top: calc(var(--header-h) + 22px);
+  }
+
+  .btn-cta-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --header-h: 52px;
+  }
+
+  header {
+    top: 8px;
+    padding: 0 8px;
+  }
+
+  nav.wrap {
+    gap: 8px;
+    padding: 0 14px;
+  }
+
+  .nav-left {
+    gap: 10px;
+  }
+
+  .nav-logo .logo-word {
+    font-size: 14px;
+  }
+
+  .nav-logo .logo-mark svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-logo .logo-word {
+    display: none;
+  }
+
+  .nav-mobile {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .navlinks a,
+  .nav-mobile a,
+  .btn-cta-nav {
+    min-height: 44px;
+  }
+
+  .btn-cta-nav:hover {
+    transform: none;
+  }
 }

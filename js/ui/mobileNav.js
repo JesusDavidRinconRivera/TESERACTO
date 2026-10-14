@@ -26,7 +26,9 @@ export function initMobileNav() {
     setOpen(toggle.getAttribute('aria-expanded') !== 'true');
   });
 
-  links.forEach((link) => {
+  links.forEach((link, i) => {
+    // --i : índice para el retraso escalonado (40 ms por enlace) del CSS
+    link.style.setProperty('--i', i);
     link.addEventListener('click', () => setOpen(false));
   });
 

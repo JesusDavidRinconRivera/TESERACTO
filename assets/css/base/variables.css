@@ -28,6 +28,8 @@
   --glass-bg-maroon: rgba(14, 58, 139, 0.45);
   --glass-border-maroon: rgba(14, 58, 139, 0.3);
   --maroon-tint: rgba(14, 58, 139, 0.14);  /* resaltado (cuadro) de texto en azul marca */
+  --brand: var(--maroon);                   /* alias de marca (usado por el navbar) */
+  --blob-gradient: linear-gradient(180deg, var(--maroon-2), var(--maroon)); /* gota y CTA del navbar */
 
   /* Tipografías */
   --display: 'Unbounded', sans-serif;
